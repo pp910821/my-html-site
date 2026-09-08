@@ -631,28 +631,28 @@
             </section>
         </main>
 
-        <!-- BOTTOM NAVIGATION BAR -->
+        <!-- BOTTOM NAVIGATION BAR (文字已增大 1 格) -->
         <nav class="absolute bottom-0 left-0 right-0 bg-pastelPink-100/95 backdrop-blur-md border-t border-pastelPink-200 safe-bottom z-30 shadow-lg">
             <div class="grid grid-cols-5 h-14">
                 <button onclick="switchTab('tab-flight-car')" id="nav-tab-flight-car" class="nav-btn flex flex-col items-center justify-center gap-0.5 text-pastelPink-500 font-black">
-                    <i class="fa-solid fa-plane-arrival text-base"></i>
-                    <span class="text-[9px]">航班/租車</span>
+                    <i class="fa-solid fa-plane-arrival text-lg"></i>
+                    <span class="text-[11px]">航班/租車</span>
                 </button>
                 <button onclick="switchTab('tab-checklist')" id="nav-tab-checklist" class="nav-btn flex flex-col items-center justify-center gap-0.5 text-slate-500 font-bold hover:text-pastelPink-400">
-                    <i class="fa-solid fa-clipboard-check text-base"></i>
-                    <span class="text-[9px]">清單/備忘</span>
+                    <i class="fa-solid fa-clipboard-check text-lg"></i>
+                    <span class="text-[11px]">清單/備忘</span>
                 </button>
                 <button onclick="switchTab('tab-itinerary')" id="nav-tab-itinerary" class="nav-btn flex flex-col items-center justify-center gap-0.5 text-slate-500 font-bold hover:text-pastelPink-400">
-                    <i class="fa-solid fa-map-location-dot text-base"></i>
-                    <span class="text-[9px]">行程表</span>
+                    <i class="fa-solid fa-map-location-dot text-lg"></i>
+                    <span class="text-[11px]">行程表</span>
                 </button>
                 <button onclick="switchTab('tab-kids')" id="nav-tab-kids" class="nav-btn flex flex-col items-center justify-center gap-0.5 text-slate-500 font-bold hover:text-pastelPink-400">
-                    <i class="fa-solid fa-child-reaching text-base"></i>
-                    <span class="text-[9px]">親子景點</span>
+                    <i class="fa-solid fa-child-reaching text-lg"></i>
+                    <span class="text-[11px]">親子景點</span>
                 </button>
                 <button onclick="switchTab('tab-wallet')" id="nav-tab-wallet" class="nav-btn flex flex-col items-center justify-center gap-0.5 text-slate-500 font-bold hover:text-pastelPink-400">
-                    <i class="fa-solid fa-wallet text-base"></i>
-                    <span class="text-[9px]">記帳/匯率</span>
+                    <i class="fa-solid fa-wallet text-lg"></i>
+                    <span class="text-[11px]">記帳/匯率</span>
                 </button>
             </div>
         </nav>
@@ -732,7 +732,7 @@
             { category: "日常用品", items: ["防曬乳/太陽眼鏡", "泳衣/海灘褲", "個人盥洗與常用藥"] }
         ];
 
-        // 預設 6 天行程數據 (預設行程皆無刪除鍵)
+        // 預設 6 天行程數據 (包含完整的琉球的牛資訊)
         const defaultItinerary = {
             1: [
                 { time: "15:00", title: "桃園機場 第二航廈集合辦理報到", note: "華航CI122 17:05起飛，請最晚於 15:00 前抵達櫃台辦理報到手續", important: true, category: "itinerary" },
@@ -747,24 +747,43 @@
                 { time: "18:00", title: "Okashigoten Onna Branch (御菓子御殿 恩納店)", note: "營業時間 09:00-18:00 | 首里城朱紅建築、紅芋塔DIY體驗、購買伴手禮與海景餐廳", address: "沖繩縣國頭郡恩納村瀨良垣100", category: "shopping" },
                 { 
                     time: "20:00", 
-                    title: "琉球的牛｜恩納本館 🥩", 
-                    note: "營業時間：16:30～23:00（最後點餐：22:15）｜ 全年無休\n電話：098-965-2233 ｜ 停車場：有\n預約連結：https://www.u-shi.net/onna.html?utm_source=chatgpt.com\n小提醒：這家很熱門，只接受官方提供網路預約！", 
+                    title: "琉球的牛 恩納本館 🥩", 
+                    note: "營業時間：16:30～23:00\n最後點餐：22:15\n全年無休\n電話：098-965-2233\n停車場：有\n預約連結：https://www.u-shi.net/onna.html?utm_source=chatgpt.com", 
                     address: "沖繩縣國頭郡恩納村前兼久909-2", 
                     category: "food",
                     isAccordion: true,
                     recommendations: [
-                        { name: "① 特選炙燒和牛壽司 ⭐⭐⭐⭐⭐", note: "算是這家的招牌之一。" },
-                        { name: "② 12種燒肉套餐 ⭐⭐⭐⭐⭐", note: "想一次吃很多不同部位，這個最適合。\n過去公開菜單價格為：\n• 12種＋燒きすき：¥5,980\n• 12種＋厚切牛小排：¥5,980\n• 14種：¥6,980\n• 10種：¥4,980\n• 8種：¥3,980\n（價格來自公開菜單資料，現在價格可能已經調整）" },
-                        { name: "③ 燒きすき（壽喜燒風烤肉） ⭐⭐⭐⭐⭐", note: "現在單點菜單有「稀有部位燒きすき＋蛋黃」，約 ¥2,178/份（含稅）。把肉烤到喜歡的程度後沾蛋黃吃，很推薦。" },
-                        { name: "④ 特上カルビ（特上牛小排） ⭐⭐⭐⭐", note: "喜歡油花、入口即化口感的人選這個。厚切版本約 ¥2,728/份（含稅）。" },
-                        { name: "⑤ 特上ロース（特上里肌） ⭐⭐⭐⭐⭐", note: "想吃比較高級、肉味明顯的部位可以點，約 ¥3,938/份（含稅）。" },
-                        { name: "⑥ 厚切牛舌 ⭐⭐⭐⭐", note: "喜歡牛舌一定可以點，厚切すだれカット約 ¥2,728/份（含稅）。" }
+                        { name: "① 特選炙燒和牛壽司 ⭐⭐⭐⭐⭐", note: "算是這家的招牌之一" },
+                        { name: "② 12種燒肉套餐 ⭐⭐⭐⭐⭐", note: "想一次吃很多不同部位，這個最適合。\n過去公開菜單價格為：\n12種＋燒きすき：¥5,980\n12種＋厚切牛小排：¥5,980\n14種：¥6,980\n10種：¥4,980\n8種：¥3,980" }
                     ]
                 }
             ],
             3: [
                 { time: "09:00", title: "Bise-Fukugi Tree Road (備瀨福木林道)", note: "漫步天然綠色隧道，可徒步、租自行車或自費搭乘觀光水牛車", address: "沖繩縣國頭郡本部町備瀨", category: "itinerary" },
-                { time: "11:30", title: "Kishimoto Shokudo (岸本食堂)", note: "明治時代百年老店 | 必吃手工手打粗麵、木灰水湯頭燉三層肉與限量炊飯(Juciy)", address: "沖繩縣國頭郡本部町渡久地5", category: "food" },
+                { 
+                    time: "11:30", 
+                    title: "Kishimoto Shokudo (岸本食堂 🍜)", 
+                    note: "明治時代百年老店 | 必吃手打粗麵條、三層肉（控肉）、特色魚板、清甜湯頭與隱藏版高湯炊飯（經常售罄，建議早點去吃）。\n※ 不接受電話預約，售完即關店。", 
+                    address: "沖繩縣國頭郡本部町渡久地5（緊鄰本部町營市場）", 
+                    category: "food",
+                    isAccordion: true,
+                    subStores: [
+                        { 
+                            name: "【本店資訊】", 
+                            note: "• 地址：沖繩縣國頭郡本部町渡久地5（緊鄰本部町營市場）\n• 營業時間：11:00～17:00 或 17:30（週三公休，售完即關店）\n• 電話：+81 980-47-2887（不接受電話預約）\n• Mapcode：206 857 712*58", 
+                            address: "沖繩縣國頭郡本部町渡久地5" 
+                        },
+                        { 
+                            name: "【八重岳店（分店）】", 
+                            note: "• 地址：沖繩縣國頭郡本部町伊野波350-1（空間較寬敞、座位較多）\n• 營業時間：建議行前確認，大致與本店相仿。", 
+                            address: "沖繩縣國頭郡本部町伊野波350-1" 
+                        },
+                        { 
+                            name: "【招牌餐點與特色】", 
+                            note: "• 招牌沖繩麵：手打麵條、三層肉（控肉）、特色魚板、清甜湯頭\n• 隱藏版炊飯：高湯炊煮的入味米飯，香氣十足，經常售罄，建議早點去吃。" 
+                        }
+                    ]
+                },
                 { time: "14:00", title: "琉球美麗海水族館", note: "全亞洲最頂級水族館 | 15:00黑潮之海鯨鯊餵食秀 / 16:00海豚劇場免費秀 / 17:00黑潮探險", address: "沖繩縣國頭郡本部町石川424", category: "itinerary" },
                 { 
                     time: "17:30", 
@@ -970,6 +989,7 @@
         let checklistData = JSON.parse(localStorage.getItem('v3_checklist')) || defaultChecklist;
         let memoData = JSON.parse(localStorage.getItem('v3_memos')) || [];
         let expenseData = JSON.parse(localStorage.getItem('v3_expenses')) || [];
+        let calcExpression = "";
 
         // 頁籤切換邏輯
         function switchTab(tabId) {
@@ -1014,6 +1034,18 @@
             return note.replace(urlRegex, function(url) {
                 return `<a href="${url}" target="_blank" class="text-pastelPink-600 font-black hover:underline break-all"><i class="fa-solid fa-arrow-up-right-from-square mr-0.5"></i>開啟連結</a>`;
             });
+        }
+
+        // 折疊選單切換開關
+        function toggleAccordion(id) {
+            const content = document.getElementById(`accordion-content-${id}`);
+            const icon = document.getElementById(`accordion-icon-${id}`);
+            if (content) {
+                content.classList.toggle('hidden');
+                if (icon) {
+                    icon.classList.toggle('rotate-180');
+                }
+            }
         }
 
         // 渲染行程時間軸
@@ -1150,15 +1182,15 @@
                     } else if (item.subStores) {
                         subStoresHtml = `
                             <div onclick="toggleAccordion('${accordionId}')" class="mt-2 py-1.5 px-3 bg-pastelPeach-200/80 hover:bg-pastelPeach-200 rounded-xl text-pastelPeach-700 text-xs font-black flex items-center justify-between cursor-pointer transition">
-                                <span><i class="fa-solid fa-list-ul mr-1"></i> 查看精選名店清單 (${item.subStores.length} 間)</span>
+                                <span><i class="fa-solid fa-list-ul mr-1"></i> 查看分店與特色詳細資訊 (${item.subStores.length} 項)</span>
                                 <i id="accordion-icon-${accordionId}" class="fa-solid fa-chevron-down transition-transform duration-300"></i>
                             </div>
                             <div id="accordion-content-${accordionId}" class="hidden space-y-2 pt-2">
                                 ${item.subStores.map(sub => `
-                                    <div class="bg-amber-100/70 p-2 rounded-xl border border-amber-200 text-xs">
+                                    <div class="bg-amber-100/70 p-2.5 rounded-xl border border-amber-200 text-xs">
                                         <p class="font-black text-slate-800">${sub.name}</p>
-                                        <p class="text-slate-600 font-bold mt-0.5">${sub.note}</p>
-                                        ${sub.address ? `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(sub.address)}" target="_blank" class="text-[10px] text-amber-700 font-black hover:underline mt-1 inline-block"><i class="fa-solid fa-map-pin mr-0.5"></i> 地圖導航</a>` : ''}
+                                        <p class="text-slate-600 font-bold mt-1 whitespace-pre-line leading-relaxed">${sub.note}</p>
+                                        ${sub.address ? `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(sub.address)}" target="_blank" class="text-[10px] text-amber-700 font-black hover:underline mt-1.5 inline-block"><i class="fa-solid fa-map-pin mr-0.5"></i> 地圖導航</a>` : ''}
                                     </div>
                                 `).join('')}
                             </div>
@@ -1253,101 +1285,115 @@
                 isCustom: true
             };
 
-            if (!itineraryData[day]) {
-                itineraryData[day] = [];
-            }
+            if (!itineraryData[day]) itineraryData[day] = [];
             itineraryData[day].push(newEvent);
-            itineraryData[day].sort((a, b) => (a.time || '').localeCompare(b.time || ''));
+
+            // 按時間排序
+            itineraryData[day].sort((a, b) => a.time.localeCompare(b.time));
 
             saveItinerary();
             closeAddEventModal();
 
+            // 重設表單
             document.getElementById('event-title').value = '';
             document.getElementById('event-note').value = '';
-            document.getElementById('event-time').value = '';
             document.getElementById('event-is-important').checked = false;
 
-            switchDayV3(day);
-        }
-
-        // 刪除行程功能
-        function deleteEvent(day, index) {
-            if (confirm('確定要刪除這個行程嗎？')) {
-                itineraryData[day].splice(index, 1);
-                saveItinerary();
-                renderItinerary(currentDay);
+            if (currentDay === day) {
+                renderItinerary(day);
+            } else {
+                switchDayV3(day);
             }
         }
 
-        // 折疊選單切換
-        function toggleAccordion(id) {
-            const content = document.getElementById(`accordion-content-${id}`);
-            const icon = document.getElementById(`accordion-icon-${id}`);
-            if (content) content.classList.toggle('hidden');
-            if (icon) icon.classList.toggle('rotate-180');
+        // 刪除自訂行程
+        function deleteEvent(day, index) {
+            if (confirm('確定要刪除這項自訂行程嗎？')) {
+                itineraryData[day].splice(index, 1);
+                saveItinerary();
+                renderItinerary(day);
+            }
         }
 
-        // 清單與備忘錄邏輯
-        function renderChecklist() {
-            const wrapper = document.getElementById('v3-checklist-containers-wrapper');
-            if (!wrapper) return;
-            wrapper.innerHTML = '';
+        // 證件勾選狀態
+        function saveDocStateV3() {
+            const docs = ['idcard', 'passport', 'license', 'translation'];
+            const docState = {};
+            docs.forEach(d => {
+                const el = document.getElementById(`v3-doc-${d}`);
+                if (el) docState[d] = el.checked;
+            });
+            localStorage.setItem('v3_docs', JSON.stringify(docState));
+        }
 
-            let totalCount = 0;
-            let checkedCount = 0;
+        function loadDocStateV3() {
+            const docState = JSON.parse(localStorage.getItem('v3_docs')) || {};
+            Object.keys(docState).forEach(d => {
+                const el = document.getElementById(`v3-doc-${d}`);
+                if (el) el.checked = docState[d];
+            });
+        }
 
-            checklistData.forEach((cat, cIdx) => {
-                const card = document.createElement('div');
-                card.className = "bg-pastelPink-100/60 rounded-3xl border border-pastelPink-200 p-4 shadow-pastel space-y-2.5";
+        // 清單 Checkbox 渲染與狀態
+        function renderChecklistV3() {
+            const container = document.getElementById('v3-checklist-containers-wrapper');
+            if (!container) return;
+            container.innerHTML = '';
+
+            let totalItems = 0;
+            let checkedItems = 0;
+
+            checklistData.forEach((group, gIdx) => {
+                const groupCard = document.createElement('div');
+                groupCard.className = "bg-pastelPink-100/60 rounded-3xl border border-pastelPink-200 p-4 shadow-pastel space-y-2.5";
                 
                 let itemsHtml = '';
-                cat.items.forEach((itemText, iIdx) => {
-                    totalCount++;
-                    const storageKey = `chk-${cIdx}-${iIdx}`;
-                    const isChecked = localStorage.getItem(storageKey) === 'true';
-                    if (isChecked) checkedCount++;
-
-                    let itemDisplay = itemText;
-                    if (itemText.includes("http")) {
-                        const urlRegex = /(https?:\/\/[^\s]+)/g;
-                        itemDisplay = itemText.replace(urlRegex, function(url) {
-                            return `<a href="${url}" target="_blank" class="text-pastelPink-600 font-black hover:underline break-all"><i class="fa-solid fa-arrow-up-right-from-square mr-0.5"></i>開啟連結</a>`;
-                        });
-                    }
+                group.items.forEach((item, iIdx) => {
+                    totalItems++;
+                    const checkKey = `v3_chk_${gIdx}_${iIdx}`;
+                    const isChecked = localStorage.getItem(checkKey) === 'true';
+                    if (isChecked) checkedItems++;
 
                     itemsHtml += `
-                        <label class="flex items-center gap-2.5 p-2 bg-pastelPink-50 rounded-xl border border-pastelPink-200/50 cursor-pointer">
-                            <input type="checkbox" onchange="toggleCheckItem('${cIdx}', '${iIdx}', this.checked)" ${isChecked ? 'checked' : ''} class="w-4 h-4 text-pastelPink-500 rounded accent-pastelPink-500">
-                            <span class="text-xs font-bold ${isChecked ? 'line-through text-slate-400' : 'text-slate-700'}">${itemDisplay}</span>
+                        <label class="flex items-start gap-2.5 p-2 bg-pastelPink-50/80 rounded-xl border border-pastelPink-200/50 cursor-pointer">
+                            <input type="checkbox" onchange="toggleChecklistItemV3('${checkKey}', this.checked)" ${isChecked ? 'checked' : ''} class="w-4 h-4 mt-0.5 text-pastelPink-500 rounded accent-pastelPink-500">
+                            <span class="text-xs font-bold ${isChecked ? 'line-through text-slate-400' : 'text-slate-700'} leading-snug break-all">
+                                ${formatNoteWithLinks(item)}
+                            </span>
                         </label>
                     `;
                 });
 
-                card.innerHTML = `
-                    <h3 class="text-sm font-black text-slate-800 flex items-center gap-1.5">
-                        <i class="fa-solid fa-check-double text-pastelPink-500"></i> ${cat.category}
+                groupCard.innerHTML = `
+                    <h3 class="text-xs font-black text-slate-800 flex items-center gap-1.5">
+                        <i class="fa-solid fa-tags text-pastelPink-500"></i> ${group.category}
                     </h3>
                     <div class="space-y-1.5">${itemsHtml}</div>
                 `;
-                wrapper.appendChild(card);
+                container.appendChild(groupCard);
             });
 
-            const countDisplay = document.getElementById('v3-checklist-count-display');
-            const progressBar = document.getElementById('v3-checklist-progress-bar');
-            if (countDisplay) countDisplay.innerText = `${checkedCount}/${totalCount}`;
-            if (progressBar) progressBar.style.width = totalCount > 0 ? `${(checkedCount / totalCount) * 100}%` : '0%';
+            // 更新進度條
+            const display = document.getElementById('v3-checklist-count-display');
+            const bar = document.getElementById('v3-checklist-progress-bar');
+            if (display) display.innerText = `${checkedItems}/${totalItems}`;
+            if (bar) {
+                const percent = totalItems > 0 ? (checkedItems / totalItems) * 100 : 0;
+                bar.style.width = `${percent}%`;
+            }
         }
 
-        function toggleCheckItem(cIdx, iIdx, isChecked) {
-            localStorage.setItem(`chk-${cIdx}-${iIdx}`, isChecked);
-            renderChecklist();
+        function toggleChecklistItemV3(key, isChecked) {
+            localStorage.setItem(key, isChecked);
+            renderChecklistV3();
         }
 
-        // 備忘錄與記帳邏輯補全
+        // 備忘錄邏輯
         function addMemo() {
             const input = document.getElementById('memo-input');
-            if (!input || !input.value.trim()) return;
-            memoData.push(input.value.trim());
+            const val = input.value.trim();
+            if (!val) return;
+            memoData.push(val);
             localStorage.setItem('v3_memos', JSON.stringify(memoData));
             input.value = '';
             renderMemos();
@@ -1365,115 +1411,113 @@
             list.innerHTML = '';
             memoData.forEach((memo, index) => {
                 const item = document.createElement('div');
-                item.className = "flex justify-between items-center bg-pastelPink-50 p-2 rounded-xl border border-pastelPink-200 text-xs text-slate-700 font-bold";
+                item.className = "flex items-center justify-between p-2 bg-pastelPink-50 rounded-xl border border-pastelPink-200 text-xs font-bold text-slate-700 gap-2";
                 item.innerHTML = `
-                    <span>${formatNoteWithLinks(memo)}</span>
-                    <button onclick="deleteMemo(${index})" class="text-rose-500 hover:text-rose-700 p-1"><i class="fa-solid fa-xmark"></i></button>
+                    <span class="break-all">${formatNoteWithLinks(memo)}</span>
+                    <button onclick="deleteMemo(${index})" class="text-rose-500 hover:text-rose-700 p-1 shrink-0"><i class="fa-solid fa-xmark"></i></button>
                 `;
                 list.appendChild(item);
             });
         }
 
-        // 匯率與記帳計算器
-        let calcExpr = "";
-        function pressCalc(val) {
-            const display = document.getElementById('calc-display');
-            const twdRes = document.getElementById('calc-twd-result');
-            const rate = parseFloat(document.getElementById('exchange-rate-input').value) || 0.215;
-
-            if (val === 'C') {
-                calcExpr = "";
-            } else if (val === '=') {
-                try {
-                    calcExpr = eval(calcExpr).toString();
-                } catch (e) {
-                    calcExpr = "Error";
-                }
-            } else {
-                calcExpr += val;
-            }
-
-            if (display) display.value = calcExpr || "0";
-            if (twdRes) {
-                const jpyVal = parseFloat(calcExpr) || 0;
-                twdRes.innerText = Math.round(jpyVal * rate);
-            }
-        }
-
-        function addExpense() {
-            const titleInput = document.getElementById('expense-title');
-            const amountInput = document.getElementById('expense-amount');
-            if (!titleInput || !amountInput || !titleInput.value.trim() || !amountInput.value) return;
-
-            const rate = parseFloat(document.getElementById('exchange-rate-input').value) || 0.215;
-            const newExpense = {
-                title: titleInput.value.trim(),
-                amount: parseFloat(amountInput.value),
-                twd: Math.round(parseFloat(amountInput.value) * rate)
-            };
-
-            expenseData.push(newExpense);
-            localStorage.setItem('v3_expenses', JSON.stringify(expenseData));
-            titleInput.value = '';
-            amountInput.value = '';
+        // 記帳與計算機邏輯
+        function saveRate() {
+            const rate = document.getElementById('exchange-rate-input').value;
+            localStorage.setItem('v3_rate', rate);
+            updateCalcResult();
             renderExpenses();
         }
 
-        function deleteExpense(index) {
-            expenseData.splice(index, 1);
+        function pressCalc(val) {
+            if (val === 'C') {
+                calcExpression = "";
+            } else if (val === '=') {
+                try {
+                    calcExpression = eval(calcExpression).toString();
+                } catch {
+                    calcExpression = "Error";
+                }
+            } else {
+                calcExpression += val;
+            }
+            document.getElementById('calc-display').value = calcExpression;
+            updateCalcResult();
+        }
+
+        function updateCalcResult() {
+            const rate = parseFloat(document.getElementById('exchange-rate-input').value) || 0.215;
+            let jpy = 0;
+            try {
+                jpy = parseFloat(eval(calcExpression)) || 0;
+            } catch {
+                jpy = 0;
+            }
+            document.getElementById('calc-twd-result').innerText = Math.round(jpy * rate).toLocaleString();
+        }
+
+        function addExpense() {
+            const title = document.getElementById('expense-title').value.trim();
+            const amount = parseFloat(document.getElementById('expense-amount').value);
+            if (!title || isNaN(amount)) {
+                alert('請輸入品項名稱與金額！');
+                return;
+            }
+
+            const expense = { title, amount, id: Date.now() };
+            expenseData.push(expense);
+            localStorage.setItem('v3_expenses', JSON.stringify(expenseData));
+
+            document.getElementById('expense-title').value = '';
+            document.getElementById('expense-amount').value = '';
+            renderExpenses();
+        }
+
+        function deleteExpense(id) {
+            expenseData = expenseData.filter(e => e.id !== id);
             localStorage.setItem('v3_expenses', JSON.stringify(expenseData));
             renderExpenses();
         }
 
         function renderExpenses() {
             const container = document.getElementById('expense-list-container');
-            const totalTwdSpan = document.getElementById('expense-total-twd');
             if (!container) return;
             container.innerHTML = '';
 
+            const rate = parseFloat(document.getElementById('exchange-rate-input').value) || 0.215;
             let totalTwd = 0;
-            expenseData.forEach((exp, index) => {
-                totalTwd += exp.twd;
-                const item = document.createElement('div');
-                item.className = "flex justify-between items-center bg-pastelPink-50 p-2.5 rounded-xl border border-pastelPink-200/60 text-xs";
-                item.innerHTML = `
+
+            expenseData.forEach(exp => {
+                const twd = Math.round(exp.amount * rate);
+                totalTwd += twd;
+
+                const card = document.createElement('div');
+                card.className = "flex justify-between items-center p-2.5 bg-pastelPink-50 rounded-2xl border border-pastelPink-200 text-xs";
+                card.innerHTML = `
                     <div>
-                        <span class="font-black text-slate-800">${exp.title}</span>
-                        <span class="text-slate-400 block text-[10px]">¥${exp.amount}</span>
+                        <p class="font-black text-slate-800">${exp.title}</p>
+                        <p class="text-[10px] text-slate-500 font-bold">¥${exp.amount.toLocaleString()} ≈ NT$ ${twd.toLocaleString()}</p>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <span class="font-black text-pastelPink-600">NT$ ${exp.twd}</span>
-                        <button onclick="deleteExpense(${index})" class="text-rose-400 hover:text-rose-600 p-1"><i class="fa-solid fa-trash-can"></i></button>
-                    </div>
+                    <button onclick="deleteExpense(${exp.id})" class="text-rose-400 hover:text-rose-600 p-1">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
                 `;
-                container.appendChild(item);
+                container.appendChild(card);
             });
 
-            if (totalTwdSpan) totalTwdSpan.innerText = totalTwd;
+            document.getElementById('expense-total-twd').innerText = totalTwd.toLocaleString();
         }
 
-        function saveDocStateV3() {
-            ['v3-doc-idcard', 'v3-doc-passport', 'v3-doc-license', 'v3-doc-translation'].forEach(id => {
-                const el = document.getElementById(id);
-                if (el) localStorage.setItem(id, el.checked);
-            });
-        }
-
-        function loadDocStateV3() {
-            ['v3-doc-idcard', 'v3-doc-passport', 'v3-doc-license', 'v3-doc-translation'].forEach(id => {
-                const el = document.getElementById(id);
-                if (el) el.checked = localStorage.getItem(id) === 'true';
-            });
-        }
-
-        // 頁面初始化
-        window.addEventListener('DOMContentLoaded', () => {
-            renderItinerary(currentDay);
-            renderChecklist();
-            renderMemos();
-            renderExpenses();
+        // 初始化頁面
+        window.onload = function() {
             loadDocStateV3();
-        });
+            renderChecklistV3();
+            renderMemos();
+            switchDayV3(1);
+
+            const savedRate = localStorage.getItem('v3_rate');
+            if (savedRate) document.getElementById('exchange-rate-input').value = savedRate;
+            renderExpenses();
+        };
     </script>
 </body>
 </html>
