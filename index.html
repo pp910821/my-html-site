@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>藍家沖繩小助手 🌸 (美食折疊特輯版)</title>
+    <title>藍家沖繩小助手 🌸</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,11 +47,31 @@
                             300: '#CBB2FF',
                             400: '#B39DFF',
                             500: '#9D66FF',
+                        },
+                        pastelBlue: {
+                            50: '#F0F8FF',
+                            100: '#E0F2FE',
+                            200: '#BAE6FD',
+                            300: '#7DD3FC',
+                            400: '#38BDF8',
+                            500: '#0284C7',
+                            600: '#0369A1',
+                        },
+                        pastelTeal: {
+                            50: '#F0FDF4',
+                            100: '#DCFCE7',
+                            200: '#BBF7D0',
+                            300: '#86EFAC',
+                            400: '#4ADE80',
+                            500: '#16A34A',
+                            600: '#15803D',
                         }
                     },
                     boxShadow: {
                         pastel: '0 8px 24px -4px rgba(244, 63, 94, 0.12), 0 4px 12px -2px rgba(244, 63, 94, 0.06)',
                         pastelPeach: '0 8px 24px -4px rgba(255, 112, 67, 0.15), 0 4px 12px -2px rgba(255, 112, 67, 0.08)',
+                        pastelBlue: '0 8px 24px -4px rgba(2, 132, 199, 0.15), 0 4px 12px -2px rgba(2, 132, 199, 0.08)',
+                        pastelTeal: '0 8px 24px -4px rgba(22, 163, 74, 0.15), 0 4px 12px -2px rgba(22, 163, 74, 0.08)',
                         pastelHeavy: '0 16px 32px -4px rgba(244, 63, 94, 0.18), 0 8px 16px -2px rgba(244, 63, 94, 0.08)',
                         phoneFrame: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 12px #1e293b, 0 0 0 14px #334155'
                     }
@@ -74,6 +94,17 @@
     <!-- MOBILE PHONE FRAME CONTAINER -->
     <div class="w-full h-full md:max-w-[412px] md:h-[844px] md:rounded-[48px] bg-pastelPink-50 flex flex-col overflow-hidden relative shadow-phoneFrame border-0 md:border-[6px] border-slate-800">
 
+        <!-- MOBILE STATUS BAR -->
+        <div class="bg-pastelPink-100/90 backdrop-blur-md px-6 pt-3 pb-1 flex justify-between items-center text-xs font-black text-slate-700 shrink-0 z-40">
+            <span>09:41</span>
+            <div class="w-24 h-4 bg-slate-800 rounded-full hidden md:block"></div>
+            <div class="flex items-center gap-1.5 text-[11px]">
+                <i class="fa-solid fa-signal"></i>
+                <i class="fa-solid fa-wifi"></i>
+                <i class="fa-solid fa-battery-full text-pastelPink-500"></i>
+            </div>
+        </div>
+
         <!-- APP HEADER -->
         <header class="bg-gradient-to-r from-pastelPink-100 via-pastelPeach-100 to-pastelPink-100 px-4 py-3 border-b border-pastelPink-200/80 shadow-pastel shrink-0 flex items-center justify-between relative z-30">
             <div class="flex items-center gap-2">
@@ -82,15 +113,11 @@
                 </div>
                 <div>
                     <h1 class="text-base font-black text-pastelPink-600 leading-tight">
-                        藍家沖繩小助手
+                        藍家沖繩小助手 🌸
                     </h1>
                     <p class="text-[9px] text-slate-500 font-bold uppercase tracking-wider">2026.09.28 - 10.03 • 6天5夜 🏖️</p>
                 </div>
             </div>
-            
-            <button onclick="exportData()" class="bg-white/90 hover:bg-white active:scale-95 transition text-pastelPink-500 border border-pastelPink-200/60 w-8 h-8 rounded-xl shadow-pastel flex items-center justify-center shrink-0" title="備份資料">
-                <i class="fa-solid fa-share-nodes text-xs"></i>
-            </button>
         </header>
 
         <!-- MAIN SCROLLABLE CONTENT AREA -->
@@ -222,7 +249,7 @@
                                 <i class="fa-solid fa-mobile-screen-button"></i> 網路預約自動報到
                             </p>
                             <p class="text-[10px] font-bold text-slate-500 leading-tight">
-                                適用條件：華航/華信國際線定期班機、已確認訂位並開立電子機票、同行人數 9 人（含）以內。
+                                適用條件：華航/華信國際線預期班機、已確認訂位並開立電子機票、同行人數 9 人（含）以內。
                             </p>
                             <a href="https://www.china-airlines.com/tw/zh/booking-and-services/check-in/index" target="_blank" class="mt-1 block text-center bg-sky-500 hover:bg-sky-600 text-white font-black text-[10px] py-2 rounded-xl shadow-sm transition active:scale-95">
                                 <i class="fa-solid fa-circle-check mr-1"></i> 點此進行華航網路預約自動報到
@@ -249,6 +276,38 @@
                         <div class="text-right">
                             <span class="text-[10px] text-slate-400 font-bold block">現場結清餘額</span>
                             <span class="font-black text-pastelPeach-600 text-sm">¥127,260</span>
+                        </div>
+                    </div>
+
+                    <!-- 營業所地址與資訊 -->
+                    <div class="bg-pastelPeach-50/50 p-2.5 rounded-2xl border border-pastelPeach-100 space-y-1 text-[11px]">
+                        <p class="font-black text-slate-800 flex items-center gap-1">
+                            <i class="fa-solid fa-location-dot text-pastelPeach-500"></i> 營業所地址
+                        </p>
+                        <p class="text-slate-600 font-bold text-[10px]">沖繩縣那霸市金城 3-8-11-1F-2號</p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=沖繩縣那霸市金城 3-8-11-1F-2號" target="_blank" class="inline-block text-[9px] font-bold text-pastelPeach-600 hover:underline pt-0.5">
+                            <i class="fa-solid fa-map-pin mr-0.5"></i> Google 地圖導航
+                        </a>
+                    </div>
+
+                    <!-- 機場接駁流程與接駁點 -->
+                    <div class="bg-slate-50 p-3 rounded-2xl border border-slate-100 space-y-2 text-[11px]">
+                        <div class="flex justify-between items-center border-b border-slate-200/60 pb-1.5">
+                            <span class="font-black text-slate-800 flex items-center gap-1">
+                                <i class="fa-solid fa-van-shuttle text-pastelPeach-500"></i> 那霸機場接駁流程
+                            </span>
+                            <a href="https://youtube.com/shorts/oRhEdtroPCs?feature=share" target="_blank" class="bg-rose-500 hover:bg-rose-600 text-white text-[9px] font-black px-2 py-0.5 rounded-lg flex items-center gap-1 transition">
+                                <i class="fa-brands fa-youtube"></i> 路線影片
+                            </a>
+                        </div>
+                        <ol class="list-decimal list-inside space-y-1 text-slate-600 font-bold text-[10px] leading-relaxed">
+                            <li>取行李並出關後</li>
+                            <li>透過 Line 或 WhatsApp 通知工作人員（您即將前往接駁點）</li>
+                            <li>前往那霸機場「<span class="text-slate-800 font-black">國內線 1樓・14C號接駁處</span>」</li>
+                            <li>到達後，再次透過 Line 或 WhatsApp 通知工作人員</li>
+                        </ol>
+                        <div class="pt-1 border-t border-slate-200/60 text-[10px] text-pastelPeach-600 font-black flex items-center gap-1">
+                            <i class="fa-solid fa-street-view"></i> 接駁點：那霸機場國內線 1樓 14C號接駁處
                         </div>
                     </div>
 
@@ -373,7 +432,330 @@
                 <div id="itinerary-timeline-container" class="space-y-3 relative"></div>
             </section>
 
-            <!-- ==================== TAB 4: WALLET & EXPENSES ==================== -->
+            <!-- ==================== TAB 4: KIDS SPOTS (親子景點分頁) ==================== -->
+            <section id="tab-kids" class="tab-content hidden p-4 space-y-4">
+                <div class="bg-gradient-to-br from-amber-400 via-pastelPeach-400 to-pastelPink-400 text-white rounded-3xl p-4 shadow-pastelHeavy relative overflow-hidden">
+                    <div class="relative z-10">
+                        <span class="bg-white/20 backdrop-blur-sm text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full"><i class="fa-solid fa-child-reaching mr-1"></i> Kids & Family Spots</span>
+                        <h2 class="text-xl font-black mt-1.5">親子景點推薦 🎈</h2>
+                        <p class="text-white/90 text-[10px] mt-0.5">專為小朋友與全家同樂設計的超棒遊樂、放電與購物景點！</p>
+                    </div>
+                </div>
+
+                <!-- 1. 和平祈念公園卡片 -->
+                <div class="bg-white rounded-3xl border border-pastelTeal-200 p-4 shadow-pastelTeal space-y-3">
+                    <div class="flex justify-between items-start border-b border-dashed border-pastelTeal-100 pb-2">
+                        <div>
+                            <span class="bg-pastelTeal-100 text-pastelTeal-600 text-[9px] font-black px-2 py-0.5 rounded-md inline-block mb-1">
+                                <i class="fa-solid fa-tree mr-1"></i> 糸滿市 ｜ 巨型公園 / 放電景點
+                            </span>
+                            <h3 class="text-sm font-black text-slate-800">和平祈念公園</h3>
+                        </div>
+                        <span class="text-[10px] font-black text-emerald-600 bg-emerald-50 px-2 py-1 rounded-lg border border-emerald-200 shrink-0">
+                            ⭐ 巨型遊樂場
+                        </span>
+                    </div>
+
+                    <div class="space-y-2 text-[11px] text-slate-600 font-bold">
+                        <div class="bg-pastelTeal-50/60 p-2.5 rounded-2xl border border-pastelTeal-100/60 space-y-1">
+                            <p class="text-slate-800 font-black"><i class="fa-solid fa-circle-info text-pastelTeal-500 mr-1"></i> 基本資訊</p>
+                            <p class="text-[10px]"><span class="text-slate-500">營業時間：</span>24小時開放（設施視各區不同）</p>
+                            <p class="text-[10px]"><span class="text-slate-500">地址：</span>沖縄県糸満市字摩文仁444番地</p>
+                            <p class="text-[10px]"><span class="text-slate-500">電話號碼：</span>098-997-3844</p>
+                            <p class="text-[10px]"><span class="text-slate-500">停車場：</span><span class="text-emerald-600 font-black">有（免費停車場）</span></p>
+                            <p class="text-[10px]"><span class="text-slate-500">MAPCODE：</span><span class="text-pastelTeal-600 font-black">232 341 416*37</span></p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-2 pt-1">
+                        <a href="https://www.google.com/maps/search/?api=1&query=沖縄県糸満市字摩文仁444番地" target="_blank" class="flex-1 bg-pastelTeal-500 text-white text-[10px] font-black py-2 rounded-xl text-center shadow-pastelTeal hover:bg-pastelTeal-600 active:scale-95 transition">
+                            <i class="fa-solid fa-map-pin mr-1"></i> Google Map 導航
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 2. SAN-A 浦添西海岸 PARCO CITY 卡片 -->
+                <div class="bg-white rounded-3xl border border-pastelPink-200 p-4 shadow-pastel space-y-3">
+                    <div class="flex justify-between items-start border-b border-dashed border-pastelPink-100 pb-2">
+                        <div>
+                            <span class="bg-pastelPink-100 text-pastelPink-600 text-[9px] font-black px-2 py-0.5 rounded-md inline-block mb-1">
+                                <i class="fa-solid fa-bag-shopping mr-1"></i> 浦添市 ｜ 海景購物中心
+                            </span>
+                            <h3 class="text-sm font-black text-slate-800">SAN-A浦添西海岸PARCO CITY</h3>
+                        </div>
+                        <span class="text-[10px] font-black text-rose-500 bg-rose-50 px-2 py-1 rounded-lg border border-rose-200 shrink-0">
+                            ⭐ 沖繩超大購物中心
+                        </span>
+                    </div>
+
+                    <div class="space-y-2 text-[11px] text-slate-600 font-bold">
+                        <div class="bg-pastelPink-50/60 p-2.5 rounded-2xl border border-pastelPink-100/60 space-y-1">
+                            <p class="text-slate-800 font-black"><i class="fa-solid fa-store text-pastelPink-500 mr-1"></i> 基本資訊</p>
+                            <p class="text-[10px]"><span class="text-slate-500">營業時間：</span>10:00 ~ 22:00（一部份店鋪不同）</p>
+                            <p class="text-[10px]"><span class="text-slate-500">公休日：</span>全年無休</p>
+                            <p class="text-[10px]"><span class="text-slate-500">停車場：</span><span class="text-rose-500 font-black">有（免費停車場）</span></p>
+                            <p class="text-[10px]"><span class="text-slate-500">電話號碼：</span>098-871-1120</p>
+                            <p class="text-[10px]"><span class="text-slate-500">地址：</span>沖縄県浦添市西洲３丁目1-1</p>
+                            <p class="text-[10px]"><span class="text-slate-500">MAPCODE：</span><span class="text-pastelPink-600 font-black">33 308 899*17</span></p>
+                        </div>
+
+                        <!-- 摺疊功能: 人氣店家與美食推薦 -->
+                        <div onclick="toggleAccordion('parco-details')" class="py-2 px-3 bg-pastelPink-100/80 hover:bg-pastelPink-100 rounded-2xl text-pastelPink-600 text-[10px] font-black flex items-center justify-between cursor-pointer transition">
+                            <span><i class="fa-solid fa-utensils mr-1"></i> 點擊查看【必逛店家】與【推薦美食】</span>
+                            <i id="accordion-icon-parco-details" class="fa-solid fa-chevron-down transition-transform duration-300"></i>
+                        </div>
+
+                        <div id="accordion-content-parco-details" class="hidden space-y-2 pt-1">
+                            <!-- 必逛人氣店家 -->
+                            <div class="bg-amber-50/60 p-2.5 rounded-2xl border border-amber-100 space-y-1.5">
+                                <p class="text-amber-800 font-black"><i class="fa-solid fa-shirt text-amber-500 mr-1"></i> 必逛人氣店家</p>
+                                <ul class="space-y-1 text-[10px] text-slate-700">
+                                    <li><strong class="text-slate-900">UNIQLO（3F）：</strong>日本國民服飾，提供豐富男女與童裝。</li>
+                                    <li><strong class="text-slate-900">MUJI 無印良品（3F）：</strong>沖繩最大規模分店，集結超過 7,000 種生活與食品商品。</li>
+                                    <li><strong class="text-slate-900">EDION 愛電王（1F）：</strong>大型家電與奢華品牌專賣店，提供免稅服務。</li>
+                                    <li><strong class="text-slate-900">akachan honpo 阿卡將本舖（2F）：</strong>大型嬰幼兒與孕婦用品專賣店。</li>
+                                    <li><strong class="text-slate-900">吉伊卡哇「獅薩」伴手禮店（3F）：</strong>沖繩限定風獅爺主題角色專賣店。</li>
+                                    <li><strong class="text-slate-900">POTR（2F）：</strong>吉田包（PORTER）沖繩縣內獨家概念店。</li>
+                                </ul>
+                            </div>
+
+                            <!-- 推薦美食餐廳 -->
+                            <div class="bg-rose-50/60 p-2.5 rounded-2xl border border-rose-100 space-y-1.5">
+                                <p class="text-rose-800 font-black"><i class="fa-solid fa-burger text-rose-500 mr-1"></i> 推薦美食餐廳</p>
+                                <ul class="space-y-1 text-[10px] text-slate-700">
+                                    <li><strong class="text-slate-900">極味屋（2F）：</strong>來自福岡的超人氣鐵板漢堡排。</li>
+                                    <li><strong class="text-slate-900">涮涮鍋美山（1F）：</strong>原肉現切與當季蔬菜吃到飽，可眺望海景。</li>
+                                    <li><strong class="text-slate-900">旬果屋水果小站（1F）：</strong>販售當季新鮮水果三明治與果昔。</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-2 pt-1">
+                        <a href="https://www.google.com/maps/search/?api=1&query=沖縄県浦添市西洲３丁目1-1" target="_blank" class="flex-1 bg-pastelPink-500 text-white text-[10px] font-black py-2 rounded-xl text-center shadow-pastel hover:bg-pastelPink-600 active:scale-95 transition">
+                            <i class="fa-solid fa-map-pin mr-1"></i> Google Map 導航
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 3. 宜野座道路休息站卡片 -->
+                <div class="bg-white rounded-3xl border border-pastelPeach-200 p-4 shadow-pastelPeach space-y-3">
+                    <div class="flex justify-between items-start border-b border-dashed border-pastelPeach-100 pb-2">
+                        <div>
+                            <span class="bg-pastelPeach-100 text-pastelPeach-600 text-[9px] font-black px-2 py-0.5 rounded-md inline-block mb-1">
+                                <i class="fa-solid fa-location-dot mr-1"></i> 宜野座村 ｜ 道路休息站 / 公園
+                            </span>
+                            <h3 class="text-sm font-black text-slate-800">道の駅 ぎのざ (宜野座道路休息站)</h3>
+                        </div>
+                        <span class="text-[10px] font-black text-amber-500 bg-amber-50 px-2 py-1 rounded-lg border border-amber-200 shrink-0">
+                            ⭐ 超推親子景點
+                        </span>
+                    </div>
+
+                    <div class="space-y-2 text-[11px] text-slate-600 font-bold">
+                        <div class="bg-pastelPeach-50/60 p-2.5 rounded-2xl border border-pastelPeach-100/60 space-y-1">
+                            <p class="text-slate-800 font-black"><i class="fa-solid fa-map text-pastelPeach-500 mr-1"></i> 基本資訊</p>
+                            <p class="text-[10px]"><span class="text-slate-500">營業時間：</span>09:00 ~ 18:00（戶外設施開放至夕陽西下）</p>
+                            <p class="text-[10px]"><span class="text-slate-500">停車場：</span><span class="text-amber-600 font-black">有（免費停車場）</span></p>
+                            <p class="text-[10px]"><span class="text-slate-500">地址：</span>〒904-1304 沖繩縣國頭郡宜野座村漢那 1633</p>
+                            <p class="text-[10px]"><span class="text-slate-500">MAPCODE：</span><span class="text-pastelPeach-600 font-black">206 204 344*67</span></p>
+                        </div>
+
+                        <div class="bg-amber-50/60 p-2.5 rounded-2xl border border-amber-100 space-y-1.5">
+                            <p class="text-amber-800 font-black"><i class="fa-solid fa-star text-amber-500 mr-1"></i> 特色亮點</p>
+                            <ul class="space-y-1 text-[10px] text-slate-700">
+                                <li class="flex items-start gap-1.5">
+                                    <span class="text-amber-500 font-black">🔹</span>
+                                    <span><strong class="text-slate-900">巨型兒童遊樂場：</strong>約四層樓高巨型溜滑梯與攀爬設施。</span>
+                                </li>
+                                <li class="flex items-start gap-1.5">
+                                    <span class="text-amber-500 font-black">🔹</span>
+                                    <span><strong class="text-slate-900">親水設施：</strong>戶外大型噴水池（夏季開放）與付費室內兒童遊戲室。</span>
+                                </li>
+                                <li class="flex items-start gap-1.5">
+                                    <span class="text-amber-500 font-black">🔹</span>
+                                    <span><strong class="text-slate-900">在地特產與美食：</strong>季節限定草莓、鳳梨與新鮮在地農產直銷。</span>
+                                </li>
+                                <li class="flex items-start gap-1.5">
+                                    <span class="text-amber-500 font-black">🔹</span>
+                                    <span><strong class="text-slate-900">阪神虎紀念區：</strong>春訓基地球員紀念品展覽。</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-2 pt-1">
+                        <a href="https://www.google.com/maps/search/?api=1&query=宜野座道路休息站" target="_blank" class="flex-1 bg-pastelPeach-500 text-white text-[10px] font-black py-2 rounded-xl text-center shadow-pastelPeach hover:bg-pastelPeach-600 active:scale-95 transition">
+                            <i class="fa-solid fa-map-pin mr-1"></i> Google Map 導航
+                        </a>
+                        <a href="https://www.google.com/search?q=宜野座道路休息站+沖繩+遊記" target="_blank" class="flex-1 bg-amber-100 text-amber-800 text-[10px] font-black py-2 rounded-xl text-center hover:bg-amber-200 active:scale-95 transition">
+                            <i class="fa-solid fa-magnifying-glass mr-1"></i> 觀看網友遊記
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 4. 浦添大公園卡片 -->
+                <div class="bg-white rounded-3xl border border-pastelBlue-200 p-4 shadow-pastelBlue space-y-3">
+                    <div class="flex justify-between items-start border-b border-dashed border-pastelBlue-100 pb-2">
+                        <div>
+                            <span class="bg-pastelBlue-100 text-pastelBlue-600 text-[9px] font-black px-2 py-0.5 rounded-md inline-block mb-1">
+                                <i class="fa-solid fa-tree mr-1"></i> 浦添市 ｜ 超長滾輪溜滑梯
+                            </span>
+                            <h3 class="text-sm font-black text-slate-800">浦添大公園 (Urasoe Great Park)</h3>
+                        </div>
+                        <span class="text-[10px] font-black text-pastelBlue-600 bg-pastelBlue-50 px-2 py-1 rounded-lg border border-pastelBlue-200 shrink-0">
+                            ⭐ 經典滾輪滑梯
+                        </span>
+                    </div>
+
+                    <div class="space-y-2 text-[11px] text-slate-600 font-bold">
+                        <div class="bg-pastelBlue-50/60 p-2.5 rounded-2xl border border-pastelBlue-100/60 space-y-1">
+                            <p class="text-slate-800 font-black"><i class="fa-solid fa-circle-info text-pastelBlue-500 mr-1"></i> 基本資訊</p>
+                            <p class="text-[10px]"><span class="text-slate-500">營業時間：</span>09:00 ~ 18:00 (遊具區開放時間)</p>
+                            <p class="text-[10px]"><span class="text-slate-500">地址：</span>沖縄県浦添市伊祖13-1</p>
+                            <p class="text-[10px]"><span class="text-slate-500">電話號碼：</span>098-873-0700</p>
+                            <p class="text-[10px]"><span class="text-slate-500">停車場：</span><span class="text-pastelBlue-600 font-black">有（免費停車場）</span></p>
+                            <p class="text-[10px]"><span class="text-slate-500">設施：</span>洗手間、自動販賣機</p>
+                            <p class="text-[10px]"><span class="text-slate-500">位置：</span>浦添市（離那霸市區車程約20分鐘）</p>
+                        </div>
+
+                        <div class="bg-sky-50/60 p-2.5 rounded-2xl border border-sky-100 space-y-1.5">
+                            <p class="text-sky-800 font-black"><i class="fa-solid fa-star text-sky-500 mr-1"></i> 特色亮點</p>
+                            <p class="text-[10px] text-slate-700 leading-relaxed">
+                                擁有全長超過90公尺的超長滾輪溜滑梯（限6至12歲兒童，成人及不可抱小孩共乘）。近年更新增了 C 區與互動廣場新遊具，從幼兒到大孩子都能找到適合的設施。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-2 pt-1">
+                        <a href="https://www.google.com/maps/search/?api=1&query=浦添大公園" target="_blank" class="flex-1 bg-pastelBlue-500 text-white text-[10px] font-black py-2 rounded-xl text-center shadow-pastelBlue hover:bg-pastelBlue-600 active:scale-95 transition">
+                            <i class="fa-solid fa-map-pin mr-1"></i> Google Map 導航
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 5. 奧武山公園卡片 -->
+                <div class="bg-white rounded-3xl border border-pastelPurple-200 p-4 shadow-pastel space-y-3">
+                    <div class="flex justify-between items-start border-b border-dashed border-pastelPurple-100 pb-2">
+                        <div>
+                            <span class="bg-pastelPurple-100 text-pastelPurple-600 text-[9px] font-black px-2 py-0.5 rounded-md inline-block mb-1">
+                                <i class="fa-solid fa-tree mr-1"></i> 那霸市 ｜ 捷運直達公園
+                            </span>
+                            <h3 class="text-sm font-black text-slate-800">奧武山公園 (Ounoyama Park)</h3>
+                        </div>
+                        <span class="text-[10px] font-black text-pastelPurple-600 bg-pastelPurple-50 px-2 py-1 rounded-lg border border-pastelPurple-200 shrink-0">
+                            ⭐ 龍型琉球獅遊具
+                        </span>
+                    </div>
+
+                    <div class="space-y-2 text-[11px] text-slate-600 font-bold">
+                        <div class="bg-pastelPurple-50/60 p-2.5 rounded-2xl border border-pastelPurple-100/60 space-y-1">
+                            <p class="text-slate-800 font-black"><i class="fa-solid fa-circle-info text-pastelPurple-500 mr-1"></i> 基本資訊</p>
+                            <p class="text-[10px]"><span class="text-slate-500">營業時間：</span>24小時開放</p>
+                            <p class="text-[10px]"><span class="text-slate-500">地址：</span>沖縄県那覇市奥武山町52</p>
+                            <p class="text-[10px]"><span class="text-slate-500">電話號碼：</span>098-858-2700</p>
+                            <p class="text-[10px]"><span class="text-slate-500">停車場：</span><span class="text-pastelPurple-600 font-black">有（免費停車位）</span></p>
+                            <p class="text-[10px]"><span class="text-slate-500">設施：</span>販賣部、洗手間</p>
+                            <p class="text-[10px]"><span class="text-slate-500">位置：</span>那霸市中心</p>
+                        </div>
+
+                        <div class="bg-purple-50/60 p-2.5 rounded-2xl border border-purple-100 space-y-1.5">
+                            <p class="text-purple-800 font-black"><i class="fa-solid fa-star text-purple-500 mr-1"></i> 特色亮點</p>
+                            <p class="text-[10px] text-slate-700 leading-relaxed">
+                                位於那霸市中心，緊鄰單軌電車站，非常適合不自駕或準備搭機前來順道遊玩。園內有超好玩的巨型「龍」造型與琉球獅（風獅爺）複合遊具。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-2 pt-1">
+                        <a href="https://www.google.com/maps/search/?api=1&query=奧武山公園" target="_blank" class="flex-1 bg-pastelPurple-500 text-white text-[10px] font-black py-2 rounded-xl text-center shadow-pastel hover:bg-pastelPurple-600 active:scale-95 transition">
+                            <i class="fa-solid fa-map-pin mr-1"></i> Google Map 導航
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 6. 中城公園卡片 -->
+                <div class="bg-white rounded-3xl border border-pastelPink-200 p-4 shadow-pastel space-y-3">
+                    <div class="flex justify-between items-start border-b border-dashed border-pastelPink-100 pb-2">
+                        <div>
+                            <span class="bg-pastelPink-100 text-pastelPink-600 text-[9px] font-black px-2 py-0.5 rounded-md inline-block mb-1">
+                                <i class="fa-solid fa-tree mr-1"></i> 中城村 ｜ 超人氣彈跳床
+                            </span>
+                            <h3 class="text-sm font-black text-slate-800">中城公園 (Nakagusuku Park)</h3>
+                        </div>
+                        <span class="text-[10px] font-black text-rose-500 bg-rose-50 px-2 py-1 rounded-lg border border-rose-200 shrink-0">
+                            ⭐ 巨型攀爬滑梯
+                        </span>
+                    </div>
+
+                    <div class="space-y-2 text-[11px] text-slate-600 font-bold">
+                        <div class="bg-pastelPink-50/60 p-2.5 rounded-2xl border border-pastelPink-100/60 space-y-1">
+                            <p class="text-slate-800 font-black"><i class="fa-solid fa-circle-info text-pastelPink-500 mr-1"></i> 基本資訊</p>
+                            <p class="text-[10px]"><span class="text-slate-500">營業時間：</span>24小時開放（遊具彈跳床 09:00~17:30）</p>
+                            <p class="text-[10px]"><span class="text-slate-500">地址：</span>沖縄県中頭郡中城村字登又1319</p>
+                            <p class="text-[10px]"><span class="text-slate-500">電話號碼：</span>098-935-2666</p>
+                            <p class="text-[10px]"><span class="text-slate-500">停車場：</span><span class="text-rose-500 font-black">有（免費停車場）</span></p>
+                            <p class="text-[10px]"><span class="text-slate-500">設施：</span>洗手間、自動販賣機</p>
+                            <p class="text-[10px]"><span class="text-slate-500">位置：</span>中城村（離永旺夢樂城沖繩來客夢車程很近）</p>
+                        </div>
+
+                        <div class="bg-rose-50/60 p-2.5 rounded-2xl border border-rose-100 space-y-1.5">
+                            <p class="text-rose-800 font-black"><i class="fa-solid fa-star text-rose-500 mr-1"></i> 特色亮點</p>
+                            <p class="text-[10px] text-slate-700 leading-relaxed">
+                                沖繩中部超人氣的大型公園，擁有色彩繽紛的十公尺高巨型攀爬滑梯、超大彈跳床、繩索滑軌及寬敞的幼兒專區。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-2 pt-1">
+                        <a href="https://www.google.com/maps/search/?api=1&query=中城公園" target="_blank" class="flex-1 bg-pastelPink-500 text-white text-[10px] font-black py-2 rounded-xl text-center shadow-pastel hover:bg-pastelPink-600 active:scale-95 transition">
+                            <i class="fa-solid fa-map-pin mr-1"></i> Google Map 導航
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 7. 沖繩縣綜合運動公園卡片 -->
+                <div class="bg-white rounded-3xl border border-pastelPeach-200 p-4 shadow-pastelPeach space-y-3">
+                    <div class="flex justify-between items-start border-b border-dashed border-pastelPeach-100 pb-2">
+                        <div>
+                            <span class="bg-pastelPeach-100 text-pastelPeach-600 text-[9px] font-black px-2 py-0.5 rounded-md inline-block mb-1">
+                                <i class="fa-solid fa-tree mr-1"></i> 沖繩市 ｜ 7條滑梯遊戲區
+                            </span>
+                            <h3 class="text-sm font-black text-slate-800">沖繩縣綜合運動公園 (Okinawa Comprehensive Athletic Park)</h3>
+                        </div>
+                        <span class="text-[10px] font-black text-amber-500 bg-amber-50 px-2 py-1 rounded-lg border border-amber-200 shrink-0">
+                            ⭐ 城堡迷宮遊戲區
+                        </span>
+                    </div>
+
+                    <div class="space-y-2 text-[11px] text-slate-600 font-bold">
+                        <div class="bg-pastelPeach-50/60 p-2.5 rounded-2xl border border-pastelPeach-100/60 space-y-1">
+                            <p class="text-slate-800 font-black"><i class="fa-solid fa-circle-info text-pastelPeach-500 mr-1"></i> 基本資訊</p>
+                            <p class="text-[10px]"><span class="text-slate-500">營業時間：</span>09:00 ~ 21:00（星期二公休，遊具區開放至日落）</p>
+                            <p class="text-[10px]"><span class="text-slate-500">地址：</span>沖縄県沖縄市比屋根5-3-1</p>
+                            <p class="text-[10px]"><span class="text-slate-500">電話號碼：</span>098-932-5114</p>
+                            <p class="text-[10px]"><span class="text-slate-500">停車場：</span><span class="text-amber-600 font-black">有（免費停車場）</span></p>
+                            <p class="text-[10px]"><span class="text-slate-500">設施：</span>洗手間</p>
+                            <p class="text-[10px]"><span class="text-slate-500">位置：</span>沖繩市</p>
+                        </div>
+
+                        <div class="bg-amber-50/60 p-2.5 rounded-2xl border border-amber-100 space-y-1.5">
+                            <p class="text-amber-800 font-black"><i class="fa-solid fa-star text-amber-500 mr-1"></i> 特色亮點</p>
+                            <p class="text-[10px] text-slate-700 leading-relaxed">
+                                佔地極大的超大型綜合遊戲區，光是溜滑梯就有7條，還有跳彈床、城堡迷宮及泰山吊索，甚至能野餐與玩沙灘水域。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-2 pt-1">
+                        <a href="https://www.google.com/maps/search/?api=1&query=沖繩縣綜合運動公園" target="_blank" class="flex-1 bg-pastelPeach-500 text-white text-[10px] font-black py-2 rounded-xl text-center shadow-pastelPeach hover:bg-pastelPeach-600 active:scale-95 transition">
+                            <i class="fa-solid fa-map-pin mr-1"></i> Google Map 導航
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== TAB 5: WALLET & EXPENSES ==================== -->
             <section id="tab-wallet" class="tab-content hidden p-4 space-y-4">
                 <div class="bg-gradient-to-br from-slate-800 to-slate-900 text-white rounded-3xl p-4 shadow-pastelHeavy space-y-2 border border-slate-700">
                     <div class="flex justify-between items-center">
@@ -421,13 +803,13 @@
                     <h3 class="text-xs font-black text-slate-800 flex items-center gap-1.5">
                         <i class="fa-solid fa-receipt text-pastelPink-400"></i> 快速記帳
                     </h3>
-                    
+
                     <div class="space-y-2">
                         <input type="text" id="expense-title" placeholder="品項名稱 (如：拉麵)" class="w-full bg-pastelPink-50/50 border border-pastelPink-100 rounded-xl px-3 py-2 text-xs focus:outline-none">
                         
                         <div class="flex gap-2">
                             <input type="number" id="expense-amount" placeholder="日幣金額 (JPY)" class="flex-1 bg-pastelPink-50/50 border border-pastelPink-100 rounded-xl px-3 py-2 text-xs focus:outline-none">
-                            <label class="bg-pastelPeach-100 text-pastelPeach-600 px-3 py-2 rounded-xl text-xs font-bold flex items-center justify-center gap-1 cursor-pointer shrink-0">
+                            <label class="bg-pastelPeach-100 text-pastelPeach-600 hover:bg-pastelPeach-200 px-3 py-2 rounded-xl text-xs font-bold flex items-center justify-center gap-1 cursor-pointer shrink-0 transition">
                                 <i class="fa-solid fa-camera"></i>
                                 <span id="photo-status">拍收據</span>
                                 <input type="file" id="expense-photo-input" accept="image/*" capture="environment" onchange="handlePhotoUpload(event)" class="hidden">
@@ -440,14 +822,20 @@
                         <button onclick="clearPhoto()" class="absolute top-0 right-0 bg-rose-500 text-white w-4 h-4 text-[9px] flex items-center justify-center rounded-bl"><i class="fa-solid fa-xmark"></i></button>
                     </div>
 
-                    <button onclick="addExpense()" class="w-full bg-pastelPink-500 text-white py-2.5 rounded-xl font-black text-xs shadow-pastel active:scale-95 transition">
+                    <button onclick="addExpense()" class="w-full bg-pastelPink-500 hover:bg-pastelPink-600 text-white py-2.5 rounded-xl font-black text-xs shadow-pastel active:scale-95 transition">
                         儲存紀錄
                     </button>
                 </div>
 
                 <div class="bg-white rounded-3xl border border-pastelPink-100 p-4 shadow-pastel space-y-2">
                     <div class="flex justify-between items-center border-b border-dashed border-pastelPink-100 pb-2">
-                        <h3 class="text-xs font-black text-slate-800">歷史明細</h3>
+                        <div>
+                            <h3 class="text-xs font-black text-slate-800">歷史明細</h3>
+                            <!-- 步驟說明  -->
+                            <p class="text-[9px] text-slate-400 font-bold mt-0.5">
+                                <i class="fa-solid fa-3 mr-0.5"></i> 點擊縮圖開啟放大預覽
+                            </p>
+                        </div>
                         <div class="text-xs font-black text-pastelPink-500">
                             總計: NT$ <span id="expense-total-twd">0</span>
                         </div>
@@ -459,22 +847,26 @@
 
         <!-- BOTTOM NAVIGATION BAR -->
         <nav class="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-pastelPink-200/80 safe-bottom z-30 shadow-lg">
-            <div class="grid grid-cols-4 h-14">
+            <div class="grid grid-cols-5 h-14">
                 <button onclick="switchTab('tab-flight-car')" id="nav-tab-flight-car" class="nav-btn flex flex-col items-center justify-center gap-0.5 text-pastelPink-500 font-black">
-                    <i class="fa-solid fa-plane-arrival text-base"></i>
-                    <span class="text-[9px]">航班/租車</span>
+                    <i class="fa-solid fa-plane-arrival text-sm"></i>
+                    <span class="text-[8px]">航班/租車</span>
                 </button>
                 <button onclick="switchTab('tab-checklist')" id="nav-tab-checklist" class="nav-btn flex flex-col items-center justify-center gap-0.5 text-slate-400 font-bold hover:text-pastelPink-400">
-                    <i class="fa-solid fa-clipboard-check text-base"></i>
-                    <span class="text-[9px]">清單/備忘</span>
+                    <i class="fa-solid fa-clipboard-check text-sm"></i>
+                    <span class="text-[8px]">清單/備忘</span>
                 </button>
                 <button onclick="switchTab('tab-itinerary')" id="nav-tab-itinerary" class="nav-btn flex flex-col items-center justify-center gap-0.5 text-slate-400 font-bold hover:text-pastelPink-400">
-                    <i class="fa-solid fa-map-location-dot text-base"></i>
-                    <span class="text-[9px]">行程表</span>
+                    <i class="fa-solid fa-map-location-dot text-sm"></i>
+                    <span class="text-[8px]">行程表</span>
+                </button>
+                <button onclick="switchTab('tab-kids')" id="nav-tab-kids" class="nav-btn flex flex-col items-center justify-center gap-0.5 text-slate-400 font-bold hover:text-pastelPink-400">
+                    <i class="fa-solid fa-child-reaching text-sm"></i>
+                    <span class="text-[8px]">親子景點</span>
                 </button>
                 <button onclick="switchTab('tab-wallet')" id="nav-tab-wallet" class="nav-btn flex flex-col items-center justify-center gap-0.5 text-slate-400 font-bold hover:text-pastelPink-400">
-                    <i class="fa-solid fa-wallet text-base"></i>
-                    <span class="text-[9px]">記帳/匯率</span>
+                    <i class="fa-solid fa-wallet text-sm"></i>
+                    <span class="text-[8px]">記帳/匯率</span>
                 </button>
             </div>
         </nav>
@@ -530,6 +922,16 @@
         </div>
     </div>
 
+    <!-- IMAGE PREVIEW MODAL (收據放大預覽 Modal) -->
+    <div id="photo-modal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-md z-50 hidden flex flex-col items-center justify-center p-4 cursor-pointer" onclick="closePhotoModal()">
+        <div class="relative max-w-full max-h-full flex flex-col items-center justify-center" onclick="event.stopPropagation()">
+            <img id="photo-modal-img" src="" class="max-w-full max-h-[80vh] rounded-2xl shadow-2xl object-contain border-2 border-white/20">
+            <button onclick="closePhotoModal()" class="mt-4 bg-white/20 hover:bg-white/40 text-white px-5 py-2 rounded-full font-bold text-xs backdrop-blur-md border border-white/30 transition">
+                <i class="fa-solid fa-xmark mr-1"></i> 關閉預覽
+            </button>
+        </div>
+    </div>
+
     <!-- JAVASCRIPT LOGIC -->
     <script>
         const defaultChecklist = [
@@ -550,9 +952,8 @@
 
         const defaultItinerary = {
             1: [
-                { time: "15:00", title: "桃園機場二航廈報到", note: "最晚 15:00 到達辦理託運", important: true },
-                { time: "17:05", title: "華航 CI 122 起飛", note: "預計飛行 1 小時 40 分" },
-                { time: "19:45", title: "抵達那霸機場 (OKA)", note: "辦理入境與提領行李" },
+                { time: "15:00", title: "桃園機場 第二航廈集合辦理報到", note: "華航CI122 17:05起飛，請最晚於 15:00 前抵達櫃台辦理報到手續", important: true },
+                { time: "19:45", title: "抵達那霸機場 (OKA)", note: "辦理入境手續與提領行李" },
                 { time: "20:30", title: "沖繩行腳取車", note: "搭乘接駁車取車（SIENTA 7人座 x2）", important: true }
             ],
             2: [
@@ -580,6 +981,12 @@
                 }
             ],
             4: [
+                {
+                    time: "10:00",
+                    title: "🔑 ONNA8 退房提醒",
+                    note: "上午 10:00 前完成退房，準備前往宜野灣地區。",
+                    important: true
+                },
                 { time: "09:00", title: "普天滿宮 & 鐘乳石洞", note: "參拜並至社務所免費申請參觀神秘鐘乳石洞；順遊58號國道宜野灣家具街美式二手雜貨", address: "沖繩縣宜野灣市普天間1-27-10" },
                 { time: "12:00", title: "Mexico (老字號塔可餅)", note: "必吃現炸自製酥脆餅皮塔可餅搭特製肉醬，亦可方便外帶", address: "沖繩縣宜野灣市伊佐3-1-3", isFood: true },
                 { time: "13:30", title: "Blue Seal Makiminato Honten (牧港本店)", note: "BLUE SEAL ICE PARK 體驗冰棒裝飾 DIY（需預約）", address: "沖繩縣浦添市牧港5-5-6", isFood: true },
@@ -589,8 +996,23 @@
                 { time: "19:00", title: "Ginowan Yui Marche (宜野灣結市集)", note: "在地漁港海鮮饗宴與農夫市集", address: "沖繩縣宜野灣市大山7-1350-81", isFood: true }
             ],
             5: [
-                { time: "09:30", title: "抵達沖繩南城倉庫店 (Costco Nanjo)", note: "營業時間 10:00 開始，建議提早抵達排隊避開人潮", address: "沖繩縣南城市つきしろ1000" },
-                { time: "10:00", title: "Costco 好市多瘋狂採購", note: "掃貨日本限定零食、藥妝、伴手禮及人氣必買商品", address: "沖繩縣南城市つきしろ1000" },
+                {
+                    time: "10:00",
+                    title: "Costco好市多瘋狂採購 🛒",
+                    note: "掃貨日本限定零食、藥妝、伴手禮及人氣必買商品",
+                    address: "沖繩縣南城市つきしろ1000",
+                    isCostco: true,
+                    isAccordion: true,
+                    costcoProducts: [
+                        { name: "1. 叙敘苑燒肉醬（超強白飯殺手）", note: "日本超紅高級燒肉店「叙々苑」經典商品。口味偏甜，非重鹹派更愛，開封後需冷藏。" },
+                        { name: "2. UHA味覺糖「鐵＋葉酸」機能性軟糖 (110日份)", note: "保健系熱門零食，巴西莓/葡萄口味美味掩蓋鐵質金屬味，補充日常鐵質與葉酸。" },
+                        { name: "3. 起司鱈魚條", note: "比起一般起司鱈魚條，起司味更濃郁、口感更厚實，高級感滿滿超涮嘴。" },
+                        { name: "4. 黑糖甜甜圈棒（沖繩風味）", note: "融入沖繩產黑糖濃郁香甜，嚴選小麥粉製作，沖繩熱門伴手禮首選。" },
+                        { name: "5. 合利他命 EX PLUS", note: "日本人氣疲勞恢復保健品（維他命B群），日本價格比台灣便宜非常多，代購首選。" },
+                        { name: "6. 洋蔥湯粉｜簡單卻很有滿足感", note: "隱藏版回購好物！熱水沖泡即可飲用，洋蔥甜味明顯帶西式風味，順口不易踩雷。" },
+                        { name: "7. 日本和牛", note: "住有廚房民宿/公寓飯店必買！價格比餐廳便宜許多、油花漂亮品質穩定。" }
+                    ]
+                },
                 { time: "12:30", title: "Costco 美食廣場午餐", note: "品嚐好市多高 CP 值熱狗、披薩或北海道鮮奶冰淇淋", address: "沖繩縣南城市つきしろ1000", isFood: true },
                 { time: "13:30", title: "知念岬公園 或 齋場御嶽", note: "欣賞太平洋絕美海景或造訪世界文化遺產，車程僅約 10-15 分鐘", address: "沖繩縣南城市知念久手堅" },
                 { 
@@ -605,31 +1027,111 @@
                         { name: "Taco Rice Cafe Kijimuna 塔可飯", note: "位置：28號店 (幸福鬆餅正下方) | 必吃歐姆蛋塔可飯，加綠哈瓦那辣椒醬（Green Habanero）風味絕佳", address: "Umikaji Terrace 28號店", isFood: true },
                         { name: "吊床餐廳 Hammock Cafe La Isla", note: "位置：27號店 (11:00-21:00) | IG爆紅渡假風格，躺戶外吊床吹海風品嚐墨西哥料理與水果茶", address: "Umikaji Terrace 27號店", isFood: true },
                         { name: "Flooding Burger Chimfugas 氾濫漢堡", note: "位置：4號店 (11:00-21:00) | 真材實料巨無霸美式漢堡，大份量美味滿足挑戰者", address: "Umikaji Terrace 4號店", isFood: true },
-                        { name: "POSILLIPO 海景餐廳", note: "地址：豐見城市瀨長174-5 (11:30-22:00) | Tabelog高分義大利餐廳，三面環海極致浪漫，午間套餐約1,600日圓起（室內官網預約/戶外電話預約）", address: "沖繩縣豊見城市瀬長174-5", isFood: true }
+                        { name: "POSILLIPO 海景餐廳", note: "地址：豐見城市瀨長174-5 (11:30-22:00) | Tabelog高分義大利餐廳，三面環海極致浪漫，午間套餐約1,600日圓起（室內官網預約/戶外電話預約）", address: "沖繩縣豊見城市瀨長174-5", isFood: true }
                     ]
-                },
-                { time: "20:00", title: "第一牧志公設市場", note: "那霸市區經典海鮮現挑現煮饗宴與周邊逛街", address: "沖繩縣那霸市松尾2-10-1", isFood: true }
+                }
             ],
             6: [
-                { time: "10:00", title: "波上宮", note: "懸崖上的那霸神社參拜與波之上海灘漫步", address: "沖繩縣那霸市若狹1-25-11" },
-                { time: "12:00", title: "國際通採買與美食", note: "沖繩伴手禮、雪鹽冰淇淋與土產購物", address: "沖繩縣那霸市牧志3-2-10", isFood: true },
-                { time: "18:00", title: "沖繩行腳還車", note: "務必 18:00 前完成還車手續，並請租車公司協助載我們回第一航廈。", address: "沖繩縣那霸市", important: true },
-                { time: "20:55", title: "華航 CI 123 班機返台", note: "預計 21:30 抵達桃園 T1", important: true }
+                {
+                    time: "10:00",
+                    title: "🔑 Rizozaisen Hotel 退房提醒",
+                    note: "上午 10:00 前完成退房。",
+                    important: true
+                },
+                { time: "10:30", title: "國際通商圈購物 & 伴手禮採買", note: "漫步國際通，採購沖繩伴手禮與享用當地美食料理", address: "沖繩縣那霸市國際通" },
+                { time: "14:00", title: "Ashibinaa 沖繩平價精品 Outlets", note: "搭機前最後血拼採購，離那霸機場約15分鐘車程", address: "沖繩縣豐見城市文章5-1" },
+                { time: "18:00", title: "還車 (沖繩行腳)", note: "最晚 18:00 前還車，並由租車公司安排接駁車前往那霸機場 T1 航廈", important: true },
+                { time: "18:30", title: "那霸機場 第一航廈報到", note: "辦理華航 CI 123 報到與行李託運手續，享用機場晚餐", important: true },
+                { time: "20:55", title: "搭乘華航 CI 123 班機返回台灣", note: "預計 21:30 抵達桃園國際機場 T1 航廈" }
             ]
         };
 
-        let currentTab = 'tab-flight-car';
-        let currentDay = 1;
-        let compressedPhotoBase64 = '';
+        const hotelInfoMap = {
+            1: {
+                title: "🏨 入住 GRANDIOSO OKINAWA POOL VILLA ONNA8",
+                note: "📍 OkinawaOnna, Kunigami District（那霸機場車程約 50 分鐘）\n📅 入住：9/28(一) 16:00 ～ 10/1(四) 10:00 退房\n🚗 停車：房源內附 2 個免費停車位\n🏊 設施：烤肉架、私人泳池\n\n🔑 入住流程 (自助入住)：\n• 此房源採自助入住系統，無現場櫃檯。\n• 入住說明於入住前 2 天發送訊息通知。\n• 人數如有變動請提前告知。",
+                address: "GRANDIOSO OKINAWA POOL VILLA ONNA8",
+                hotelType: "onna",
+                mapUrl: "https://www.google.com/maps/place/%E3%82%B0%E3%83%A9%E3%83%B3%E3%83%87%E3%82%A3%E3%82%AA%E3%83%BC%E3%82%BD%E6%B2%96%E7%B8%84%E3%83%97%E3%83%BC%E3%83%AB%E3%83%B4%E3%82%A3%E3%83%A9%E6%81%A9%E7%B4%8D8%EF%BC%88GRANDIOSO+OKINAWA+POOL+VILLA+ONNA8%EF%BC%89/@26.4928277,127.8463886,93m/data=!3m1!1e3!4m7!3m6!1s0x34e50500006133ef:0x581cc25e92159705!8m2!3d26.4927522!4d127.8469278!15sCgrmganntI3mnZE4kgEFdmlsbGHgAQA!16s%2Fg%2F11y6d3z4h_?coh=219816&entry=tts&g_ep=EgoyMDI0MDgxOC4wKgBIAVAD",
+                roomInfo: [
+                    "西式房間：1 張標準雙人床",
+                    "西式房間：2 張雙人床",
+                    "西式房間：2 張雙人床",
+                    "西式房間：2 張雙人床",
+                    "衛浴設備：淋浴間 × 1 / 廁所 × 1"
+                ],
+                surroundings: [
+                    { category: "🏖️ 海灘", items: ["Manza Beach（開車5分鐘）"] },
+                    { category: "🗿 觀光景點", items: ["琉球村（開車18分鐘）", "真榮田岬 / 藍色洞穴（開車19分鐘）"] },
+                    { category: "🏪 便利商店與超市", items: ["Lawson Onna Manzamo Iriguchi Store（開車3分鐘）", "恩納合作商店（開車3分鐘）"] },
+                    { category: "🍽️ 餐廳和咖啡館", items: ["甜品店「Tanaka Fruits」（開車4分鐘）", "Taco Rice Café Kijimunaa Onna Village Branch（步行5分鐘）", "808 Poke Bowls Okinawa（步行10分鐘）", "Dumura（步行11分鐘）"] },
+                    { category: "🛍️ 其他娛樂設施", items: ["紀念品商店「Okashi Goten」（開車8分鐘）", "海洋活動「地球船」（步行8分鐘）"] }
+                ]
+            },
+            2: {
+                title: "🏨 連續入住 GRANDIOSO OKINAWA POOL VILLA ONNA8 (DAY 2)",
+                note: "📍 OkinawaOnna, Kunigami District（那霸機場車程約 50 分鐘）\n📅 入住：9/28(一) 16:00 ～ 10/1(四) 10:00 退房\n🚗 停車：房源內附 2 個免費停車位\n🏊 設施：烤肉架、私人泳池\n\n🔑 入住流程 (自助入住)：\n• 此房源採自助入住系統，無現場櫃檯。\n• 入住說明於入住前 2 天發送訊息通知。",
+                address: "GRANDIOSO OKINAWA POOL VILLA ONNA8",
+                hotelType: "onna",
+                mapUrl: "https://www.google.com/maps/place/%E3%82%B0%E3%83%A9%E3%83%B3%E3%83%87%E3%82%A3%E3%82%AA%E3%83%BC%E3%82%BD%E6%B2%96%E7%B8%84%E3%83%97%E3%83%BC%E3%83%AB%E3%83%B4%E3%82%A3%E3%83%A9%E6%81%A9%E7%B4%8D8%EF%BC%88GRANDIOSO+OKINAWA+POOL+VILLA+ONNA8%EF%BC%89/@26.4928277,127.8463886,93m/data=!3m1!1e3!4m7!3m6!1s0x34e50500006133ef:0x581cc25e92159705!8m2!3d26.4927522!4d127.8469278!15sCgrmganntI3mnZE4kgEFdmlsbGHgAQA!16s%2Fg%2F11y6d3z4h_?coh=219816&entry=tts&g_ep=EgoyMDI0MDgxOC4wKgBIAVAD",
+                roomInfo: [
+                    "西式房間：1 張標準雙人床",
+                    "西式房間：2 張雙人床",
+                    "西式房間：2 張雙人床",
+                    "西式房間：2 張雙人床",
+                    "衛浴設備：淋浴間 × 1 / 廁所 × 1"
+                ],
+                surroundings: [
+                    { category: "🏖️ 海灘", items: ["Manza Beach（開車5分鐘）"] },
+                    { category: "🗿 觀光景點", items: ["琉球村（開車18分鐘）", "真榮田岬 / 藍色洞穴（開車19分鐘）"] },
+                    { category: "🏪 便利商店與超市", items: ["Lawson Onna Manzamo Iriguchi Store（開車3分鐘）", "恩納合作商店（開車3分鐘）"] },
+                    { category: "🍽️ 餐廳和咖啡館", items: ["甜品店「Tanaka Fruits」（開車4分鐘）", "Taco Rice Café Kijimunaa Onna Village Branch（步行5分鐘）", "808 Poke Bowls Okinawa（步行10分鐘）", "Dumura（步行11分鐘）"] },
+                    { category: "🛍️ 其他娛樂設施", items: ["紀念品商店「Okashi Goten」（開車8分鐘）", "海洋活動「地球船」（步行8分鐘）"] }
+                ]
+            },
+            3: {
+                title: "🏨 連續入住 GRANDIOSO OKINAWA POOL VILLA ONNA8 (DAY 3)",
+                note: "📍 OkinawaOnna, Kunigami District（那霸機場車程約 50 分鐘）\n📅 入住：9/28(一) 16:00 ～ 10/1(四) 10:00 退房\n🚗 停車：房源內附 2 個免費停車位\n🏊 設施：烤肉架、私人泳池\n\n🔑 入住流程 (自助入住)：\n• 此房源採自助入住系統，無現場櫃檯。\n• 入住說明於入住前 2 天發送訊息通知。",
+                address: "GRANDIOSO OKINAWA POOL VILLA ONNA8",
+                hotelType: "onna",
+                mapUrl: "https://www.google.com/maps/place/%E3%82%B0%E3%83%A9%E3%83%B3%E3%83%87%E3%82%A3%E3%82%AA%E3%83%BC%E3%82%BD%E6%B2%96%E7%B8%84%E3%83%97%E3%83%BC%E3%83%AB%E3%83%B4%E3%82%A3%E3%83%A9%E6%81%A9%E7%B4%8D8%EF%BC%88GRANDIOSO+OKINAWA+POOL+VILLA+ONNA8%EF%BC%89/@26.4928277,127.8463886,93m/data=!3m1!1e3!4m7!3m6!1s0x34e50500006133ef:0x581cc25e92159705!8m2!3d26.4927522!4d127.8469278!15sCgrmganntI3mnZE4kgEFdmlsbGHgAQA!16s%2Fg%2F11y6d3z4h_?coh=219816&entry=tts&g_ep=EgoyMDI0MDgxOC4wKgBIAVAD",
+                roomInfo: [
+                    "西式房間：1 張標準雙人床",
+                    "西式房間：2 張雙人床",
+                    "西式房間：2 張雙人床",
+                    "西式房間：2 張雙人床",
+                    "衛浴設備：淋浴間 × 1 / 廁所 × 1"
+                ],
+                surroundings: [
+                    { category: "🏖️ 海灘", items: ["Manza Beach（開車5分鐘）"] },
+                    { category: "🗿 觀光景點", items: ["琉球村（開車18分鐘）", "真榮田岬 / 藍色洞穴（開車19分鐘）"] },
+                    { category: "🏪 便利商店與超市", items: ["Lawson Onna Manzamo Iriguchi Store（開車3分鐘）", "恩納合作商店（開車3分鐘）"] },
+                    { category: "🍽️ 餐廳和咖啡館", items: ["甜品店「Tanaka Fruits」（開車4分鐘）", "Taco Rice Café Kijimunaa Onna Village Branch（步行5分鐘）", "808 Poke Bowls Okinawa（步行10分鐘）", "Dumura（步行11分鐘）"] },
+                    { category: "🛍️ 其他娛樂設施", items: ["紀念品商店「Okashi Goten」（開車8分鐘）", "海洋活動「地球船」（步行8分鐘）"] }
+                ]
+            },
+            4: {
+                title: "🏨 入住 Rizozaisen Hotel（管理聯合度假村）",
+                note: "📍 リゾザイゼンホテル（管理）ユナイテッドリゾートレセプション\n245-4 Ōjana RIZOZAIZENHOTEL 3F, 宜野灣市, Okinawa 901-2225, 日本\n📅 入住：10/1(四) 15:00 ～ 10/3(六) 10:00 退房\n📞 Tel: 098-989-3880\n✉️ Email: info@unitedresort.okinawa\n💬 Line ID: @861trdzf\n\n🚗 停車場資訊與提醒：\n• 每房提供一個車位，請停放與入住樓層同編號車位。\n• 🔴 已預留第二個停車位！請使用 3號 及 11號 停車位。\n• ⚠️ 11號車位放有交通錐，每次離開時請務必將交通錐放回原處，防止其他房客停放！",
+                address: "245-4 Ōjana RIZOZAIZENHOTEL, Ginowan, Okinawa",
+                hotelType: "rizozaisen",
+                mapUrl: "https://www.google.com/maps/search/?api=1&query=26.269750595092773%2C127.73519134521484",
+                buildingGuideUrl: "https://resorthotels.okinawa/nyukan/"
+            },
+            5: {
+                title: "🏨 連續入住 Rizozaisen Hotel (DAY 5)",
+                note: "📍 245-4 Ōjana RIZOZAIZENHOTEL 3F, 宜野灣市\n📅 10/1(四) 15:00 入住 ～ 10/3(六) 10:00 退房\n🚗 停車位：已預留 3號 與 11號 車位 (離開時請將11號交通錐放回原處)\n📞 Tel: 098-989-3880 | Line: @861trdzf",
+                address: "245-4 Ōjana RIZOZAIZENHOTEL, Ginowan, Okinawa",
+                hotelType: "rizozaisen",
+                mapUrl: "https://www.google.com/maps/search/?api=1&query=26.269750595092773%2C127.73519134521484",
+                buildingGuideUrl: "https://resorthotels.okinawa/nyukan/"
+            }
+        };
 
-        document.addEventListener("DOMContentLoaded", () => {
-            loadDocStateV3();
-            renderChecklist();
-            renderMemos();
-            renderItinerary(currentDay);
-            loadWalletData();
-        });
+        let currentDayV3 = 1;
+        let selectedPhotoData = null;
 
+        // Navigation
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             document.getElementById(tabId).classList.remove('hidden');
@@ -639,294 +1141,396 @@
                 btn.classList.add('text-slate-400', 'font-bold');
             });
 
-            const activeNav = document.getElementById(`nav-${tabId}`);
-            activeNav.classList.remove('text-slate-400', 'font-bold');
-            activeNav.classList.add('text-pastelPink-500', 'font-black');
-
-            currentTab = tabId;
+            const activeNav = document.getElementById('nav-' + tabId);
+            if (activeNav) {
+                activeNav.classList.remove('text-slate-400', 'font-bold');
+                activeNav.classList.add('text-pastelPink-500', 'font-black');
+            }
         }
 
-        function saveDocStateV3() {
-            ['idcard', 'passport', 'license', 'translation'].forEach(doc => {
-                const checked = document.getElementById(`v3-doc-${doc}`)?.checked || false;
-                localStorage.setItem(`doc_${doc}`, checked);
+        // Checklist V3 logic
+        function initChecklistV3() {
+            const container = document.getElementById('v3-checklist-containers-wrapper');
+            container.innerHTML = '';
+
+            let savedStates = JSON.parse(localStorage.getItem('v3_checklist_states') || '{}');
+
+            defaultChecklist.forEach((cat, cIdx) => {
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-3xl border border-pastelPink-100 p-4 shadow-pastel space-y-2.5";
+                
+                let itemsHtml = cat.items.map((item, iIdx) => {
+                    const key = `c_${cIdx}_${iIdx}`;
+                    const checked = savedStates[key] ? 'checked' : '';
+                    
+                    let contentHtml = '';
+                    if (item.includes('http')) {
+                        const parts = item.split(': ');
+                        const labelText = parts[0];
+                        const url = parts[1];
+                        contentHtml = `
+                            <div class="flex-1 text-xs font-bold text-slate-700 leading-tight">
+                                <span>${labelText}</span> : 
+                                <a href="${url}" target="_blank" class="text-pastelPink-500 underline font-black text-[11px] block mt-0.5 break-all hover:text-pastelPink-600">
+                                    <i class="fa-solid fa-link mr-0.5"></i>點此前往連結
+                                </a>
+                            </div>
+                        `;
+                    } else {
+                        contentHtml = `<span class="text-xs font-bold text-slate-700 flex-1">${item}</span>`;
+                    }
+
+                    return `
+                        <label class="flex items-center gap-2.5 p-2 bg-pastelPink-50/30 rounded-xl border border-pastelPink-100/30 cursor-pointer hover:bg-pastelPink-50/60 transition">
+                            <input type="checkbox" id="${key}" ${checked} onchange="saveChecklistStateV3()" class="w-4 h-4 text-pastelPink-500 rounded accent-pastelPink-500 shrink-0">
+                            ${contentHtml}
+                        </label>
+                    `;
+                }).join('');
+
+                card.innerHTML = `
+                    <h3 class="text-xs font-black text-slate-800 flex items-center gap-1.5">
+                        <i class="fa-solid fa-square-check text-pastelPink-400"></i> ${cat.category}
+                    </h3>
+                    <div class="space-y-1.5">${itemsHtml}</div>
+                `;
+                container.appendChild(card);
             });
+
+            updateChecklistProgressV3();
+        }
+
+        function saveChecklistStateV3() {
+            let states = {};
+            let total = 0;
+            let count = 0;
+
+            defaultChecklist.forEach((cat, cIdx) => {
+                cat.items.forEach((item, iIdx) => {
+                    const key = `c_${cIdx}_${iIdx}`;
+                    const el = document.getElementById(key);
+                    if (el) {
+                        states[key] = el.checked;
+                        if (el.checked) count++;
+                        total++;
+                    }
+                });
+            });
+
+            localStorage.setItem('v3_checklist_states', JSON.stringify(states));
+            updateProgressDisplayV3(count, total);
+        }
+
+        function updateChecklistProgressV3() {
+            let savedStates = JSON.parse(localStorage.getItem('v3_checklist_states') || '{}');
+            let total = 0;
+            let count = 0;
+
+            defaultChecklist.forEach((cat, cIdx) => {
+                cat.items.forEach((item, iIdx) => {
+                    const key = `c_${cIdx}_${iIdx}`;
+                    if (savedStates[key]) count++;
+                    total++;
+                });
+            });
+
+            updateProgressDisplayV3(count, total);
+        }
+
+        function updateProgressDisplayV3(count, total) {
+            document.getElementById('v3-checklist-count-display').innerText = `${count}/${total}`;
+            const pct = total > 0 ? Math.round((count / total) * 100) : 0;
+            document.getElementById('v3-checklist-progress-bar').style.width = `${pct}%`;
+        }
+
+        // Document Checkboxes
+        function saveDocStateV3() {
+            const docs = ['v3-doc-idcard', 'v3-doc-passport', 'v3-doc-license', 'v3-doc-translation'];
+            let states = {};
+            docs.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) states[id] = el.checked;
+            });
+            localStorage.setItem('v3_doc_states', JSON.stringify(states));
         }
 
         function loadDocStateV3() {
-            ['idcard', 'passport', 'license', 'translation'].forEach(doc => {
-                const checked = localStorage.getItem(`doc_${doc}`) === 'true';
-                const el = document.getElementById(`v3-doc-${doc}`);
-                if (el) el.checked = checked;
+            const saved = JSON.parse(localStorage.getItem('v3_doc_states') || '{}');
+            Object.keys(saved).forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.checked = saved[id];
             });
         }
 
-        function renderChecklist() {
-            const savedState = JSON.parse(localStorage.getItem('checklist_state') || '{}');
-            const wrapper = document.getElementById('v3-checklist-containers-wrapper');
-            wrapper.innerHTML = '';
-
-            let totalItems = 0;
-            let checkedItems = 0;
-
-            const urlRegex = /(https?:\/\/[^\s]+)/g;
-
-            defaultChecklist.forEach((cat, cIdx) => {
-                const catCard = document.createElement('div');
-                catCard.className = "bg-white rounded-3xl border border-pastelPink-100 p-4 shadow-pastel space-y-2";
+        // Memos
+        function loadMemos() {
+            const memos = JSON.parse(localStorage.getItem('v3_memos') || '[]');
+            const list = document.getElementById('memo-list');
+            list.innerHTML = '';
+            
+            memos.forEach((memo, idx) => {
+                const item = document.createElement('div');
+                item.className = "flex items-center justify-between p-2 bg-pastelPink-50/60 rounded-xl border border-pastelPink-100 text-xs font-bold text-slate-700";
                 
-                let itemsHtml = '';
-                cat.items.forEach((item, iIdx) => {
-                    totalItems++;
-                    const key = `${cIdx}_${iIdx}`;
-                    const isChecked = savedState[key] || false;
-                    if (isChecked) checkedItems++;
+                let textHtml = memo;
+                if (memo.startsWith('http://') || memo.startsWith('https://')) {
+                    textHtml = `<a href="${memo}" target="_blank" class="text-pastelPink-500 underline font-black break-all">${memo}</a>`;
+                }
 
-                    let formattedItem = item;
-                    if (urlRegex.test(item)) {
-                        formattedItem = item.replace(urlRegex, (url) => {
-                            return `<a href="${url}" target="_blank" onclick="event.stopPropagation();" class="inline-flex items-center gap-1 bg-pastelPink-400 hover:bg-pastelPink-500 text-white px-2 py-0.5 rounded-lg text-[10px] font-bold ml-1 transition"><i class="fa-solid fa-arrow-up-right-from-square"></i> 開啟點我</a>`;
-                        });
-                    }
-
-                    itemsHtml += `
-                        <label class="flex items-center gap-2.5 p-1.5 rounded-xl hover:bg-pastelPink-50/50 cursor-pointer select-none">
-                            <input type="checkbox" onchange="toggleChecklistItem('${key}')" ${isChecked ? 'checked' : ''} class="w-3.5 h-3.5 text-pastelPink-500 rounded accent-pastelPink-500 shrink-0">
-                            <span class="text-xs ${isChecked ? 'line-through text-slate-300 font-normal' : 'text-slate-700 font-bold'} break-all">${formattedItem}</span>
-                        </label>
-                    `;
-                });
-
-                catCard.innerHTML = `
-                    <h3 class="text-xs font-black text-slate-800 border-b border-dashed border-pastelPink-100 pb-1.5">${cat.category}</h3>
-                    <div class="space-y-0.5">${itemsHtml}</div>
+                item.innerHTML = `
+                    <div class="flex-1 pr-2">${textHtml}</div>
+                    <button onclick="deleteMemo(${idx})" class="text-slate-400 hover:text-rose-500 p-1"><i class="fa-solid fa-trash-can"></i></button>
                 `;
-                wrapper.appendChild(catCard);
+                list.appendChild(item);
             });
-
-            const percent = totalItems === 0 ? 0 : Math.round((checkedItems / totalItems) * 100);
-            document.getElementById('v3-checklist-count-display').innerText = `${checkedItems}/${totalItems}`;
-            document.getElementById('v3-checklist-progress-bar').style.width = `${percent}%`;
-        }
-
-        function toggleChecklistItem(key) {
-            const savedState = JSON.parse(localStorage.getItem('checklist_state') || '{}');
-            savedState[key] = !savedState[key];
-            localStorage.setItem('checklist_state', JSON.stringify(savedState));
-            renderChecklist();
         }
 
         function addMemo() {
             const input = document.getElementById('memo-input');
-            const text = input.value.trim();
-            if (!text) return;
-
-            const memos = JSON.parse(localStorage.getItem('memos_list') || '[]');
-            memos.push(text);
-            localStorage.setItem('memos_list', JSON.stringify(memos));
+            const val = input.value.trim();
+            if (!val) return;
+            
+            const memos = JSON.parse(localStorage.getItem('v3_memos') || '[]');
+            memos.push(val);
+            localStorage.setItem('v3_memos', JSON.stringify(memos));
             input.value = '';
-            renderMemos();
+            loadMemos();
         }
 
-        function deleteMemo(index) {
-            const memos = JSON.parse(localStorage.getItem('memos_list') || '[]');
-            memos.splice(index, 1);
-            localStorage.setItem('memos_list', JSON.stringify(memos));
-            renderMemos();
+        function deleteMemo(idx) {
+            const memos = JSON.parse(localStorage.getItem('v3_memos') || '[]');
+            memos.splice(idx, 1);
+            localStorage.setItem('v3_memos', JSON.stringify(memos));
+            loadMemos();
         }
 
-        function renderMemos() {
-            const memos = JSON.parse(localStorage.getItem('memos_list') || '[]');
-            const container = document.getElementById('memo-list');
-            container.innerHTML = '';
-
-            const urlRegex = /(https?:\/\/[^\s]+)/g;
-
-            memos.forEach((memo, index) => {
-                const item = document.createElement('div');
-                item.className = "flex items-center justify-between bg-pastelPink-50/50 p-2 rounded-xl border border-pastelPink-100/50 text-xs";
-
-                let formattedText = memo;
-                if (urlRegex.test(memo)) {
-                    formattedText = memo.replace(urlRegex, (url) => {
-                        return `<a href="${url}" target="_blank" class="inline-flex items-center gap-1 bg-pastelPink-400 text-white px-2 py-0.5 rounded-lg text-[9px] font-bold"><i class="fa-solid fa-link"></i> 開啟連結</a>`;
-                    });
-                }
-
-                item.innerHTML = `
-                    <div class="flex-1 pr-2 break-all font-medium text-slate-700">${formattedText}</div>
-                    <button onclick="deleteMemo(${index})" class="text-slate-300 hover:text-rose-500 p-1"><i class="fa-solid fa-trash-can text-xs"></i></button>
-                `;
-                container.appendChild(item);
-            });
-        }
-
+        // Itinerary
         function switchDayV3(dayNum) {
-            currentDay = dayNum;
-            document.querySelectorAll('.v3-day-tab').forEach(btn => {
-                btn.className = "v3-day-tab px-3 py-2 rounded-full text-xs font-bold transition-all border shrink-0 bg-white text-slate-500 border-pastelPink-100";
+            currentDayV3 = dayNum;
+            document.querySelectorAll('.v3-day-tab').forEach((btn, idx) => {
+                if (idx + 1 === dayNum) {
+                    btn.className = "v3-day-tab px-3 py-2 rounded-full text-xs font-black transition-all border shrink-0 bg-pastelPink-400 text-white border-pastelPink-300 shadow-pastel";
+                } else {
+                    btn.className = "v3-day-tab px-3 py-2 rounded-full text-xs font-bold transition-all border shrink-0 bg-white text-slate-500 border-pastelPink-100";
+                }
             });
 
-            const activeBtn = document.getElementById(`v3-day-tab-${dayNum}`);
-            activeBtn.className = "v3-day-tab px-3 py-2 rounded-full text-xs font-black transition-all border shrink-0 bg-pastelPink-400 text-white border-pastelPink-300 shadow-pastel";
-
-            renderItinerary(dayNum);
+            renderItineraryV3();
         }
 
-        function getCustomEvents() {
-            return JSON.parse(localStorage.getItem('custom_itinerary_events') || '{}');
-        }
-
-        function toggleAccordion(index) {
-            const content = document.getElementById(`accordion-content-${index}`);
-            const icon = document.getElementById(`accordion-icon-${index}`);
-            if (content.classList.contains('hidden')) {
-                content.classList.remove('hidden');
-                icon.classList.add('rotate-180');
-            } else {
-                content.classList.add('hidden');
-                icon.classList.remove('rotate-180');
+        function renderHotelCardHtml(hotel) {
+            let roomInfoHtml = '';
+            if (hotel.roomInfo && hotel.roomInfo.length > 0) {
+                const listItems = hotel.roomInfo.map(info => `<li class="flex items-center gap-1.5"><span class="text-pastelPink-500">•</span><span>${info}</span></li>`).join('');
+                roomInfoHtml = `
+                    <div class="bg-pastelPink-50/70 p-2.5 rounded-2xl border border-pastelPink-100/70 space-y-1">
+                        <p class="text-slate-800 font-black text-[11px]"><i class="fa-solid fa-bed text-pastelPink-500 mr-1"></i> 房型與床舖配置</p>
+                        <ul class="space-y-0.5 text-[10px] text-slate-600 font-bold">${listItems}</ul>
+                    </div>
+                `;
             }
-        }
 
-        function deleteCustomEvent(day, id) {
-            const allCustom = getCustomEvents();
-            if (allCustom[day]) {
-                allCustom[day] = allCustom[day].filter(evt => evt.id !== id);
-                localStorage.setItem('custom_itinerary_events', JSON.stringify(allCustom));
-                renderItinerary(currentDay);
+            let surroundingsHtml = '';
+            if (hotel.surroundings && hotel.surroundings.length > 0) {
+                const categoryBlocks = hotel.surroundings.map(cat => {
+                    const catItems = cat.items.map(item => `<li>${item}</li>`).join('');
+                    return `
+                        <div class="space-y-0.5">
+                            <span class="text-slate-800 font-black text-[10px] block">${cat.category}</span>
+                            <ul class="list-disc list-inside text-slate-600 text-[10px] font-bold space-y-0.5 pl-1">${catItems}</ul>
+                        </div>
+                    `;
+                }).join('');
+
+                surroundingsHtml = `
+                    <div class="bg-emerald-50/60 p-2.5 rounded-2xl border border-emerald-100 space-y-1.5">
+                        <p class="text-emerald-800 font-black text-[11px]"><i class="fa-solid fa-compass text-emerald-500 mr-1"></i> 周邊景點與設施</p>
+                        <div class="space-y-2">${categoryBlocks}</div>
+                    </div>
+                `;
             }
+
+            let buildingGuideBtn = '';
+            if (hotel.buildingGuideUrl) {
+                buildingGuideBtn = `
+                    <a href="${hotel.buildingGuideUrl}" target="_blank" class="flex-1 bg-amber-500 hover:bg-amber-600 text-white font-black py-2 rounded-xl text-[10px] text-center shadow-sm transition active:scale-95">
+                        <i class="fa-solid fa-key mr-1"></i> 入館指南 / 自助入住
+                    </a>
+                `;
+            }
+
+            const accordionId = `hotel-acc-${currentDayV3}`;
+            const accordionIconId = `hotel-acc-icon-${currentDayV3}`;
+
+            return `
+                <div class="bg-gradient-to-br from-pastelPink-50 to-white rounded-3xl border-2 border-pastelPink-200 p-4 shadow-pastel space-y-3 relative overflow-hidden">
+                    <div class="flex justify-between items-start border-b border-pastelPink-100 pb-2">
+                        <div>
+                            <span class="bg-pastelPink-100 text-pastelPink-600 text-[9px] font-black px-2 py-0.5 rounded-md inline-block mb-1">
+                                <i class="fa-solid fa-hotel mr-1"></i> 住宿資訊
+                            </span>
+                            <h3 class="text-xs font-black text-slate-800">${hotel.title}</h3>
+                        </div>
+                    </div>
+
+                    <p class="text-[11px] text-slate-600 font-bold leading-relaxed whitespace-pre-line">${hotel.note}</p>
+
+                    <div onclick="toggleAccordion('${accordionId}')" class="py-2 px-3 bg-pastelPink-100/80 hover:bg-pastelPink-100 rounded-2xl text-pastelPink-600 text-[10px] font-black flex items-center justify-between cursor-pointer transition">
+                        <span><i class="fa-solid fa-circle-info mr-1"></i> 點擊展開查看【房型細節】與【週邊生活圈】</span>
+                        <i id="${accordionIconId}" class="fa-solid fa-chevron-down transition-transform duration-300"></i>
+                    </div>
+
+                    <div id="${accordionId}" class="hidden space-y-2.5 pt-1">
+                        ${roomInfoHtml}
+                        ${surroundingsHtml}
+                    </div>
+
+                    <div class="flex gap-2 pt-1">
+                        <a href="${hotel.mapUrl}" target="_blank" class="flex-1 bg-pastelPink-500 hover:bg-pastelPink-600 text-white font-black py-2 rounded-xl text-[10px] text-center shadow-pastel transition active:scale-95">
+                            <i class="fa-solid fa-map-pin mr-1"></i> Google 地圖導航
+                        </a>
+                        ${buildingGuideBtn}
+                    </div>
+                </div>
+            `;
         }
 
-        function renderItinerary(day) {
+        function renderItineraryV3() {
             const container = document.getElementById('itinerary-timeline-container');
             container.innerHTML = '';
 
-            const baseEvents = defaultItinerary[day] || [];
-            const customEvents = (getCustomEvents()[day] || []);
-            const allEvents = [...baseEvents, ...customEvents].sort((a, b) => a.time.localeCompare(b.time));
+            const customEvents = JSON.parse(localStorage.getItem('v3_custom_events') || '{}');
+            const dayCustoms = customEvents[currentDayV3] || [];
+            const baseEvents = defaultItinerary[currentDayV3] || [];
 
-            allEvents.forEach((evt, idx) => {
+            const allEvents = [...baseEvents, ...dayCustoms];
+
+            allEvents.forEach((ev, idx) => {
                 const card = document.createElement('div');
                 
-                let cardStyle = "bg-white border-pastelPink-100 text-slate-800 shadow-pastel";
-                if (evt.important) {
-                    cardStyle = "bg-gradient-to-r from-rose-500 to-pastelPink-500 text-white border-rose-300 shadow-pastelHeavy";
-                } else if (evt.isFood) {
-                    cardStyle = "bg-pastelPeach-50 border-pastelPeach-200 text-slate-800 shadow-pastelPeach";
+                let borderStyle = "border-pastelPink-100";
+                let badgeBg = "bg-pastelPink-100 text-pastelPink-600";
+                
+                if (ev.important) {
+                    borderStyle = "border-rose-300 bg-rose-50/30";
+                    badgeBg = "bg-rose-500 text-white";
+                } else if (ev.isFood) {
+                    borderStyle = "border-pastelPeach-200 bg-pastelPeach-50/20";
+                    badgeBg = "bg-pastelPeach-100 text-pastelPeach-600";
                 }
 
-                card.className = `p-3.5 rounded-3xl border relative ${cardStyle}`;
-
-                if (evt.isAccordion) {
-                    let subStoresHtml = '';
-                    evt.subStores.forEach((sub) => {
-                        const searchQuery = sub.address ? sub.address : sub.name;
-                        const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(searchQuery)}`;
-                        const reviewUrl = `https://www.google.com/search?q=${encodeURIComponent(sub.name)}+沖繩+評價`;
-
-                        subStoresHtml += `
-                            <div class="bg-white/80 p-2.5 rounded-2xl border border-pastelPeach-200 space-y-1">
-                                <div class="flex justify-between items-center">
-                                    <h5 class="text-xs font-black text-slate-800">${sub.name}</h5>
-                                    ${sub.isFood ? '<span class="text-[8px] bg-pastelPeach-100 text-pastelPeach-600 px-1.5 py-0.2 rounded-full font-bold">美食</span>' : '<span class="text-[8px] bg-slate-100 text-slate-500 px-1.5 py-0.2 rounded-full font-bold">景點/拍照</span>'}
-                                </div>
-                                <p class="text-[10px] text-slate-600 leading-tight">${sub.note}</p>
-                                <div class="flex gap-2 pt-1">
-                                    <a href="${mapUrl}" target="_blank" class="flex-1 py-0.5 rounded-lg text-[9px] font-bold text-center bg-pastelPeach-100 text-pastelPeach-600">
-                                        <i class="fa-solid fa-map-pin"></i> 導航
-                                    </a>
-                                    <a href="${reviewUrl}" target="_blank" class="flex-1 py-0.5 rounded-lg text-[9px] font-bold text-center bg-slate-100 text-slate-600">
-                                        <i class="fa-solid fa-magnifying-glass"></i> 評價
-                                    </a>
-                                </div>
-                            </div>
-                        `;
-                    });
-
-                    card.innerHTML = `
-                        <div onclick="toggleAccordion(${idx})" class="cursor-pointer select-none">
-                            <div class="flex items-center justify-between mb-1">
-                                <span class="text-[10px] font-black px-2 py-0.5 rounded-full bg-pastelPeach-100 text-pastelPeach-600">
-                                    <i class="fa-regular fa-clock mr-1"></i> ${evt.time}
-                                </span>
-                                <span class="text-[9px] bg-pastelPeach-200 text-pastelPeach-600 px-2 py-0.5 rounded-full font-black flex items-center gap-1">
-                                    展開地點 <i id="accordion-icon-${idx}" class="fa-solid fa-chevron-down transition-transform duration-300"></i>
-                                </span>
-                            </div>
-                            <h4 class="text-xs font-black mt-1">${evt.title}</h4>
-                            <p class="text-[10px] mt-1 text-slate-500">${evt.note}</p>
-                        </div>
-                        <div id="accordion-content-${idx}" class="hidden space-y-2 mt-3 pt-3 border-t border-dashed border-pastelPeach-200">
-                            ${subStoresHtml}
-                        </div>
-                    `;
-                    container.appendChild(card);
-                    return;
-                }
-
-                const searchQuery = evt.address ? evt.address : evt.title;
-                const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(searchQuery)}`;
-                const reviewUrl = `https://www.google.com/search?q=${encodeURIComponent(evt.title)}+沖繩+評價`;
-
-                let tagHtml = '';
-                if (evt.important) {
-                    tagHtml = '<span class="text-[9px] bg-white text-rose-600 px-1.5 py-0.2 rounded-full font-black animate-pulse">重要提示</span>';
-                } else if (evt.isFood) {
-                    tagHtml = '<span class="text-[9px] bg-pastelPeach-200 text-pastelPeach-600 px-1.5 py-0.2 rounded-full font-black"><i class="fa-solid fa-utensils mr-0.5"></i> 美食</span>';
-                }
-
-                let timeBadgeStyle = "bg-pastelPink-100 text-pastelPink-600";
-                if (evt.important) timeBadgeStyle = "bg-white/20 text-white";
-                else if (evt.isFood) timeBadgeStyle = "bg-pastelPeach-100 text-pastelPeach-600";
-
-                let deleteBtnHtml = '';
-                if (evt.id) {
-                    deleteBtnHtml = `
-                        <button onclick="deleteCustomEvent('${day}', ${evt.id})" class="text-slate-300 hover:text-rose-500 p-1 ml-1" title="刪除此行程">
-                            <i class="fa-solid fa-trash-can text-xs"></i>
-                        </button>
-                    `;
-                }
-
-                card.innerHTML = `
-                    <div class="flex items-center justify-between mb-1">
-                        <span class="text-[10px] font-black px-2 py-0.5 rounded-full ${timeBadgeStyle}">
-                            <i class="fa-regular fa-clock mr-1"></i> ${evt.time}
-                        </span>
-                        <div class="flex items-center">
-                            ${tagHtml}
-                            ${deleteBtnHtml}
-                        </div>
-                    </div>
-                    <h4 class="text-xs font-black mt-1">${evt.title}</h4>
-                    ${evt.note ? `<p class="text-[10px] mt-1 leading-relaxed ${evt.important ? 'text-white/90' : 'text-slate-500'}">${evt.note}</p>` : ''}
-                    ${evt.address ? `<p class="text-[9px] mt-0.5 font-bold ${evt.important ? 'text-white/70' : 'text-slate-400'}"><i class="fa-solid fa-location-dot mr-0.5"></i> ${evt.address}</p>` : ''}
+                let subStoresHtml = '';
+                if (ev.isAccordion && ev.subStores) {
+                    const accId = `acc-store-${currentDayV3}-${idx}`;
+                    const accIconId = `acc-icon-store-${currentDayV3}-${idx}`;
                     
-                    <div class="flex gap-2 mt-2.5 pt-2 border-t ${evt.important ? 'border-white/20' : (evt.isFood ? 'border-dashed border-pastelPeach-200' : 'border-dashed border-pastelPink-100')}">
-                        <a href="${mapUrl}" target="_blank" class="flex-1 py-1 rounded-lg text-[9px] font-bold text-center ${evt.important ? 'bg-white/20 text-white' : (evt.isFood ? 'bg-pastelPeach-100 text-pastelPeach-600' : 'bg-pastelPink-50 text-pastelPink-600')}">
-                            <i class="fa-solid fa-map-pin"></i> Google Map 導航
-                        </a>
-                        <a href="${reviewUrl}" target="_blank" class="flex-1 py-1 rounded-lg text-[9px] font-bold text-center ${evt.important ? 'bg-white/20 text-white' : 'bg-white/80 text-slate-600'}">
-                            <i class="fa-solid fa-magnifying-glass"></i> 評價資訊
-                        </a>
+                    const storesList = ev.subStores.map(sub => `
+                        <div class="bg-slate-50 p-2.5 rounded-2xl border border-slate-100 space-y-1">
+                            <div class="flex justify-between items-center">
+                                <span class="font-black text-slate-800 text-[11px]">${sub.name}</span>
+                                ${sub.isFood ? '<span class="text-[8px] bg-pastelPeach-100 text-pastelPeach-600 font-bold px-1.5 py-0.5 rounded">美食</span>' : ''}
+                            </div>
+                            <p class="text-[10px] text-slate-500 font-bold leading-tight">${sub.note}</p>
+                            ${sub.address ? `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(sub.address)}" target="_blank" class="inline-block text-[9px] font-bold text-pastelPink-500 hover:underline pt-0.5"><i class="fa-solid fa-map-pin mr-0.5"></i> 地圖導航</a>` : ''}
+                        </div>
+                    `).join('');
+
+                    subStoresHtml = `
+                        <div onclick="toggleAccordion('${accId}')" class="mt-2 py-1.5 px-3 bg-pastelPink-100/80 hover:bg-pastelPink-100 rounded-xl text-pastelPink-600 text-[10px] font-black flex items-center justify-between cursor-pointer transition">
+                            <span><i class="fa-solid fa-store mr-1"></i> 點擊展開精選店家與景點詳情</span>
+                            <i id="${accIconId}" class="fa-solid fa-chevron-down transition-transform duration-300"></i>
+                        </div>
+                        <div id="${accId}" class="hidden space-y-2 pt-2">
+                            ${storesList}
+                        </div>
+                    `;
+                }
+
+                let costcoHtml = '';
+                if (ev.isCostco && ev.costcoProducts) {
+                    const accId = `acc-costco-${currentDayV3}-${idx}`;
+                    const accIconId = `acc-icon-costco-${currentDayV3}-${idx}`;
+
+                    const productsList = ev.costcoProducts.map(prod => `
+                        <div class="bg-amber-50/60 p-2.5 rounded-2xl border border-amber-100 space-y-0.5">
+                            <span class="font-black text-amber-900 text-[11px] block">${prod.name}</span>
+                            <p class="text-[10px] text-slate-600 font-bold leading-tight">${prod.note}</p>
+                        </div>
+                    `).join('');
+
+                    costcoHtml = `
+                        <div onclick="toggleAccordion('${accId}')" class="mt-2 py-1.5 px-3 bg-amber-100/80 hover:bg-amber-100 rounded-xl text-amber-800 text-[10px] font-black flex items-center justify-between cursor-pointer transition">
+                            <span><i class="fa-solid fa-basket-shopping mr-1"></i> 點擊查看【Costco 沖繩必買推薦清單】</span>
+                            <i id="${accIconId}" class="fa-solid fa-chevron-down transition-transform duration-300"></i>
+                        </div>
+                        <div id="${accId}" class="hidden space-y-2 pt-2">
+                            ${productsList}
+                        </div>
+                    `;
+                }
+
+                card.className = `bg-white rounded-3xl border ${borderStyle} p-4 shadow-pastel space-y-2 relative`;
+                card.innerHTML = `
+                    <div class="flex justify-between items-start">
+                        <span class="${badgeBg} text-[10px] font-black px-2 py-0.5 rounded-lg">
+                            <i class="fa-regular fa-clock mr-1"></i>${ev.time}
+                        </span>
+                        ${ev.isCustom ? `<button onclick="deleteCustomEvent(${idx})" class="text-slate-300 hover:text-rose-500 text-xs"><i class="fa-solid fa-trash-can"></i></button>` : ''}
                     </div>
+                    <h3 class="text-xs font-black text-slate-800 leading-snug">${ev.title}</h3>
+                    ${ev.note ? `<p class="text-[10px] font-bold text-slate-500 leading-relaxed whitespace-pre-line">${ev.note}</p>` : ''}
+                    ${subStoresHtml}
+                    ${costcoHtml}
+                    ${ev.address ? `
+                        <div class="pt-1">
+                            <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ev.address)}" target="_blank" class="inline-flex items-center text-[9px] font-bold text-pastelPink-500 hover:underline">
+                                <i class="fa-solid fa-location-dot mr-1"></i> Google 地圖導航
+                            </a>
+                        </div>
+                    ` : ''}
                 `;
                 container.appendChild(card);
             });
+
+            const hotel = hotelInfoMap[currentDayV3];
+            if (hotel) {
+                const hotelCardWrapper = document.createElement('div');
+                hotelCardWrapper.className = 'pt-4 border-t-2 border-dashed border-pastelPink-200 mt-4';
+                hotelCardWrapper.innerHTML = renderHotelCardHtml(hotel);
+                container.appendChild(hotelCardWrapper);
+            }
         }
 
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById('accordion-icon-' + id) || document.getElementById('acc-icon-' + id) || document.getElementById('hotel-acc-icon-' + currentDayV3);
+            
+            if (content) {
+                content.classList.toggle('hidden');
+                if (icon) {
+                    icon.classList.toggle('rotate-180');
+                }
+            }
+        }
+
+        // Custom Event Modal
         function openAddEventModal() {
+            document.getElementById('event-day-select').value = currentDayV3;
             document.getElementById('add-event-modal').classList.remove('hidden');
         }
 
         function closeAddEventModal() {
             document.getElementById('add-event-modal').classList.add('hidden');
+            document.getElementById('event-time').value = '';
+            document.getElementById('event-title').value = '';
+            document.getElementById('event-note').value = '';
+            document.getElementById('event-is-food').checked = false;
+            document.getElementById('event-is-important').checked = false;
         }
 
         function saveCustomEvent() {
             const day = document.getElementById('event-day-select').value;
-            const time = document.getElementById('event-time').value || '12:00';
+            const time = document.getElementById('event-time').value || "全天";
             const title = document.getElementById('event-title').value.trim();
             const note = document.getElementById('event-note').value.trim();
             const isFood = document.getElementById('event-is-food').checked;
@@ -934,62 +1538,78 @@
 
             if (!title) return;
 
-            const allCustom = getCustomEvents();
-            if (!allCustom[day]) allCustom[day] = [];
-            
-            allCustom[day].push({ 
-                id: Date.now(), 
-                time, 
-                title, 
-                note, 
-                isFood, 
-                important 
-            });
-            localStorage.setItem('custom_itinerary_events', JSON.stringify(allCustom));
+            const newEv = { time, title, note, isFood, important, isCustom: true };
 
-            document.getElementById('event-title').value = '';
-            document.getElementById('event-note').value = '';
-            document.getElementById('event-is-food').checked = false;
-            document.getElementById('event-is-important').checked = false;
+            const customEvents = JSON.parse(localStorage.getItem('v3_custom_events') || '{}');
+            if (!customEvents[day]) customEvents[day] = [];
+            customEvents[day].push(newEv);
+
+            localStorage.setItem('v3_custom_events', JSON.stringify(customEvents));
             closeAddEventModal();
 
-            if (parseInt(day) === currentDay) {
-                renderItinerary(currentDay);
+            if (parseInt(day) === currentDayV3) {
+                renderItineraryV3();
+            } else {
+                switchDayV3(parseInt(day));
             }
         }
 
+        function deleteCustomEvent(idx) {
+            const customEvents = JSON.parse(localStorage.getItem('v3_custom_events') || '{}');
+            if (customEvents[currentDayV3]) {
+                customEvents[currentDayV3].splice(idx, 1);
+                localStorage.setItem('v3_custom_events', JSON.stringify(customEvents));
+                renderItineraryV3();
+            }
+        }
+
+        // Wallet & Calculator
+        let calcExpr = "";
+
         function saveRate() {
             const rate = document.getElementById('exchange-rate-input').value;
-            localStorage.setItem('exchange_rate', rate);
-            updateCalcResult();
+            localStorage.setItem('v3_exchange_rate', rate);
+            updateCalcTwd();
+            renderExpenses();
+        }
+
+        function loadRate() {
+            const rate = localStorage.getItem('v3_exchange_rate') || '0.215';
+            document.getElementById('exchange-rate-input').value = rate;
         }
 
         function pressCalc(val) {
             const display = document.getElementById('calc-display');
+            
             if (val === 'C') {
-                display.value = '';
+                calcExpr = "";
             } else if (val === '=') {
                 try {
-                    display.value = eval(display.value.replace(/[^0-9+\-*/.]/g, '')) || '';
-                } catch (e) {
-                    display.value = 'Error';
+                    if (calcExpr) {
+                        calcExpr = eval(calcExpr).toString();
+                    }
+                } catch(e) {
+                    calcExpr = "Error";
                 }
             } else {
-                display.value += val;
+                if (calcExpr === "Error") calcExpr = "";
+                calcExpr += val;
             }
-            updateCalcResult();
+
+            display.value = calcExpr;
+            updateCalcTwd();
         }
 
-        function updateCalcResult() {
-            const displayVal = document.getElementById('calc-display').value;
+        function updateCalcTwd() {
             const rate = parseFloat(document.getElementById('exchange-rate-input').value) || 0.215;
+            let val = 0;
             try {
-                const jpy = eval(displayVal.replace(/[^0-9+\-*/.]/g, '')) || 0;
-                const twd = Math.round(jpy * rate);
-                document.getElementById('calc-twd-result').innerText = twd.toLocaleString();
-            } catch (e) {
-                document.getElementById('calc-twd-result').innerText = '0';
+                val = eval(calcExpr) || 0;
+            } catch(e) {
+                val = 0;
             }
+            const twd = Math.round(val * rate);
+            document.getElementById('calc-twd-result').innerText = twd.toLocaleString();
         }
 
         function handlePhotoUpload(event) {
@@ -998,109 +1618,92 @@
 
             const reader = new FileReader();
             reader.onload = function(e) {
-                const img = new Image();
-                img.onload = function() {
-                    const canvas = document.createElement('canvas');
-                    const ctx = canvas.getContext('2d');
-                    const maxDim = 300;
-                    let width = img.width;
-                    let height = img.height;
-
-                    if (width > height) {
-                        if (width > maxDim) {
-                            height = Math.round((height * maxDim) / width);
-                            width = maxDim;
-                        }
-                    } else {
-                        if (height > maxDim) {
-                            width = Math.round((width * maxDim) / height);
-                            height = maxDim;
-                        }
-                    }
-
-                    canvas.width = width;
-                    canvas.height = height;
-                    ctx.drawImage(img, 0, 0, width, height);
-
-                    compressedPhotoBase64 = canvas.toDataURL('image/jpeg', 0.6);
-                    document.getElementById('photo-preview').src = compressedPhotoBase64;
-                    document.getElementById('photo-preview-container').classList.remove('hidden');
-                    document.getElementById('photo-status').innerText = '已附加';
-                };
-                img.src = e.target.result;
+                selectedPhotoData = e.target.result;
+                document.getElementById('photo-preview').src = selectedPhotoData;
+                document.getElementById('photo-preview-container').classList.remove('hidden');
+                document.getElementById('photo-status').innerText = "已選取";
             };
             reader.readAsDataURL(file);
         }
 
         function clearPhoto() {
-            compressedPhotoBase64 = '';
-            document.getElementById('photo-preview').src = '';
+            selectedPhotoData = null;
+            document.getElementById('photo-preview').src = "";
             document.getElementById('photo-preview-container').classList.add('hidden');
-            document.getElementById('photo-status').innerText = '拍收據';
-            document.getElementById('expense-photo-input').value = '';
+            document.getElementById('photo-status').innerText = "拍收據";
+            document.getElementById('expense-photo-input').value = "";
         }
 
         function addExpense() {
-            const title = document.getElementById('expense-title').value.trim();
-            const jpy = parseFloat(document.getElementById('expense-amount').value);
+            const titleInput = document.getElementById('expense-title');
+            const amountInput = document.getElementById('expense-amount');
+
+            const title = titleInput.value.trim();
+            const amount = parseFloat(amountInput.value);
+
+            if (!title || isNaN(amount) || amount <= 0) return;
+
             const rate = parseFloat(document.getElementById('exchange-rate-input').value) || 0.215;
+            const twd = Math.round(amount * rate);
 
-            if (!title || isNaN(jpy)) return;
-
-            const twd = Math.round(jpy * rate);
-            const expense = {
+            const expenses = JSON.parse(localStorage.getItem('v3_expenses') || '[]');
+            expenses.unshift({
                 id: Date.now(),
                 title,
-                jpy,
+                jpy: amount,
                 twd,
-                photo: compressedPhotoBase64,
-                date: new Date().toLocaleDateString('zh-TW')
-            };
+                photo: selectedPhotoData
+            });
 
-            const expenses = JSON.parse(localStorage.getItem('expenses_list') || '[]');
-            expenses.unshift(expense);
-            localStorage.setItem('expenses_list', JSON.stringify(expenses));
+            localStorage.setItem('v3_expenses', JSON.stringify(expenses));
 
-            document.getElementById('expense-title').value = '';
-            document.getElementById('expense-amount').value = '';
+            titleInput.value = "";
+            amountInput.value = "";
             clearPhoto();
-
-            loadWalletData();
+            renderExpenses();
         }
 
         function deleteExpense(id) {
-            let expenses = JSON.parse(localStorage.getItem('expenses_list') || '[]');
-            expenses = expenses.filter(item => item.id !== id);
-            localStorage.setItem('expenses_list', JSON.stringify(expenses));
-            loadWalletData();
+            let expenses = JSON.parse(localStorage.getItem('v3_expenses') || '[]');
+            expenses = expenses.filter(e => e.id !== id);
+            localStorage.setItem('v3_expenses', JSON.stringify(expenses));
+            renderExpenses();
         }
 
-        function loadWalletData() {
-            const rate = localStorage.getItem('exchange_rate') || '0.215';
-            document.getElementById('exchange-rate-input').value = rate;
-
-            const expenses = JSON.parse(localStorage.getItem('expenses_list') || '[]');
+        function renderExpenses() {
             const container = document.getElementById('expense-list-container');
             container.innerHTML = '';
+
+            const expenses = JSON.parse(localStorage.getItem('v3_expenses') || '[]');
+            const rate = parseFloat(document.getElementById('exchange-rate-input').value) || 0.215;
 
             let totalTwd = 0;
 
             expenses.forEach(item => {
-                totalTwd += item.twd;
+                const twd = Math.round(item.jpy * rate);
+                totalTwd += twd;
+
                 const card = document.createElement('div');
-                card.className = "flex items-center justify-between bg-pastelPink-50/40 p-2 rounded-xl border border-pastelPink-100/50";
+                card.className = "flex items-center justify-between p-2.5 bg-slate-50 rounded-2xl border border-slate-100 text-xs";
+
+                let photoHtml = '';
+                if (item.photo) {
+                    photoHtml = `
+                        <img src="${item.photo}" onclick="openPhotoModal('${item.photo}')" class="w-9 h-9 rounded-lg object-cover border border-slate-200 cursor-pointer shrink-0 hover:opacity-80 transition" alt="收據">
+                    `;
+                }
 
                 card.innerHTML = `
-                    <div class="flex items-center gap-2">
-                        ${item.photo ? `<img src="${item.photo}" class="w-8 h-8 rounded-lg object-cover border border-pastelPink-200 shrink-0">` : `<div class="w-8 h-8 rounded-lg bg-pastelPink-100 text-pastelPink-400 flex items-center justify-center shrink-0 text-xs"><i class="fa-solid fa-bag-shopping"></i></div>`}
-                        <div>
-                            <span class="font-black text-xs text-slate-800 block">${item.title}</span>
+                    <div class="flex items-center gap-2.5 overflow-hidden">
+                        ${photoHtml}
+                        <div class="truncate">
+                            <span class="font-black text-slate-800 block truncate">${item.title}</span>
                             <span class="text-[9px] text-slate-400 font-bold">¥${item.jpy.toLocaleString()}</span>
                         </div>
                     </div>
-                    <div class="flex items-center gap-1.5">
-                        <span class="font-black text-xs text-pastelPink-600">NT$ ${item.twd.toLocaleString()}</span>
-                        <button onclick="deleteExpense(${item.id})" class="text-slate-300 hover:text-rose-500 p-1"><i class="fa-solid fa-trash-can text-xs"></i></button>
+                    <div class="flex items-center gap-2 shrink-0">
+                        <span class="font-black text-pastelPink-600 text-xs">NT$ ${twd.toLocaleString()}</span>
+                        <button onclick="deleteExpense(${item.id})" class="text-slate-300 hover:text-rose-500 p-1"><i class="fa-solid fa-trash-can"></i></button>
                     </div>
                 `;
                 container.appendChild(card);
@@ -1109,18 +1712,24 @@
             document.getElementById('expense-total-twd').innerText = totalTwd.toLocaleString();
         }
 
-        function exportData() {
-            const data = {
-                checklist: localStorage.getItem('checklist_state'),
-                memos: localStorage.getItem('memos_list'),
-                customItinerary: localStorage.getItem('custom_itinerary_events'),
-                expenses: localStorage.getItem('expenses_list'),
-                rate: localStorage.getItem('exchange_rate')
-            };
-            navigator.clipboard.writeText(JSON.stringify(data)).then(() => {
-                alert('資料已複製至剪貼簿！');
-            });
+        function openPhotoModal(imgSrc) {
+            document.getElementById('photo-modal-img').src = imgSrc;
+            document.getElementById('photo-modal').classList.remove('hidden');
         }
+
+        function closePhotoModal() {
+            document.getElementById('photo-modal').classList.add('hidden');
+        }
+
+        // Initialize App
+        window.addEventListener('DOMContentLoaded', () => {
+            initChecklistV3();
+            loadDocStateV3();
+            loadMemos();
+            switchDayV3(1);
+            loadRate();
+            renderExpenses();
+        });
     </script>
 </body>
 </html>
