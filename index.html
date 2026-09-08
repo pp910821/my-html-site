@@ -7,7 +7,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zen+MaruGothic:wght@400;500;700;900&display=swap" rel="stylesheet">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -18,7 +18,7 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['"Zen Maru Gothic"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                        sans: ['"Zen Maru Gothic"', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
                     },
                     colors: {
                         pastelPink: {
@@ -94,19 +94,8 @@
     <!-- MOBILE PHONE FRAME CONTAINER -->
     <div class="w-full h-full md:max-w-[412px] md:h-[844px] md:rounded-[48px] bg-pastelPink-50 flex flex-col overflow-hidden relative shadow-phoneFrame border-0 md:border-[6px] border-slate-800">
 
-        <!-- MOBILE STATUS BAR -->
-        <div class="bg-pastelPink-100/90 backdrop-blur-md px-6 pt-3 pb-1 flex justify-between items-center text-xs font-black text-slate-700 shrink-0 z-40">
-            <span>09:41</span>
-            <div class="w-24 h-4 bg-slate-800 rounded-full hidden md:block"></div>
-            <div class="flex items-center gap-1.5 text-[11px]">
-                <i class="fa-solid fa-signal"></i>
-                <i class="fa-solid fa-wifi"></i>
-                <i class="fa-solid fa-battery-full text-pastelPink-500"></i>
-            </div>
-        </div>
-
         <!-- APP HEADER -->
-        <header class="bg-gradient-to-r from-pastelPink-100 via-pastelPeach-100 to-pastelPink-100 px-4 py-3 border-b border-pastelPink-200/80 shadow-pastel shrink-0 flex items-center justify-between relative z-30">
+        <header class="bg-gradient-to-r from-pastelPink-100 via-pastelPeach-100 to-pastelPink-100 px-4 py-3 border-b border-pastelPink-200/80 shadow-pastel shrink-0 flex items-center justify-between relative z-30 pt-4">
             <div class="flex items-center gap-2">
                 <div class="w-9 h-9 bg-white rounded-2xl flex items-center justify-center shadow-pastel border border-pastelPink-200 shrink-0">
                     <span class="text-lg text-pastelPink-500 animate-spin" style="animation-duration: 10s;"><i class="fa-solid fa-umbrella-beach"></i></span>
@@ -831,9 +820,8 @@
                     <div class="flex justify-between items-center border-b border-dashed border-pastelPink-100 pb-2">
                         <div>
                             <h3 class="text-xs font-black text-slate-800">歷史明細</h3>
-                            <!-- 步驟說明  -->
                             <p class="text-[9px] text-slate-400 font-bold mt-0.5">
-                                <i class="fa-solid fa-3 mr-0.5"></i> 點擊縮圖開啟放大預覽
+                                <i class="fa-solid fa-circle-info mr-0.5"></i> 點擊縮圖開啟放大預覽
                             </p>
                         </div>
                         <div class="text-xs font-black text-pastelPink-500">
@@ -897,6 +885,15 @@
                     <input type="time" id="event-time" class="w-full bg-pastelPink-50 border border-pastelPink-100 rounded-lg px-2.5 py-1.5 text-xs">
                 </div>
                 <div>
+                    <label class="block font-bold text-slate-600 mb-0.5 text-[10px]">類別</label>
+                    <select id="event-category-select" class="w-full bg-pastelPink-50 border border-pastelPink-100 rounded-lg px-2.5 py-1.5 text-xs">
+                        <option value="itinerary">行程 (藍綠框)</option>
+                        <option value="shopping">購物 (蜜桃粉框)</option>
+                        <option value="food">美食 (香檳橘框)</option>
+                        <option value="stay">住宿 (粉紫框)</option>
+                    </select>
+                </div>
+                <div>
                     <label class="block font-bold text-slate-600 mb-0.5 text-[10px]">名稱</label>
                     <input type="text" id="event-title" placeholder="景點或餐廳..." class="w-full bg-pastelPink-50 border border-pastelPink-100 rounded-lg px-2.5 py-1.5 text-xs">
                 </div>
@@ -905,10 +902,6 @@
                     <input type="text" id="event-note" placeholder="注意事項..." class="w-full bg-pastelPink-50 border border-pastelPink-100 rounded-lg px-2.5 py-1.5 text-xs">
                 </div>
                 <div class="space-y-1 pt-1">
-                    <label class="flex items-center gap-1.5 cursor-pointer">
-                        <input type="checkbox" id="event-is-food" class="rounded text-pastelPeach-500 accent-pastelPeach-500">
-                        <span class="font-black text-pastelPeach-600 text-[10px]">🍔 美食行程 (香檳蜜桃粉框)</span>
-                    </label>
                     <label class="flex items-center gap-1.5 cursor-pointer">
                         <input type="checkbox" id="event-is-important" class="rounded text-pastelPink-500 accent-pastelPink-500">
                         <span class="font-black text-rose-500 text-[10px]">標示為重要集合時間</span>
@@ -922,7 +915,7 @@
         </div>
     </div>
 
-    <!-- IMAGE PREVIEW MODAL (收據放大預覽 Modal) -->
+    <!-- IMAGE PREVIEW MODAL -->
     <div id="photo-modal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-md z-50 hidden flex flex-col items-center justify-center p-4 cursor-pointer" onclick="closePhotoModal()">
         <div class="relative max-w-full max-h-full flex flex-col items-center justify-center" onclick="event.stopPropagation()">
             <img id="photo-modal-img" src="" class="max-w-full max-h-[80vh] rounded-2xl shadow-2xl object-contain border-2 border-white/20">
@@ -952,31 +945,31 @@
 
         const defaultItinerary = {
             1: [
-                { time: "15:00", title: "桃園機場 第二航廈集合辦理報到", note: "華航CI122 17:05起飛，請最晚於 15:00 前抵達櫃台辦理報到手續", important: true },
-                { time: "19:45", title: "抵達那霸機場 (OKA)", note: "辦理入境手續與提領行李" },
-                { time: "20:30", title: "沖繩行腳取車", note: "搭乘接駁車取車（SIENTA 7人座 x2）", important: true }
+                { time: "15:00", title: "桃園機場 第二航廈集合辦理報到", note: "華航CI122 17:05起飛，請最晚於 15:00 前抵達櫃台辦理報到手續", important: true, category: "itinerary" },
+                { time: "19:45", title: "抵達那霸機場 (OKA)", note: "辦理入境手續與提領行李", category: "itinerary" },
+                { time: "20:30", title: "沖繩行腳取車", note: "搭乘接駁車取車（SIENTA 7人座 x2）", important: true, category: "itinerary" }
             ],
             2: [
-                { time: "08:30", title: "Cape Maeda (真榮田岬 / 青之洞窟)", note: "營業時間 07:00-19:00 | 推薦預約浮潛/體驗潛水或觀景台眺望海景", address: "沖繩縣國頭郡恩納村前田469-1" },
-                { time: "12:00", title: "おんなの駅 なかゆくい市場 (產直市場)", note: "營業時間 10:00-19:00 | 必吃：琉品水果刨冰、沙翁、炸魚糕、海葡萄", address: "沖繩縣國頭郡恩納村中泊1656-9", isFood: true },
-                { time: "14:00", title: "琉球村", note: "營業時間 09:30-17:00 | 體驗：彩繪風獅爺、琉球服飾、琉球玻璃/珊瑚相框手作與太鼓表演", address: "沖繩縣國頭郡恩納村山田1130" },
-                { time: "16:30", title: "万座毛", note: "營業時間 08:00-20:00 (售票至19:00) | 觀賞象鼻岩石奇景與落日餘暉", address: "沖繩縣國頭郡恩納村恩納" },
-                { time: "18:00", title: "Okashigoten Onna Branch (御菓子御殿 恩納店)", note: "營業時間 09:00-18:00 | 首里城朱紅建築、紅芋塔DIY體驗、購買伴手禮與海景餐廳", address: "沖繩縣國頭郡恩納村瀨良垣100", isFood: true }
+                { time: "08:30", title: "Cape Maeda (真榮田岬 / 青之洞窟)", note: "營業時間 07:00-19:00 | 推薦預約浮潛/體驗潛水或觀景台眺望海景", address: "沖繩縣國頭郡恩納村前田469-1", category: "itinerary" },
+                { time: "12:00", title: "おんなの駅 なかゆくい市場 (產直市場)", note: "營業時間 10:00-19:00 | 必吃：琉品水果刨冰、沙翁、炸魚糕、海葡萄", address: "沖繩縣國頭郡恩納村中泊1656-9", category: "food" },
+                { time: "14:00", title: "琉球村", note: "營業時間 09:30-17:00 | 體驗：彩繪風獅爺、琉球服飾、琉球玻璃/珊瑚相框手作與太鼓表演", address: "沖繩縣國頭郡恩納村山田1130", category: "itinerary" },
+                { time: "16:30", title: "万座毛", note: "營業時間 08:00-20:00 (售票至19:00) | 觀賞象鼻岩石奇景與落日餘暉", address: "沖繩縣國頭郡恩納村恩納", category: "itinerary" },
+                { time: "18:00", title: "Okashigoten Onna Branch (御菓子御殿 恩納店)", note: "營業時間 09:00-18:00 | 首里城朱紅建築、紅芋塔DIY體驗、購買伴手禮與海景餐廳", address: "沖繩縣國頭郡恩納村瀨良垣100", category: "shopping" }
             ],
             3: [
-                { time: "09:00", title: "Bise-Fukugi Tree Road (備瀨福木林道)", note: "漫步天然綠色隧道，可徒步、租自行車或自費搭乘觀光水牛車", address: "沖繩縣國頭郡本部町備瀨" },
-                { time: "11:30", title: "Kishimoto Shokudo (岸本食堂)", note: "明治時代百年老店 | 必吃手工手打粗麵、木灰水湯頭燉三層肉與限量炊飯(Juciy)", address: "沖繩縣國頭郡本部町渡久地5", isFood: true },
-                { time: "14:00", title: "琉球美麗海水族館", note: "全亞洲最頂級水族館 | 15:00黑潮之海鯨鯊餵食秀 / 16:00海豚劇場免費秀 / 17:00黑潮探險", address: "沖繩縣國頭郡本部町石川424" },
+                { time: "09:00", title: "Bise-Fukugi Tree Road (備瀨福木林道)", note: "漫步天然綠色隧道，可徒步、租自行車或自費搭乘觀光水牛車", address: "沖繩縣國頭郡本部町備瀨", category: "itinerary" },
+                { time: "11:30", title: "Kishimoto Shokudo (岸本食堂)", note: "明治時代百年老店 | 必吃手工手打粗麵、木灰水湯頭燉三層肉與限量炊飯(Juciy)", address: "沖繩縣國頭郡本部町渡久地5", category: "food" },
+                { time: "14:00", title: "琉球美麗海水族館", note: "全亞洲最頂級水族館 | 15:00黑潮之海鯨鯊餵食秀 / 16:00海豚劇場免費秀 / 17:00黑潮探險", address: "沖繩縣國頭郡本部町石川424", category: "itinerary" },
                 { 
                     time: "17:30", 
                     title: "古宇利島 & 蝦蝦飯美景特輯 🍤", 
                     note: "點擊展開查看跨海大橋、KOURI SHRIMP 蝦蝦飯與心形岩詳情", 
-                    isFood: true,
+                    category: "food",
                     isAccordion: true,
                     subStores: [
-                        { name: "Kouri Big Bridge (古宇利大橋)", note: "全長約2公里跨海大橋，兩側為湛藍透亮海水與絕美橋頭觀景點", address: "沖繩縣國頭郡今歸仁村古宇利", isFood: false },
-                        { name: "KOURI SHRIMP 蝦蝦飯 (超人氣必吃美食)", note: "純白海景門市 | 招牌蒜香奶油蝦飯 (¥1,500)、辣味蝦飯 (¥1,600)、海陸雙拼 (¥2,280起)", address: "沖繩縣國頭郡今歸仁村古宇利 314", isFood: true },
-                        { name: "Heart Rock (心形岩)", note: "位於蒂努海灘，欣賞自然侵蝕天然心形岩石與絕美沙灘落日夕陽", address: "沖繩縣國頭郡今歸仁村古宇利2", isFood: false }
+                        { name: "Kouri Big Bridge (古宇利大橋)", note: "全長約2公里跨海大橋，兩側為湛藍透亮海水與絕美橋頭觀景點", address: "沖繩縣國頭郡今歸仁村古宇利", category: "itinerary" },
+                        { name: "KOURI SHRIMP 蝦蝦飯 (超人氣必吃美食)", note: "純白海景門市 | 招牌蒜香奶油蝦飯 (¥1,500)、辣味蝦飯 (¥1,600)、海陸雙拼 (¥2,280起)", address: "沖繩縣國頭郡今歸仁村古宇利 314", category: "food" },
+                        { name: "Heart Rock (心形岩)", note: "位於蒂努海灘，欣賞自然侵蝕天然心形岩石與絕美沙灘落日夕陽", address: "沖繩縣國頭郡今歸仁村古宇利2", category: "itinerary" }
                     ]
                 }
             ],
@@ -985,15 +978,30 @@
                     time: "10:00",
                     title: "🔑 ONNA8 退房提醒",
                     note: "上午 10:00 前完成退房，準備前往宜野灣地區。",
-                    important: true
+                    important: true,
+                    category: "stay"
                 },
-                { time: "09:00", title: "普天滿宮 & 鐘乳石洞", note: "參拜並至社務所免費申請參觀神秘鐘乳石洞；順遊58號國道宜野灣家具街美式二手雜貨", address: "沖繩縣宜野灣市普天間1-27-10" },
-                { time: "12:00", title: "Mexico (老字號塔可餅)", note: "必吃現炸自製酥脆餅皮塔可餅搭特製肉醬，亦可方便外帶", address: "沖繩縣宜野灣市伊佐3-1-3", isFood: true },
-                { time: "13:30", title: "Blue Seal Makiminato Honten (牧港本店)", note: "BLUE SEAL ICE PARK 體驗冰棒裝飾 DIY（需預約）", address: "沖繩縣浦添市牧港5-5-6", isFood: true },
-                { time: "15:00", title: "母嬰用品採購 (西松屋 / Birthday)", note: "西松屋 宜野灣店 (快速補給尿布/濕紙巾/童裝) 或 Birthday 港川店", address: "沖繩縣宜野灣市宇地泊" },
-                { time: "17:00", title: "Tropical Beach (熱帶海灘)", note: "海濱沙灘漫步賞夕陽，木棧道推嬰兒車散步極方便", address: "沖繩縣宜野灣市真志喜4-2-1" },
-                { time: "18:00", title: "Kakazu Takadai Park (嘉數高台公園)", note: "登頂展望台俯瞰普天間美軍基地全景與城市夜景", address: "沖繩縣宜野灣市嘉數1-5" },
-                { time: "19:00", title: "Ginowan Yui Marche (宜野灣結市集)", note: "在地漁港海鮮饗宴與農夫市集", address: "沖繩縣宜野灣市大山7-1350-81", isFood: true }
+                { time: "09:00", title: "普天滿宮 & 鐘乳石洞", note: "參拜並至社務所免費申請參觀神秘鐘乳石洞；順遊58號國道宜野灣家具街美式二手雜貨", address: "沖繩縣宜野灣市普天間1-27-10", category: "itinerary" },
+                { time: "12:00", title: "Mexico (老字號塔可餅)", note: "必吃現炸自製酥脆餅皮塔可餅搭特製肉醬，亦可方便外帶", address: "沖繩縣宜野灣市伊佐3-1-3", category: "food" },
+                { time: "13:30", title: "Blue Seal Makiminato Honten (牧港本店)", note: "BLUE SEAL ICE PARK 體驗冰棒裝飾 DIY（需預約）", address: "沖繩縣浦添市牧港5-5-6", category: "food" },
+                { time: "15:00", title: "母嬰用品採購 (西松屋 / Birthday)", note: "西松屋 宜野灣店 (快速補給尿布/濕紙巾/童裝) 或 Birthday 港川店", address: "沖繩縣宜野灣市宇地泊", category: "shopping" },
+                { time: "17:00", title: "Tropical Beach (熱帶海灘)", note: "海濱沙灘漫步賞夕陽，木棧道推嬰兒車散步極方便", address: "沖繩縣宜野灣市真志喜4-2-1", category: "itinerary" },
+                { time: "18:00", title: "Kakazu Takadai Park (嘉數高台公園)", note: "登頂展望台俯瞰普天間美軍基地全景與城市夜景", address: "沖繩縣宜野灣市嘉數1-5", category: "itinerary" },
+                { time: "19:00", title: "Ginowan Yui Marche (宜野灣結市集)", note: "在地漁港海鮮饗宴與農夫市集", address: "沖繩縣宜野灣市大山7-1350-81", category: "food" },
+                { 
+                    time: "20:30", 
+                    title: "唐吉訶德 那霸壺川店", 
+                    note: "營業時間：08:00 – 03:00\n折價卷：https://japanportal.donki-global.com/coupon/cp001_zhtw.html", 
+                    address: "3-chōme-2番地1 Tsubogawa, Naha, Okinawa 900-0025日本", 
+                    category: "shopping" 
+                },
+                { 
+                    time: "21:30", 
+                    title: "壺川 久兵衛", 
+                    note: "電話：098-831-9811 | 可預訂：可以\n營業時間：週一/二/四/日 17:00 - 23:20、週五/六 17:00 - 00:20 (週三公休)", 
+                    address: "沖縄県那覇市壺川2-9-7", 
+                    category: "food" 
+                }
             ],
             5: [
                 {
@@ -1001,7 +1009,7 @@
                     title: "Costco好市多瘋狂採購 🛒",
                     note: "掃貨日本限定零食、藥妝、伴手禮及人氣必買商品",
                     address: "沖繩縣南城市つきしろ1000",
-                    isCostco: true,
+                    category: "shopping",
                     isAccordion: true,
                     costcoProducts: [
                         { name: "1. 叙敘苑燒肉醬（超強白飯殺手）", note: "日本超紅高級燒肉店「叙々苑」經典商品。口味偏甜，非重鹹派更愛，開封後需冷藏。" },
@@ -1013,21 +1021,21 @@
                         { name: "7. 日本和牛", note: "住有廚房民宿/公寓飯店必買！價格比餐廳便宜許多、油花漂亮品質穩定。" }
                     ]
                 },
-                { time: "12:30", title: "Costco 美食廣場午餐", note: "品嚐好市多高 CP 值熱狗、披薩或北海道鮮奶冰淇淋", address: "沖繩縣南城市つきしろ1000", isFood: true },
-                { time: "13:30", title: "知念岬公園 或 齋場御嶽", note: "欣賞太平洋絕美海景或造訪世界文化遺產，車程僅約 10-15 分鐘", address: "沖繩縣南城市知念久手堅" },
+                { time: "12:30", title: "Costco 美食廣場午餐", note: "品嚐好市多高 CP 值熱狗、披薩或北海道鮮奶冰淇淋", address: "沖繩縣南城市つきしろ1000", category: "food" },
+                { time: "13:30", title: "知念岬公園 或 齋場御嶽", note: "欣賞太平洋絕美海景或造訪世界文化遺產，車程僅約 10-15 分鐘", address: "沖繩縣南城市知念久手堅", category: "itinerary" },
                 { 
                     time: "15:30", 
                     title: "瀨長島 Umikaji Terrace 美食特輯 🍧", 
                     note: "點擊展開查看 6 間精選名店與海景餐廳", 
-                    isFood: true,
+                    category: "food",
                     isAccordion: true,
                     subStores: [
-                        { name: "47 Store & 免費龍神之湯足湯", note: "位置：32號店 (10:00-21:00) | 彙集全日本47都道府縣伴手禮，附設免費足湯放鬆身心", address: "Umikaji Terrace 1號店", isFood: false },
-                        { name: "幸福鬆餅 (A Happy Pancake)", note: "位置：32號店 (11:00-21:00) | ⚠️已取消線上預約，需現場排隊！極致海景舒芙蕾，建議開門卡位或傍晚享用", address: "Umikaji Terrace 32號店", isFood: true },
-                        { name: "Taco Rice Cafe Kijimuna 塔可飯", note: "位置：28號店 (幸福鬆餅正下方) | 必吃歐姆蛋塔可飯，加綠哈瓦那辣椒醬（Green Habanero）風味絕佳", address: "Umikaji Terrace 28號店", isFood: true },
-                        { name: "吊床餐廳 Hammock Cafe La Isla", note: "位置：27號店 (11:00-21:00) | IG爆紅渡假風格，躺戶外吊床吹海風品嚐墨西哥料理與水果茶", address: "Umikaji Terrace 27號店", isFood: true },
-                        { name: "Flooding Burger Chimfugas 氾濫漢堡", note: "位置：4號店 (11:00-21:00) | 真材實料巨無霸美式漢堡，大份量美味滿足挑戰者", address: "Umikaji Terrace 4號店", isFood: true },
-                        { name: "POSILLIPO 海景餐廳", note: "地址：豐見城市瀨長174-5 (11:30-22:00) | Tabelog高分義大利餐廳，三面環海極致浪漫，午間套餐約1,600日圓起（室內官網預約/戶外電話預約）", address: "沖繩縣豊見城市瀨長174-5", isFood: true }
+                        { name: "47 Store & 免費龍神之湯足湯", note: "位置：32號店 (10:00-21:00) | 彙集全日本47都道府縣伴手禮，附設免費足湯放鬆身心", address: "Umikaji Terrace 1號店", category: "shopping" },
+                        { name: "幸福鬆餅 (A Happy Pancake)", note: "位置：32號店 (11:00-21:00) | ⚠️已取消線上預約，需現場排隊！極致海景舒芙蕾，建議開門卡位或傍晚享用", address: "Umikaji Terrace 32號店", category: "food" },
+                        { name: "Taco Rice Cafe Kijimuna 塔可飯", note: "位置：28號店 (幸福鬆餅正下方) | 必吃歐姆蛋塔可飯，加綠哈瓦那辣椒醬（Green Habanero）風味絕佳", address: "Umikaji Terrace 28號店", category: "food" },
+                        { name: "吊床餐廳 Hammock Cafe La Isla", note: "位置：27號店 (11:00-21:00) | IG爆紅渡假風格，躺戶外吊床吹海風品嚐墨西哥料理與水果茶", address: "Umikaji Terrace 27號店", category: "food" },
+                        { name: "Flooding Burger Chimfugas 氾濫漢堡", note: "位置：4號店 (11:00-21:00) | 真材實料巨無霸美式漢堡，大份量美味滿足挑戰者", address: "Umikaji Terrace 4號店", category: "food" },
+                        { name: "POSILLIPO 海景餐廳", note: "地址：豐見城市瀨長174-5 (11:30-22:00) | Tabelog高分義大利餐廳，三面環海極致浪漫，午間套餐約1,600日圓起（室內官網預約/戶外電話預約）", address: "沖繩縣豊見城市瀨長174-5", category: "food" }
                     ]
                 }
             ],
@@ -1036,13 +1044,14 @@
                     time: "10:00",
                     title: "🔑 Rizozaisen Hotel 退房提醒",
                     note: "上午 10:00 前完成退房。",
-                    important: true
+                    important: true,
+                    category: "stay"
                 },
-                { time: "10:30", title: "國際通商圈購物 & 伴手禮採買", note: "漫步國際通，採購沖繩伴手禮與享用當地美食料理", address: "沖繩縣那霸市國際通" },
-                { time: "14:00", title: "Ashibinaa 沖繩平價精品 Outlets", note: "搭機前最後血拼採購，離那霸機場約15分鐘車程", address: "沖繩縣豐見城市文章5-1" },
-                { time: "18:00", title: "還車 (沖繩行腳)", note: "最晚 18:00 前還車，並由租車公司安排接駁車前往那霸機場 T1 航廈", important: true },
-                { time: "18:30", title: "那霸機場 第一航廈報到", note: "辦理華航 CI 123 報到與行李託運手續，享用機場晚餐", important: true },
-                { time: "20:55", title: "搭乘華航 CI 123 班機返回台灣", note: "預計 21:30 抵達桃園國際機場 T1 航廈" }
+                { time: "10:30", title: "國際通商圈購物 & 伴手禮採買", note: "漫步國際通，採購沖繩伴手禮與享用當地美食料理", address: "沖繩縣那霸市國際通", category: "shopping" },
+                { time: "14:00", title: "Ashibinaa 沖繩平價精品 Outlets", note: "搭機前最後血拼採購，離那霸機場約15分鐘車程", address: "沖繩縣豐見城市文章5-1", category: "shopping" },
+                { time: "18:00", title: "還車 (沖繩行腳)", note: "最晚 18:00 前還車，並由租車公司安排接駁車前往那霸機場 T1 航廈", important: true, category: "itinerary" },
+                { time: "18:30", title: "那霸機場 第一航廈報到", note: "辦理華航 CI 123 報到與行李託運手續，享用機場晚餐", important: true, category: "itinerary" },
+                { time: "20:55", title: "搭乘華航 CI 123 班機返回台灣", note: "預計 21:30 抵達桃園國際機場 T1 航廈", category: "itinerary" }
             ]
         };
 
@@ -1130,6 +1139,49 @@
 
         let currentDayV3 = 1;
         let selectedPhotoData = null;
+
+        // Category style helper function
+        function getCategoryStyle(cat) {
+            switch(cat) {
+                case 'shopping':
+                    return {
+                        bg: 'bg-pastelPeach-50/90',
+                        border: 'border-pastelPeach-300',
+                        badgeBg: 'bg-pastelPeach-100',
+                        badgeText: 'text-pastelPeach-600',
+                        label: '購物',
+                        icon: 'fa-bag-shopping'
+                    };
+                case 'food':
+                    return {
+                        bg: 'bg-amber-50/90',
+                        border: 'border-amber-300',
+                        badgeBg: 'bg-amber-100',
+                        badgeText: 'text-amber-700',
+                        label: '美食',
+                        icon: 'fa-utensils'
+                    };
+                case 'stay':
+                    return {
+                        bg: 'bg-pastelPurple-50/90',
+                        border: 'border-pastelPurple-300',
+                        badgeBg: 'bg-pastelPurple-100',
+                        badgeText: 'text-pastelPurple-600',
+                        label: '住宿',
+                        icon: 'fa-hotel'
+                    };
+                case 'itinerary':
+                default:
+                    return {
+                        bg: 'bg-pastelBlue-50/90',
+                        border: 'border-pastelBlue-300',
+                        badgeBg: 'bg-pastelBlue-100',
+                        badgeText: 'text-pastelBlue-600',
+                        label: '行程',
+                        icon: 'fa-compass'
+                    };
+            }
+        }
 
         // Navigation
         function switchTab(tabId) {
@@ -1229,8 +1281,8 @@
             defaultChecklist.forEach((cat, cIdx) => {
                 cat.items.forEach((item, iIdx) => {
                     const key = `c_${cIdx}_${iIdx}`;
-                    if (savedStates[key]) count++;
                     total++;
+                    if (savedStates[key]) count++;
                 });
             });
 
@@ -1238,12 +1290,16 @@
         }
 
         function updateProgressDisplayV3(count, total) {
-            document.getElementById('v3-checklist-count-display').innerText = `${count}/${total}`;
-            const pct = total > 0 ? Math.round((count / total) * 100) : 0;
-            document.getElementById('v3-checklist-progress-bar').style.width = `${pct}%`;
+            const countDisplay = document.getElementById('v3-checklist-count-display');
+            const progressBar = document.getElementById('v3-checklist-progress-bar');
+            if (countDisplay) countDisplay.innerText = `${count}/${total}`;
+            if (progressBar) {
+                const pct = total > 0 ? Math.round((count / total) * 100) : 0;
+                progressBar.style.width = `${pct}%`;
+            }
         }
 
-        // Document Checkboxes
+        // Documents state logic
         function saveDocStateV3() {
             const docs = ['v3-doc-idcard', 'v3-doc-passport', 'v3-doc-license', 'v3-doc-translation'];
             let states = {};
@@ -1262,49 +1318,7 @@
             });
         }
 
-        // Memos
-        function loadMemos() {
-            const memos = JSON.parse(localStorage.getItem('v3_memos') || '[]');
-            const list = document.getElementById('memo-list');
-            list.innerHTML = '';
-            
-            memos.forEach((memo, idx) => {
-                const item = document.createElement('div');
-                item.className = "flex items-center justify-between p-2 bg-pastelPink-50/60 rounded-xl border border-pastelPink-100 text-xs font-bold text-slate-700";
-                
-                let textHtml = memo;
-                if (memo.startsWith('http://') || memo.startsWith('https://')) {
-                    textHtml = `<a href="${memo}" target="_blank" class="text-pastelPink-500 underline font-black break-all">${memo}</a>`;
-                }
-
-                item.innerHTML = `
-                    <div class="flex-1 pr-2">${textHtml}</div>
-                    <button onclick="deleteMemo(${idx})" class="text-slate-400 hover:text-rose-500 p-1"><i class="fa-solid fa-trash-can"></i></button>
-                `;
-                list.appendChild(item);
-            });
-        }
-
-        function addMemo() {
-            const input = document.getElementById('memo-input');
-            const val = input.value.trim();
-            if (!val) return;
-            
-            const memos = JSON.parse(localStorage.getItem('v3_memos') || '[]');
-            memos.push(val);
-            localStorage.setItem('v3_memos', JSON.stringify(memos));
-            input.value = '';
-            loadMemos();
-        }
-
-        function deleteMemo(idx) {
-            const memos = JSON.parse(localStorage.getItem('v3_memos') || '[]');
-            memos.splice(idx, 1);
-            localStorage.setItem('v3_memos', JSON.stringify(memos));
-            loadMemos();
-        }
-
-        // Itinerary
+        // Itinerary V3 Logic
         function switchDayV3(dayNum) {
             currentDayV3 = dayNum;
             document.querySelectorAll('.v3-day-tab').forEach((btn, idx) => {
@@ -1315,323 +1329,266 @@
                 }
             });
 
-            renderItineraryV3();
+            renderItineraryTimelineV3();
         }
 
-        function renderHotelCardHtml(hotel) {
-            let roomInfoHtml = '';
-            if (hotel.roomInfo && hotel.roomInfo.length > 0) {
-                const listItems = hotel.roomInfo.map(info => `<li class="flex items-center gap-1.5"><span class="text-pastelPink-500">•</span><span>${info}</span></li>`).join('');
-                roomInfoHtml = `
-                    <div class="bg-pastelPink-50/70 p-2.5 rounded-2xl border border-pastelPink-100/70 space-y-1">
-                        <p class="text-slate-800 font-black text-[11px]"><i class="fa-solid fa-bed text-pastelPink-500 mr-1"></i> 房型與床舖配置</p>
-                        <ul class="space-y-0.5 text-[10px] text-slate-600 font-bold">${listItems}</ul>
-                    </div>
-                `;
-            }
-
-            let surroundingsHtml = '';
-            if (hotel.surroundings && hotel.surroundings.length > 0) {
-                const categoryBlocks = hotel.surroundings.map(cat => {
-                    const catItems = cat.items.map(item => `<li>${item}</li>`).join('');
-                    return `
-                        <div class="space-y-0.5">
-                            <span class="text-slate-800 font-black text-[10px] block">${cat.category}</span>
-                            <ul class="list-disc list-inside text-slate-600 text-[10px] font-bold space-y-0.5 pl-1">${catItems}</ul>
-                        </div>
-                    `;
-                }).join('');
-
-                surroundingsHtml = `
-                    <div class="bg-emerald-50/60 p-2.5 rounded-2xl border border-emerald-100 space-y-1.5">
-                        <p class="text-emerald-800 font-black text-[11px]"><i class="fa-solid fa-compass text-emerald-500 mr-1"></i> 周邊景點與設施</p>
-                        <div class="space-y-2">${categoryBlocks}</div>
-                    </div>
-                `;
-            }
-
-            let buildingGuideBtn = '';
-            if (hotel.buildingGuideUrl) {
-                buildingGuideBtn = `
-                    <a href="${hotel.buildingGuideUrl}" target="_blank" class="flex-1 bg-amber-500 hover:bg-amber-600 text-white font-black py-2 rounded-xl text-[10px] text-center shadow-sm transition active:scale-95">
-                        <i class="fa-solid fa-key mr-1"></i> 入館指南 / 自助入住
-                    </a>
-                `;
-            }
-
-            const accordionId = `hotel-acc-${currentDayV3}`;
-            const accordionIconId = `hotel-acc-icon-${currentDayV3}`;
-
-            return `
-                <div class="bg-gradient-to-br from-pastelPink-50 to-white rounded-3xl border-2 border-pastelPink-200 p-4 shadow-pastel space-y-3 relative overflow-hidden">
-                    <div class="flex justify-between items-start border-b border-pastelPink-100 pb-2">
-                        <div>
-                            <span class="bg-pastelPink-100 text-pastelPink-600 text-[9px] font-black px-2 py-0.5 rounded-md inline-block mb-1">
-                                <i class="fa-solid fa-hotel mr-1"></i> 住宿資訊
-                            </span>
-                            <h3 class="text-xs font-black text-slate-800">${hotel.title}</h3>
-                        </div>
-                    </div>
-
-                    <p class="text-[11px] text-slate-600 font-bold leading-relaxed whitespace-pre-line">${hotel.note}</p>
-
-                    <div onclick="toggleAccordion('${accordionId}')" class="py-2 px-3 bg-pastelPink-100/80 hover:bg-pastelPink-100 rounded-2xl text-pastelPink-600 text-[10px] font-black flex items-center justify-between cursor-pointer transition">
-                        <span><i class="fa-solid fa-circle-info mr-1"></i> 點擊展開查看【房型細節】與【週邊生活圈】</span>
-                        <i id="${accordionIconId}" class="fa-solid fa-chevron-down transition-transform duration-300"></i>
-                    </div>
-
-                    <div id="${accordionId}" class="hidden space-y-2.5 pt-1">
-                        ${roomInfoHtml}
-                        ${surroundingsHtml}
-                    </div>
-
-                    <div class="flex gap-2 pt-1">
-                        <a href="${hotel.mapUrl}" target="_blank" class="flex-1 bg-pastelPink-500 hover:bg-pastelPink-600 text-white font-black py-2 rounded-xl text-[10px] text-center shadow-pastel transition active:scale-95">
-                            <i class="fa-solid fa-map-pin mr-1"></i> Google 地圖導航
-                        </a>
-                        ${buildingGuideBtn}
-                    </div>
-                </div>
-            `;
+        function getCustomEventsV3() {
+            return JSON.parse(localStorage.getItem('v3_custom_events') || '{}');
         }
 
-        function renderItineraryV3() {
+        function renderItineraryTimelineV3() {
             const container = document.getElementById('itinerary-timeline-container');
             container.innerHTML = '';
 
-            const customEvents = JSON.parse(localStorage.getItem('v3_custom_events') || '{}');
-            const dayCustoms = customEvents[currentDayV3] || [];
-            const baseEvents = defaultItinerary[currentDayV3] || [];
+            let defaultList = defaultItinerary[currentDayV3] || [];
+            let customEvents = getCustomEventsV3()[currentDayV3] || [];
 
-            const allEvents = [...baseEvents, ...dayCustoms];
+            let allEvents = [...defaultList, ...customEvents];
+            allEvents.sort((a, b) => (a.time || "00:00").localeCompare(b.time || "00:00"));
 
-            allEvents.forEach((ev, idx) => {
-                const card = document.createElement('div');
+            // Hotel Info Banner if available for current day
+            const hotel = hotelInfoMap[currentDayV3];
+            if (hotel) {
+                const hotelCard = document.createElement('div');
+                hotelCard.className = "bg-white rounded-3xl border border-pastelPurple-200 p-4 shadow-pastel space-y-2 mb-4 relative overflow-hidden";
                 
-                let borderStyle = "border-pastelPink-100";
-                let badgeBg = "bg-pastelPink-100 text-pastelPink-600";
-                
-                if (ev.important) {
-                    borderStyle = "border-rose-300 bg-rose-50/30";
-                    badgeBg = "bg-rose-500 text-white";
-                } else if (ev.isFood) {
-                    borderStyle = "border-pastelPeach-200 bg-pastelPeach-50/20";
-                    badgeBg = "bg-pastelPeach-100 text-pastelPeach-600";
-                }
+                let extraHotelContent = '';
 
-                let subStoresHtml = '';
-                if (ev.isAccordion && ev.subStores) {
-                    const accId = `acc-store-${currentDayV3}-${idx}`;
-                    const accIconId = `acc-icon-store-${currentDayV3}-${idx}`;
-                    
-                    const storesList = ev.subStores.map(sub => `
-                        <div class="bg-slate-50 p-2.5 rounded-2xl border border-slate-100 space-y-1">
-                            <div class="flex justify-between items-center">
-                                <span class="font-black text-slate-800 text-[11px]">${sub.name}</span>
-                                ${sub.isFood ? '<span class="text-[8px] bg-pastelPeach-100 text-pastelPeach-600 font-bold px-1.5 py-0.5 rounded">美食</span>' : ''}
+                if (hotel.hotelType === 'onna') {
+                    let roomItemsHtml = hotel.roomInfo.map(r => `<li class="text-[10px] text-slate-600 font-bold">• ${r}</li>`).join('');
+                    let surroundingsHtml = hotel.surroundings.map(s => `
+                        <div class="space-y-0.5">
+                            <span class="font-black text-pastelPurple-600 text-[10px]">${s.category}</span>
+                            <p class="text-[9px] text-slate-600 font-bold">${s.items.join(' / ')}</p>
+                        </div>
+                    `).join('');
+
+                    extraHotelContent = `
+                        <div onclick="toggleAccordion('hotel-details-${currentDayV3}')" class="mt-2 py-1.5 px-3 bg-pastelPurple-100/70 hover:bg-pastelPurple-100 rounded-xl text-pastelPurple-600 text-[10px] font-black flex items-center justify-between cursor-pointer transition">
+                            <span><i class="fa-solid fa-bed mr-1"></i> 查看房型格局與周邊設施設施</span>
+                            <i id="accordion-icon-hotel-details-${currentDayV3}" class="fa-solid fa-chevron-down transition-transform duration-300"></i>
+                        </div>
+                        <div id="accordion-content-hotel-details-${currentDayV3}" class="hidden space-y-2 pt-2 border-t border-dashed border-pastelPurple-100 mt-2">
+                            <div class="bg-pastelPurple-50/60 p-2.5 rounded-2xl border border-pastelPurple-100 space-y-1">
+                                <p class="text-xs font-black text-slate-800"><i class="fa-solid fa-door-open text-pastelPurple-500 mr-1"></i> 房間格局配置</p>
+                                <ul class="space-y-0.5">${roomItemsHtml}</ul>
                             </div>
-                            <p class="text-[10px] text-slate-500 font-bold leading-tight">${sub.note}</p>
-                            ${sub.address ? `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(sub.address)}" target="_blank" class="inline-block text-[9px] font-bold text-pastelPink-500 hover:underline pt-0.5"><i class="fa-solid fa-map-pin mr-0.5"></i> 地圖導航</a>` : ''}
-                        </div>
-                    `).join('');
-
-                    subStoresHtml = `
-                        <div onclick="toggleAccordion('${accId}')" class="mt-2 py-1.5 px-3 bg-pastelPink-100/80 hover:bg-pastelPink-100 rounded-xl text-pastelPink-600 text-[10px] font-black flex items-center justify-between cursor-pointer transition">
-                            <span><i class="fa-solid fa-store mr-1"></i> 點擊展開精選店家與景點詳情</span>
-                            <i id="${accIconId}" class="fa-solid fa-chevron-down transition-transform duration-300"></i>
-                        </div>
-                        <div id="${accId}" class="hidden space-y-2 pt-2">
-                            ${storesList}
+                            <div class="bg-purple-50/60 p-2.5 rounded-2xl border border-purple-100 space-y-1.5">
+                                <p class="text-xs font-black text-slate-800"><i class="fa-solid fa-compass text-purple-500 mr-1"></i> 鄰近設施與景點</p>
+                                <div class="grid grid-cols-1 gap-1.5">${surroundingsHtml}</div>
+                            </div>
                         </div>
                     `;
-                }
-
-                let costcoHtml = '';
-                if (ev.isCostco && ev.costcoProducts) {
-                    const accId = `acc-costco-${currentDayV3}-${idx}`;
-                    const accIconId = `acc-icon-costco-${currentDayV3}-${idx}`;
-
-                    const productsList = ev.costcoProducts.map(prod => `
-                        <div class="bg-amber-50/60 p-2.5 rounded-2xl border border-amber-100 space-y-0.5">
-                            <span class="font-black text-amber-900 text-[11px] block">${prod.name}</span>
-                            <p class="text-[10px] text-slate-600 font-bold leading-tight">${prod.note}</p>
-                        </div>
-                    `).join('');
-
-                    costcoHtml = `
-                        <div onclick="toggleAccordion('${accId}')" class="mt-2 py-1.5 px-3 bg-amber-100/80 hover:bg-amber-100 rounded-xl text-amber-800 text-[10px] font-black flex items-center justify-between cursor-pointer transition">
-                            <span><i class="fa-solid fa-basket-shopping mr-1"></i> 點擊查看【Costco 沖繩必買推薦清單】</span>
-                            <i id="${accIconId}" class="fa-solid fa-chevron-down transition-transform duration-300"></i>
-                        </div>
-                        <div id="${accId}" class="hidden space-y-2 pt-2">
-                            ${productsList}
-                        </div>
-                    `;
-                }
-
-                card.className = `bg-white rounded-3xl border ${borderStyle} p-4 shadow-pastel space-y-2 relative`;
-                card.innerHTML = `
-                    <div class="flex justify-between items-start">
-                        <span class="${badgeBg} text-[10px] font-black px-2 py-0.5 rounded-lg">
-                            <i class="fa-regular fa-clock mr-1"></i>${ev.time}
-                        </span>
-                        ${ev.isCustom ? `<button onclick="deleteCustomEvent(${idx})" class="text-slate-300 hover:text-rose-500 text-xs"><i class="fa-solid fa-trash-can"></i></button>` : ''}
-                    </div>
-                    <h3 class="text-xs font-black text-slate-800 leading-snug">${ev.title}</h3>
-                    ${ev.note ? `<p class="text-[10px] font-bold text-slate-500 leading-relaxed whitespace-pre-line">${ev.note}</p>` : ''}
-                    ${subStoresHtml}
-                    ${costcoHtml}
-                    ${ev.address ? `
-                        <div class="pt-1">
-                            <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ev.address)}" target="_blank" class="inline-flex items-center text-[9px] font-bold text-pastelPink-500 hover:underline">
-                                <i class="fa-solid fa-location-dot mr-1"></i> Google 地圖導航
+                } else if (hotel.hotelType === 'rizozaisen') {
+                    extraHotelContent = `
+                        <div class="pt-1 flex gap-2">
+                            <a href="${hotel.buildingGuideUrl}" target="_blank" class="flex-1 bg-pastelPurple-500 text-white text-[10px] font-black py-2 rounded-xl text-center shadow-pastel hover:bg-pastelPurple-600 active:scale-95 transition">
+                                <i class="fa-solid fa-book-open mr-1"></i> 入住與大樓導覽手冊
                             </a>
                         </div>
-                    ` : ''}
+                    `;
+                }
+
+                hotelCard.innerHTML = `
+                    <div class="flex justify-between items-start">
+                        <h4 class="text-xs font-black text-pastelPurple-700">${hotel.title}</h4>
+                        <span class="text-[9px] bg-pastelPurple-100 text-pastelPurple-600 font-bold px-2 py-0.5 rounded-lg">住宿飯店</span>
+                    </div>
+                    <p class="text-[10px] text-slate-600 font-bold whitespace-pre-line leading-relaxed">${hotel.note}</p>
+                    <div class="pt-1 flex gap-2">
+                        <a href="${hotel.mapUrl}" target="_blank" class="flex-1 bg-pastelPurple-100 text-pastelPurple-700 hover:bg-pastelPurple-200 text-[10px] font-black py-1.5 rounded-xl text-center transition">
+                            <i class="fa-solid fa-map-pin mr-1"></i> Google Map 導航
+                        </a>
+                    </div>
+                    ${extraHotelContent}
+                `;
+                container.appendChild(hotelCard);
+            }
+
+            allEvents.forEach((ev, idx) => {
+                const style = getCategoryStyle(ev.category);
+                const card = document.createElement('div');
+                card.className = `rounded-3xl border p-4 shadow-pastel space-y-2 relative overflow-hidden ${style.bg} ${style.border}`;
+
+                let importantBadge = ev.important ? `<span class="bg-rose-500 text-white font-black text-[9px] px-2 py-0.5 rounded-lg animate-pulse"><i class="fa-solid fa-triangle-exclamation mr-0.5"></i> 重要集合</span>` : '';
+                let addressHtml = ev.address ? `
+                    <div class="flex items-center gap-1 text-[10px] text-slate-500 font-bold pt-1">
+                        <i class="fa-solid fa-location-dot text-slate-400"></i>
+                        <span>${ev.address}</span>
+                        <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ev.address)}" target="_blank" class="text-pastelBlue-600 hover:underline font-black ml-1">導航</a>
+                    </div>
+                ` : '';
+
+                let subContentHtml = '';
+                if (ev.isAccordion && ev.subStores) {
+                    let subList = ev.subStores.map((sub, sIdx) => `
+                        <div class="bg-white/80 p-2.5 rounded-xl border border-slate-100 space-y-1">
+                            <div class="flex justify-between items-center">
+                                <span class="font-black text-xs text-slate-800">${sub.name}</span>
+                                <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(sub.address || sub.name)}" target="_blank" class="text-[9px] bg-pastelPink-100 text-pastelPink-600 px-1.5 py-0.5 rounded font-bold">導航</a>
+                            </div>
+                            <p class="text-[10px] text-slate-600 font-bold">${sub.note}</p>
+                        </div>
+                    `).join('');
+
+                    subContentHtml = `
+                        <div onclick="toggleAccordion('sub-event-${currentDayV3}-${idx}')" class="mt-2 py-1.5 px-3 bg-white/70 hover:bg-white rounded-xl text-slate-700 text-[10px] font-black flex items-center justify-between cursor-pointer transition border border-slate-200/60">
+                            <span><i class="fa-solid fa-list-ul mr-1 text-pastelPink-500"></i> 點擊展開查看分店與詳細清單</span>
+                            <i id="accordion-icon-sub-event-${currentDayV3}-${idx}" class="fa-solid fa-chevron-down transition-transform duration-300"></i>
+                        </div>
+                        <div id="accordion-content-sub-event-${currentDayV3}-${idx}" class="hidden space-y-2 pt-2">
+                            ${subList}
+                        </div>
+                    `;
+                } else if (ev.isAccordion && ev.costcoProducts) {
+                    let cpList = ev.costcoProducts.map((cp, cIdx) => `
+                        <div class="bg-white/90 p-2.5 rounded-xl border border-slate-100 space-y-0.5">
+                            <p class="font-black text-xs text-slate-800">${cp.name}</p>
+                            <p class="text-[10px] text-slate-600 font-bold">${cp.note}</p>
+                        </div>
+                    `).join('');
+
+                    subContentHtml = `
+                        <div onclick="toggleAccordion('costco-event-${currentDayV3}-${idx}')" class="mt-2 py-1.5 px-3 bg-white/70 hover:bg-white rounded-xl text-slate-700 text-[10px] font-black flex items-center justify-between cursor-pointer transition border border-slate-200/60">
+                            <span><i class="fa-solid fa-basket-shopping mr-1 text-rose-500"></i> 點擊展開查看 好市多 7 大必買清單</span>
+                            <i id="accordion-icon-costco-event-${currentDayV3}-${idx}" class="fa-solid fa-chevron-down transition-transform duration-300"></i>
+                        </div>
+                        <div id="accordion-content-costco-event-${currentDayV3}-${idx}" class="hidden space-y-2 pt-2">
+                            ${cpList}
+                        </div>
+                    `;
+                }
+
+                card.innerHTML = `
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center gap-1.5">
+                            <span class="${style.badgeBg} ${style.badgeText} font-black text-[10px] px-2 py-0.5 rounded-lg flex items-center gap-1">
+                                <i class="fa-solid ${style.icon}"></i> ${style.label}
+                            </span>
+                            <span class="text-xs font-black text-slate-800"><i class="fa-regular fa-clock mr-0.5 text-slate-400"></i> ${ev.time || ""}</span>
+                        </div>
+                        ${importantBadge}
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-black text-slate-800 leading-tight">${ev.title}</h4>
+                        <p class="text-[11px] text-slate-600 font-bold mt-1 whitespace-pre-line leading-relaxed">${ev.note || ""}</p>
+                        ${addressHtml}
+                        ${subContentHtml}
+                    </div>
                 `;
                 container.appendChild(card);
             });
-
-            const hotel = hotelInfoMap[currentDayV3];
-            if (hotel) {
-                const hotelCardWrapper = document.createElement('div');
-                hotelCardWrapper.className = 'pt-4 border-t-2 border-dashed border-pastelPink-200 mt-4';
-                hotelCardWrapper.innerHTML = renderHotelCardHtml(hotel);
-                container.appendChild(hotelCardWrapper);
-            }
         }
 
         function toggleAccordion(id) {
-            const content = document.getElementById(id);
-            const icon = document.getElementById('accordion-icon-' + id) || document.getElementById('acc-icon-' + id) || document.getElementById('hotel-acc-icon-' + currentDayV3);
-            
+            const content = document.getElementById(`accordion-content-${id}`);
+            const icon = document.getElementById(`accordion-icon-${id}`);
             if (content) {
                 content.classList.toggle('hidden');
                 if (icon) {
-                    icon.classList.toggle('rotate-180');
+                    if (content.classList.contains('hidden')) {
+                        icon.classList.remove('rotate-180');
+                    } else {
+                        icon.classList.add('rotate-180');
+                    }
                 }
             }
         }
 
-        // Custom Event Modal
+        // Add Event Modal
         function openAddEventModal() {
-            document.getElementById('event-day-select').value = currentDayV3;
             document.getElementById('add-event-modal').classList.remove('hidden');
         }
-
         function closeAddEventModal() {
             document.getElementById('add-event-modal').classList.add('hidden');
-            document.getElementById('event-time').value = '';
-            document.getElementById('event-title').value = '';
-            document.getElementById('event-note').value = '';
-            document.getElementById('event-is-food').checked = false;
-            document.getElementById('event-is-important').checked = false;
         }
-
         function saveCustomEvent() {
             const day = document.getElementById('event-day-select').value;
-            const time = document.getElementById('event-time').value || "全天";
-            const title = document.getElementById('event-title').value.trim();
-            const note = document.getElementById('event-note').value.trim();
-            const isFood = document.getElementById('event-is-food').checked;
+            const time = document.getElementById('event-time').value || "12:00";
+            const category = document.getElementById('event-category-select').value;
+            const title = document.getElementById('event-title').value;
+            const note = document.getElementById('event-note').value;
             const important = document.getElementById('event-is-important').checked;
 
-            if (!title) return;
+            if (!title) {
+                alert('請輸入行程名稱');
+                return;
+            }
 
-            const newEv = { time, title, note, isFood, important, isCustom: true };
-
-            const customEvents = JSON.parse(localStorage.getItem('v3_custom_events') || '{}');
+            let customEvents = getCustomEventsV3();
             if (!customEvents[day]) customEvents[day] = [];
-            customEvents[day].push(newEv);
+            customEvents[day].push({ time, title, note, category, important, isCustom: true });
 
             localStorage.setItem('v3_custom_events', JSON.stringify(customEvents));
             closeAddEventModal();
+            switchDayV3(parseInt(day));
 
-            if (parseInt(day) === currentDayV3) {
-                renderItineraryV3();
-            } else {
-                switchDayV3(parseInt(day));
-            }
+            // Clear inputs
+            document.getElementById('event-title').value = '';
+            document.getElementById('event-note').value = '';
+            document.getElementById('event-is-important').checked = false;
         }
 
-        function deleteCustomEvent(idx) {
-            const customEvents = JSON.parse(localStorage.getItem('v3_custom_events') || '{}');
-            if (customEvents[currentDayV3]) {
-                customEvents[currentDayV3].splice(idx, 1);
-                localStorage.setItem('v3_custom_events', JSON.stringify(customEvents));
-                renderItineraryV3();
-            }
-        }
-
-        // Wallet & Calculator
-        let calcExpr = "";
-
-        function saveRate() {
-            const rate = document.getElementById('exchange-rate-input').value;
-            localStorage.setItem('v3_exchange_rate', rate);
-            updateCalcTwd();
-            renderExpenses();
-        }
-
-        function loadRate() {
-            const rate = localStorage.getItem('v3_exchange_rate') || '0.215';
-            document.getElementById('exchange-rate-input').value = rate;
-        }
-
+        // Calculator & Expenses
+        let calcExpression = "";
         function pressCalc(val) {
             const display = document.getElementById('calc-display');
-            
+            const twdResult = document.getElementById('calc-twd-result');
+            const rateInput = document.getElementById('exchange-rate-input');
+            const rate = parseFloat(rateInput.value) || 0.215;
+
             if (val === 'C') {
-                calcExpr = "";
+                calcExpression = "";
             } else if (val === '=') {
                 try {
-                    if (calcExpr) {
-                        calcExpr = eval(calcExpr).toString();
-                    }
+                    let result = eval(calcExpression);
+                    calcExpression = String(Math.round(result * 100) / 100);
                 } catch(e) {
-                    calcExpr = "Error";
+                    calcExpression = "錯誤";
                 }
             } else {
-                if (calcExpr === "Error") calcExpr = "";
-                calcExpr += val;
+                if (calcExpression === "錯誤") calcExpression = "";
+                calcExpression += val;
             }
 
-            display.value = calcExpr;
-            updateCalcTwd();
+            display.value = calcExpression;
+
+            // Compute TWD
+            try {
+                let currentNum = eval(calcExpression);
+                if (!isNaN(currentNum)) {
+                    twdResult.innerText = Math.round(currentNum * rate);
+                } else {
+                    twdResult.innerText = "0";
+                }
+            } catch(e) {
+                twdResult.innerText = "0";
+            }
         }
 
-        function updateCalcTwd() {
-            const rate = parseFloat(document.getElementById('exchange-rate-input').value) || 0.215;
-            let val = 0;
-            try {
-                val = eval(calcExpr) || 0;
-            } catch(e) {
-                val = 0;
-            }
-            const twd = Math.round(val * rate);
-            document.getElementById('calc-twd-result').innerText = twd.toLocaleString();
+        function saveRate() {
+            pressCalc('');
         }
 
         function handlePhotoUpload(event) {
             const file = event.target.files[0];
-            if (!file) return;
-
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                selectedPhotoData = e.target.result;
-                document.getElementById('photo-preview').src = selectedPhotoData;
-                document.getElementById('photo-preview-container').classList.remove('hidden');
-                document.getElementById('photo-status').innerText = "已選取";
-            };
-            reader.readAsDataURL(file);
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    selectedPhotoData = e.target.result;
+                    document.getElementById('photo-preview').src = selectedPhotoData;
+                    document.getElementById('photo-preview-container').classList.remove('hidden');
+                    document.getElementById('photo-status').innerText = '已拍照';
+                };
+                reader.readAsDataURL(file);
+            }
         }
 
         function clearPhoto() {
             selectedPhotoData = null;
-            document.getElementById('photo-preview').src = "";
             document.getElementById('photo-preview-container').classList.add('hidden');
-            document.getElementById('photo-status').innerText = "拍收據";
-            document.getElementById('expense-photo-input').value = "";
+            document.getElementById('photo-status').innerText = '拍收據';
+            document.getElementById('expense-photo-input').value = '';
         }
 
         function addExpense() {
@@ -1641,95 +1598,147 @@
             const title = titleInput.value.trim();
             const amount = parseFloat(amountInput.value);
 
-            if (!title || isNaN(amount) || amount <= 0) return;
+            if (!title || isNaN(amount)) {
+                alert('請填寫品項名稱與正確金額');
+                return;
+            }
 
-            const rate = parseFloat(document.getElementById('exchange-rate-input').value) || 0.215;
-            const twd = Math.round(amount * rate);
-
-            const expenses = JSON.parse(localStorage.getItem('v3_expenses') || '[]');
+            let expenses = JSON.parse(localStorage.getItem('v3_expenses') || '[]');
             expenses.unshift({
                 id: Date.now(),
                 title,
-                jpy: amount,
-                twd,
-                photo: selectedPhotoData
+                amount,
+                photo: selectedPhotoData,
+                date: new Date().toLocaleDateString()
             });
 
             localStorage.setItem('v3_expenses', JSON.stringify(expenses));
 
-            titleInput.value = "";
-            amountInput.value = "";
+            // Reset inputs
+            titleInput.value = '';
+            amountInput.value = '';
             clearPhoto();
             renderExpenses();
         }
 
         function deleteExpense(id) {
             let expenses = JSON.parse(localStorage.getItem('v3_expenses') || '[]');
-            expenses = expenses.filter(e => e.id !== id);
+            expenses = expenses.filter(ex => ex.id !== id);
             localStorage.setItem('v3_expenses', JSON.stringify(expenses));
             renderExpenses();
         }
 
         function renderExpenses() {
             const container = document.getElementById('expense-list-container');
-            container.innerHTML = '';
+            const totalDisplay = document.getElementById('expense-total-twd');
+            const rateInput = document.getElementById('exchange-rate-input');
+            const rate = parseFloat(rateInput.value) || 0.215;
 
-            const expenses = JSON.parse(localStorage.getItem('v3_expenses') || '[]');
-            const rate = parseFloat(document.getElementById('exchange-rate-input').value) || 0.215;
+            let expenses = JSON.parse(localStorage.getItem('v3_expenses') || '[]');
+            container.innerHTML = '';
 
             let totalTwd = 0;
 
-            expenses.forEach(item => {
-                const twd = Math.round(item.jpy * rate);
+            if (expenses.length === 0) {
+                container.innerHTML = `<p class="text-[10px] text-slate-400 text-center py-2 font-bold">尚無記帳紀錄</p>`;
+            }
+
+            expenses.forEach(ex => {
+                const twd = Math.round(ex.amount * rate);
                 totalTwd += twd;
 
-                const card = document.createElement('div');
-                card.className = "flex items-center justify-between p-2.5 bg-slate-50 rounded-2xl border border-slate-100 text-xs";
+                const item = document.createElement('div');
+                item.className = "flex items-center justify-between bg-pastelPink-50/50 p-2.5 rounded-2xl border border-pastelPink-100/50 text-xs";
+                
+                let photoHtml = ex.photo ? `
+                    <img src="${ex.photo}" class="w-9 h-9 object-cover rounded-lg border border-pastelPink-200 cursor-pointer hover:opacity-80 transition shrink-0" onclick="openPhotoModal('${ex.photo}')">
+                ` : `<div class="w-9 h-9 bg-slate-100 rounded-lg flex items-center justify-center text-slate-300 text-[10px] shrink-0"><i class="fa-solid fa-receipt"></i></div>`;
 
-                let photoHtml = '';
-                if (item.photo) {
-                    photoHtml = `
-                        <img src="${item.photo}" onclick="openPhotoModal('${item.photo}')" class="w-9 h-9 rounded-lg object-cover border border-slate-200 cursor-pointer shrink-0 hover:opacity-80 transition" alt="收據">
-                    `;
-                }
-
-                card.innerHTML = `
+                item.innerHTML = `
                     <div class="flex items-center gap-2.5 overflow-hidden">
                         ${photoHtml}
-                        <div class="truncate">
-                            <span class="font-black text-slate-800 block truncate">${item.title}</span>
-                            <span class="text-[9px] text-slate-400 font-bold">¥${item.jpy.toLocaleString()}</span>
+                        <div class="overflow-hidden">
+                            <p class="font-black text-slate-800 truncate">${ex.title}</p>
+                            <p class="text-[9px] text-slate-400 font-bold">${ex.date} • ¥${ex.amount.toLocaleString()}</p>
                         </div>
                     </div>
                     <div class="flex items-center gap-2 shrink-0">
-                        <span class="font-black text-pastelPink-600 text-xs">NT$ ${twd.toLocaleString()}</span>
-                        <button onclick="deleteExpense(${item.id})" class="text-slate-300 hover:text-rose-500 p-1"><i class="fa-solid fa-trash-can"></i></button>
+                        <span class="font-black text-pastelPink-600">NT$ ${twd.toLocaleString()}</span>
+                        <button onclick="deleteExpense(${ex.id})" class="text-slate-300 hover:text-rose-500 p-1 transition"><i class="fa-solid fa-trash-can text-[10px]"></i></button>
                     </div>
                 `;
-                container.appendChild(card);
+                container.appendChild(item);
             });
 
-            document.getElementById('expense-total-twd').innerText = totalTwd.toLocaleString();
+            if (totalDisplay) totalDisplay.innerText = totalTwd.toLocaleString();
         }
 
-        function openPhotoModal(imgSrc) {
-            document.getElementById('photo-modal-img').src = imgSrc;
+        function openPhotoModal(src) {
+            document.getElementById('photo-modal-img').src = src;
             document.getElementById('photo-modal').classList.remove('hidden');
         }
-
         function closePhotoModal() {
             document.getElementById('photo-modal').classList.add('hidden');
         }
 
-        // Initialize App
-        window.addEventListener('DOMContentLoaded', () => {
+        // Memo logic
+        function addMemo() {
+            const input = document.getElementById('memo-input');
+            const val = input.value.trim();
+            if(!val) return;
+
+            let memos = JSON.parse(localStorage.getItem('v3_memos') || '[]');
+            memos.push(val);
+            localStorage.setItem('v3_memos', JSON.stringify(memos));
+            input.value = '';
+            renderMemos();
+        }
+
+        function deleteMemo(index) {
+            let memos = JSON.parse(localStorage.getItem('v3_memos') || '[]');
+            memos.splice(index, 1);
+            localStorage.setItem('v3_memos', JSON.stringify(memos));
+            renderMemos();
+        }
+
+        function renderMemos() {
+            const list = document.getElementById('memo-list');
+            if(!list) return;
+            let memos = JSON.parse(localStorage.getItem('v3_memos') || '[]');
+            list.innerHTML = '';
+
+            if(memos.length === 0) {
+                list.innerHTML = `<p class="text-[10px] text-slate-400 text-center py-1 font-bold">尚無備忘紀錄</p>`;
+                return;
+            }
+
+            memos.forEach((memo, idx) => {
+                const div = document.createElement('div');
+                div.className = "flex items-center justify-between bg-pastelPink-50/40 p-2 rounded-xl border border-pastelPink-100/40 text-xs";
+                
+                let contentHtml = '';
+                if(memo.includes('http')) {
+                    contentHtml = `<a href="${memo}" target="_blank" class="text-pastelPink-600 underline font-black text-[11px] truncate block flex-1 mr-2"><i class="fa-solid fa-link mr-1"></i>${memo}</a>`;
+                } else {
+                    contentHtml = `<span class="text-slate-700 font-bold truncate flex-1 mr-2">${memo}</span>`;
+                }
+
+                div.innerHTML = `
+                    ${contentHtml}
+                    <button onclick="deleteMemo(${idx})" class="text-slate-300 hover:text-rose-500 px-1 transition"><i class="fa-solid fa-xmark text-xs"></i></button>
+                `;
+                list.appendChild(div);
+            });
+        }
+
+        // Initial Load
+        window.onload = function() {
             initChecklistV3();
             loadDocStateV3();
-            loadMemos();
-            switchDayV3(1);
-            loadRate();
+            renderItineraryTimelineV3();
             renderExpenses();
-        });
+            renderMemos();
+        };
     </script>
 </body>
 </html>
