@@ -245,7 +245,7 @@
                             <p class="text-[11px] font-bold text-slate-600 leading-tight">
                                 適用條件：華航/華信國際線預期班機、已確認訂位並開立電子機票、同行人數 9 人（含）以內。
                             </p>
-                            <a href="https://www.china-airlines.com/tw/zh/booking-and-services/check-in/index" target="_blank" class="mt-1 block text-center bg-pastelBlue-500 hover:bg-pastelBlue-600 text-white font-black text-[11px] py-2 rounded-xl shadow-sm transition active:scale-95">
+                            <a href="https://airportservice.china-airlines.com/autoCheckin/preCheckin_home.aspx?country=tw&locale=zh" target="_blank" class="mt-1 block text-center bg-pastelBlue-500 hover:bg-pastelBlue-600 text-white font-black text-[11px] py-2 rounded-xl shadow-sm transition active:scale-95">
                                 <i class="fa-solid fa-circle-check mr-1"></i> 點此進行華航網路預約自動報到
                             </a>
                         </div>
@@ -744,7 +744,23 @@
                 { time: "12:00", title: "おんなの駅 なかゆくい市場 (產直市場)", note: "營業時間 10:00-19:00 | 必吃：琉品水果刨冰、沙翁、炸魚糕、海葡萄", address: "沖繩縣國頭郡恩納村中泊1656-9", category: "food" },
                 { time: "14:00", title: "琉球村", note: "營業時間 09:30-17:00 | 體驗：彩繪風獅爺、琉球服飾、琉球玻璃/珊瑚相框手作與太鼓表演", address: "沖繩縣國頭郡恩納村山田1130", category: "itinerary" },
                 { time: "16:30", title: "万座毛", note: "營業時間 08:00-20:00 (售票至19:00) | 觀賞象鼻岩石奇景與落日餘暉", address: "沖繩縣國頭郡恩納村恩納", category: "itinerary" },
-                { time: "18:00", title: "Okashigoten Onna Branch (御菓子御殿 恩納店)", note: "營業時間 09:00-18:00 | 首里城朱紅建築、紅芋塔DIY體驗、購買伴手禮與海景餐廳", address: "沖繩縣國頭郡恩納村瀨良垣100", category: "shopping" }
+                { time: "18:00", title: "Okashigoten Onna Branch (御菓子御殿 恩納店)", note: "營業時間 09:00-18:00 | 首里城朱紅建築、紅芋塔DIY體驗、購買伴手禮與海景餐廳", address: "沖繩縣國頭郡恩納村瀨良垣100", category: "shopping" },
+                { 
+                    time: "20:00", 
+                    title: "琉球的牛｜恩納本館 🥩", 
+                    note: "營業時間：16:30～23:00（最後點餐：22:15）｜ 全年無休\n電話：098-965-2233 ｜ 停車場：有\n預約連結：https://www.u-shi.net/onna.html?utm_source=chatgpt.com\n小提醒：這家很熱門，只接受官方提供網路預約！", 
+                    address: "沖繩縣國頭郡恩納村前兼久909-2", 
+                    category: "food",
+                    isAccordion: true,
+                    recommendations: [
+                        { name: "① 特選炙燒和牛壽司 ⭐⭐⭐⭐⭐", note: "算是這家的招牌之一。" },
+                        { name: "② 12種燒肉套餐 ⭐⭐⭐⭐⭐", note: "想一次吃很多不同部位，這個最適合。\n過去公開菜單價格為：\n• 12種＋燒きすき：¥5,980\n• 12種＋厚切牛小排：¥5,980\n• 14種：¥6,980\n• 10種：¥4,980\n• 8種：¥3,980\n（價格來自公開菜單資料，現在價格可能已經調整）" },
+                        { name: "③ 燒きすき（壽喜燒風烤肉） ⭐⭐⭐⭐⭐", note: "現在單點菜單有「稀有部位燒きすき＋蛋黃」，約 ¥2,178/份（含稅）。把肉烤到喜歡的程度後沾蛋黃吃，很推薦。" },
+                        { name: "④ 特上カルビ（特上牛小排） ⭐⭐⭐⭐", note: "喜歡油花、入口即化口感的人選這個。厚切版本約 ¥2,728/份（含稅）。" },
+                        { name: "⑤ 特上ロース（特上里肌） ⭐⭐⭐⭐⭐", note: "想吃比較高級、肉味明顯的部位可以點，約 ¥3,938/份（含稅）。" },
+                        { name: "⑥ 厚切牛舌 ⭐⭐⭐⭐", note: "喜歡牛舌一定可以點，厚切すだれカット約 ¥2,728/份（含稅）。" }
+                    ]
+                }
             ],
             3: [
                 { time: "09:00", title: "Bise-Fukugi Tree Road (備瀨福木林道)", note: "漫步天然綠色隧道，可徒步、租自行車或自費搭乘觀光水牛車", address: "沖繩縣國頭郡本部町備瀨", category: "itinerary" },
@@ -780,10 +796,23 @@
                 { time: "19:00", title: "Ginowan Yui Marche (宜野灣結市集)", note: "在地漁港海鮮饗宴與農夫市集", address: "沖繩縣宜野灣市大山7-1350-81", category: "food" },
                 { 
                     time: "20:30", 
-                    title: "唐吉訶德 那霸壺川店", 
-                    note: "營業時間：08:00 – 03:00\n折價卷：https://japanportal.donki-global.com/coupon/cp001_zhtw.html", 
+                    title: "唐吉訶德 那霸壺川店 🛒", 
+                    note: "營業時間：08:00 – 03:00\n優惠券連結：https://japanportal.donki-global.com/coupon/cp001_zhtw.html", 
                     address: "3-chōme-2番地1 Tsubogawa, Naha, Okinawa 900-0025日本", 
-                    category: "shopping" 
+                    category: "shopping",
+                    isAccordion: true,
+                    souvenirs: [
+                        { name: "御菓子御殿 元祖紅芋塔", note: "沖繩經典，送人最不容易踩雷。" },
+                        { name: "雪鹽金楚糕（雪塩ちんすこう）", note: "鹹甜口味，超適合大量買來分送。" },
+                        { name: "沖繩限定鳳梨口味糖果／Puccho", note: "小包裝、方便當伴手禮。" },
+                        { name: "沖繩限定芒果口味 Hi-Chew", note: "日本限定水果口味，喜歡水果糖很推薦。" },
+                        { name: "島唐辛子美乃滋 Pretzel", note: "鹹香帶辣，很適合當零食或下酒菜。" },
+                        { name: "黑糖巧克力", note: "沖繩黑糖風味，自己吃很適合。" },
+                        { name: "沖繩啤酒豆（オキナワビアナッツ）", note: "花生＋豆類零食，當宵夜很讚。" },
+                        { name: "沖繩蕎麥麵／沖繩麵乾麵包", note: "可以帶回家自己煮，沖繩味很濃。" },
+                        { name: "沖繩海鹽／雪鹽", note: "體積小又實用，自己用或送人都可以。" },
+                        { name: "日本藥妝／面膜", note: "Donki 的藥妝選擇很多，像 CICA 面膜、Melano CC、AQUALABEL 等都是熱門品項。" }
+                    ]
                 },
                 { 
                     time: "21:30", 
@@ -851,31 +880,81 @@
                 title: "🏨 入住 GRANDIOSO OKINAWA POOL VILLA ONNA8",
                 note: "📍 OkinawaOnna, Kunigami District（那霸機場車程約 50 分鐘）\n📅 入住：9/28(一) 16:00 ～ 10/1(四) 10:00 退房\n🚗 停車：房源內附 2 個免費停車位\n🏊 設施：烤肉架、私人泳池\n\n🔑 入住流程 (自助入住)：\n• 此房源採自助入住系統，無現場櫃檯。\n• 入住說明於入住前 2 天發送訊息通知。\n• 人數如有變動請提前告知。",
                 address: "GRANDIOSO OKINAWA POOL VILLA ONNA8",
-                mapUrl: "https://www.google.com/maps/search/?api=1&query=GRANDIOSO+OKINAWA+POOL+VILLA+ONNA8"
+                mapUrl: "https://www.google.com/maps/search/?api=1&query=GRANDIOSO+OKINAWA+POOL+VILLA+ONNA8",
+                surroundings: {
+                    rooms: [
+                        "西式房間：1 張標準雙人床",
+                        "西式房間：2 張雙人床",
+                        "西式房間：2 張雙人床",
+                        "西式房間：2 張雙人床",
+                        "衛浴設備：淋浴間 × 1／廁所 × 1"
+                    ],
+                    spots: [
+                        { category: "🏖️ 海灘", items: ["Manza Beach（開車 5 分鐘）"] },
+                        { category: "📸 觀光景點", items: ["琉球村（開車 18 分鐘）", "真榮田岬／藍色洞穴（開車 19 分鐘）"] },
+                        { category: "🛒 便利商店與超市", items: ["Lawson Onna Manzamo Iriguchi Store（開車 3 分鐘）", "恩納村名護商店（開車 3 分鐘）"] },
+                        { category: "☕ 餐廳和咖啡館", items: ["甜品店「Tanka Fruits」（開車 4 分鐘）", "Taco Rice Café Kijimuna Onna Village Branch（步行 5 分鐘）", "808 Poke Bowls Okinawa（步行 10 分鐘）", "Duma（步行 11 分鐘）"] },
+                        { category: "🎡 其他娛樂設施", items: ["紀念品商店「Okashi Goten」（開車 8 分鐘）", "海洋活動「地球船」（步行 8 分鐘）"] }
+                    ]
+                }
             },
             2: {
                 title: "🏨 連續入住 GRANDIOSO OKINAWA POOL VILLA ONNA8 (DAY 2)",
                 note: "📍 OkinawaOnna, Kunigami District\n📅 入住：9/28(一) 16:00 ～ 10/1(四) 10:00 退房\n🚗 停車：房源內附 2 個免費停車位\n🏊 設施：烤肉架、私人泳池",
                 address: "GRANDIOSO OKINAWA POOL VILLA ONNA8",
-                mapUrl: "https://www.google.com/maps/search/?api=1&query=GRANDIOSO+OKINAWA+POOL+VILLA+ONNA8"
+                mapUrl: "https://www.google.com/maps/search/?api=1&query=GRANDIOSO+OKINAWA+POOL+VILLA+ONNA8",
+                surroundings: {
+                    rooms: [
+                        "西式房間：1 張標準雙人床",
+                        "西式房間：2 張雙人床",
+                        "西式房間：2 張雙人床",
+                        "西式房間：2 張雙人床",
+                        "衛浴設備：淋浴間 × 1／廁所 × 1"
+                    ],
+                    spots: [
+                        { category: "🏖️ 海灘", items: ["Manza Beach（開車 5 分鐘）"] },
+                        { category: "📸 觀光景點", items: ["琉球村（開車 18 分鐘）", "真榮田岬／藍色洞穴（開車 19 分鐘）"] },
+                        { category: "🛒 便利商店與超市", items: ["Lawson Onna Manzamo Iriguchi Store（開車 3 分鐘）", "恩納村名護商店（開車 3 分鐘）"] },
+                        { category: "☕ 餐廳和咖啡館", items: ["甜品店「Tanka Fruits」（開車 4 分鐘）", "Taco Rice Café Kijimuna Onna Village Branch（步行 5 分鐘）", "808 Poke Bowls Okinawa（步行 10 分鐘）", "Duma（步行 11 分鐘）"] },
+                        { category: "🎡 其他娛樂設施", items: ["紀念品商店「Okashi Goten」（開車 8 分鐘）", "海洋活動「地球船」（步行 8 分鐘）"] }
+                    ]
+                }
             },
             3: {
                 title: "🏨 連續入住 GRANDIOSO OKINAWA POOL VILLA ONNA8 (DAY 3)",
                 note: "📍 OkinawaOnna, Kunigami District\n📅 入住：9/28(一) 16:00 ～ 10/1(四) 10:00 退房\n🚗 停車：房源內附 2 個免費停車位\n🏊 設施：烤肉架、私人泳池",
                 address: "GRANDIOSO OKINAWA POOL VILLA ONNA8",
-                mapUrl: "https://www.google.com/maps/search/?api=1&query=GRANDIOSO+OKINAWA+POOL+VILLA+ONNA8"
+                mapUrl: "https://www.google.com/maps/search/?api=1&query=GRANDIOSO+OKINAWA+POOL+VILLA+ONNA8",
+                surroundings: {
+                    rooms: [
+                        "西式房間：1 張標準雙人床",
+                        "西式房間：2 張雙人床",
+                        "西式房間：2 張雙人床",
+                        "西式房間：2 張雙人床",
+                        "衛浴設備：淋浴間 × 1／廁所 × 1"
+                    ],
+                    spots: [
+                        { category: "🏖️ 海灘", items: ["Manza Beach（開車 5 分鐘）"] },
+                        { category: "📸 觀光景點", items: ["琉球村（開車 18 分鐘）", "真榮田岬／藍色洞穴（開車 19 分鐘）"] },
+                        { category: "🛒 便利商店與超市", items: ["Lawson Onna Manzamo Iriguchi Store（開車 3 分鐘）", "恩納村名護商店（開車 3 分鐘）"] },
+                        { category: "☕ 餐廳和咖啡館", items: ["甜品店「Tanka Fruits」（開車 4 分鐘）", "Taco Rice Café Kijimuna Onna Village Branch（步行 5 分鐘）", "808 Poke Bowls Okinawa（步行 10 分鐘）", "Duma（步行 11 分鐘）"] },
+                        { category: "🎡 其他娛樂設施", items: ["紀念品商店「Okashi Goten」（開車 8 分鐘）", "海洋活動「地球船」（步行 8 分鐘）"] }
+                    ]
+                }
             },
             4: {
                 title: "🏨 入住 Rizozaisen Hotel（管理聯合度假村）",
                 note: "📍 リゾザイゼンホテル（管理）ユナイテッドリゾートレセプション\n245-4 Ōjana RIZOZAIZENHOTEL 3F, 宜野灣市, Okinawa 901-2225, 日本\n📅 入住：10/1(四) 15:00 ～ 10/3(六) 10:00 退房\n📞 Tel: 098-989-3880\n✉️ Email: info@unitedresort.okinawa\n💬 Line ID: @861trdzf\n\n🚗 停車場資訊與提醒：\n• 每房提供一個車位，請停放與入住樓層同編號車位。\n• 🔴 已預留第二個停車位！請使用 3號 及 11號 停車位。\n• ⚠️ 11號車位放有交通錐，每次離開時請務必將交通錐放回原處，防止其他房客停放！",
                 address: "245-4 Ōjana RIZOZAIZENHOTEL, Ginowan, Okinawa",
-                mapUrl: "https://www.google.com/maps/search/?api=1&query=26.269750595092773%2C127.73519134521484"
+                mapUrl: "https://www.google.com/maps/search/?api=1&query=26.269750595092773%2C127.73519134521484",
+                guideUrl: "https://resorthotels.okinawa/nyukan/"
             },
             5: {
                 title: "🏨 連續入住 Rizozaisen Hotel (DAY 5)",
                 note: "📍 245-4 Ōjana RIZOZAIZENHOTEL 3F, 宜野灣市\n📅 入住：10/1(四) 15:00 ～ 10/3(六) 10:00 退房\n🚗 車位：3號 及 11號 停車位",
                 address: "245-4 Ōjana RIZOZAIZENHOTEL, Ginowan, Okinawa",
-                mapUrl: "https://www.google.com/maps/search/?api=1&query=26.269750595092773%2C127.73519134521484"
+                mapUrl: "https://www.google.com/maps/search/?api=1&query=26.269750595092773%2C127.73519134521484",
+                guideUrl: "https://resorthotels.okinawa/nyukan/"
             },
             6: {
                 title: "✈️ 今天最後一天，請於 10:00 前辦理退房",
@@ -928,6 +1007,15 @@
             localStorage.setItem('v3_itinerary', JSON.stringify(itineraryData));
         }
 
+        // 格式化內文中的網址連結
+        function formatNoteWithLinks(note) {
+            if (!note) return '';
+            const urlRegex = /(https?:\/\/[^\s]+)/g;
+            return note.replace(urlRegex, function(url) {
+                return `<a href="${url}" target="_blank" class="text-pastelPink-600 font-black hover:underline break-all"><i class="fa-solid fa-arrow-up-right-from-square mr-0.5"></i>開啟連結</a>`;
+            });
+        }
+
         // 渲染行程時間軸
         function renderItinerary(day) {
             const container = document.getElementById('itinerary-timeline-container');
@@ -939,6 +1027,44 @@
             if (hotel) {
                 const hotelCard = document.createElement('div');
                 hotelCard.className = "bg-pastelPurple-100/60 rounded-3xl border border-pastelPurple-200 p-4 shadow-pastelPurple space-y-2 mb-3";
+                
+                let surroundingsHtml = '';
+                if (hotel.surroundings) {
+                    const accId = `hotel-surroundings-${day}`;
+                    surroundingsHtml = `
+                        <div onclick="toggleAccordion('${accId}')" class="mt-2 py-1.5 px-3 bg-pastelPurple-200/80 hover:bg-pastelPurple-200 rounded-xl text-pastelPurple-700 text-xs font-black flex items-center justify-between cursor-pointer transition">
+                            <span><i class="fa-solid fa-house-user mr-1"></i> 房型配置與周邊景點資訊</span>
+                            <i id="accordion-icon-${accId}" class="fa-solid fa-chevron-down transition-transform duration-300"></i>
+                        </div>
+                        <div id="accordion-content-${accId}" class="hidden space-y-2 pt-2 text-xs">
+                            <div class="bg-pastelPurple-50 p-2.5 rounded-2xl border border-pastelPurple-200/60 space-y-1">
+                                <p class="font-black text-pastelPurple-700"><i class="fa-solid fa-bed mr-1"></i> 房間格局配置</p>
+                                <ul class="list-disc list-inside text-slate-700 font-bold space-y-0.5 text-[11px]">
+                                    ${hotel.surroundings.rooms.map(r => `<li>${r}</li>`).join('')}
+                                </ul>
+                            </div>
+                            <div class="bg-pastelPurple-50 p-2.5 rounded-2xl border border-pastelPurple-200/60 space-y-1.5">
+                                <p class="font-black text-pastelPurple-700"><i class="fa-solid fa-compass mr-1"></i> 鄰近旅遊景點與便利設施</p>
+                                ${hotel.surroundings.spots.map(s => `
+                                    <div class="text-[11px]">
+                                        <p class="font-black text-slate-800">${s.category}</p>
+                                        <p class="text-slate-600 font-bold">${s.items.join(' ／ ')}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                }
+
+                let guideBtnHtml = '';
+                if (hotel.guideUrl) {
+                    guideBtnHtml = `
+                        <a href="${hotel.guideUrl}" target="_blank" class="inline-block bg-pastelPeach-500 text-white text-[11px] font-black px-3 py-1.5 rounded-xl shadow-sm hover:bg-pastelPeach-600 active:scale-95 transition">
+                            <i class="fa-solid fa-book-open mr-1"></i> 入住與大樓導覽手冊
+                        </a>
+                    `;
+                }
+
                 hotelCard.innerHTML = `
                     <div class="flex justify-between items-start border-b border-dashed border-pastelPurple-200 pb-2">
                         <h3 class="text-sm font-black text-slate-800 flex items-center gap-1.5">
@@ -946,13 +1072,15 @@
                         </h3>
                     </div>
                     <p class="text-xs text-slate-600 font-bold whitespace-pre-line leading-relaxed">${hotel.note}</p>
-                    ${hotel.mapUrl ? `
-                        <div class="pt-1">
+                    ${surroundingsHtml}
+                    <div class="pt-1 flex flex-wrap gap-2">
+                        ${hotel.mapUrl ? `
                             <a href="${hotel.mapUrl}" target="_blank" class="inline-block bg-pastelPurple-500 text-white text-[11px] font-black px-3 py-1.5 rounded-xl shadow-sm hover:bg-pastelPurple-600 active:scale-95 transition">
                                 <i class="fa-solid fa-map-pin mr-1"></i> 開啟飯店 Google 地圖
                             </a>
-                        </div>
-                    ` : ''}
+                        ` : ''}
+                        ${guideBtnHtml}
+                    </div>
                 `;
                 container.appendChild(hotelCard);
             }
@@ -989,7 +1117,37 @@
                 let subStoresHtml = '';
                 if (item.isAccordion) {
                     const accordionId = `itinerary-accordion-${day}-${index}`;
-                    if (item.subStores) {
+                    if (item.recommendations) {
+                        subStoresHtml = `
+                            <div onclick="toggleAccordion('${accordionId}')" class="mt-2 py-1.5 px-3 bg-pastelPeach-200/80 hover:bg-pastelPeach-200 rounded-xl text-pastelPeach-700 text-xs font-black flex items-center justify-between cursor-pointer transition">
+                                <span><i class="fa-solid fa-utensils mr-1"></i> 我推薦的餐點 (${item.recommendations.length} 項)</span>
+                                <i id="accordion-icon-${accordionId}" class="fa-solid fa-chevron-down transition-transform duration-300"></i>
+                            </div>
+                            <div id="accordion-content-${accordionId}" class="hidden space-y-2 pt-2">
+                                ${item.recommendations.map(rec => `
+                                    <div class="bg-amber-100/70 p-2.5 rounded-xl border border-amber-200 text-xs">
+                                        <p class="font-black text-amber-900">${rec.name}</p>
+                                        <p class="text-slate-600 font-bold mt-1 whitespace-pre-line leading-relaxed">${rec.note}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        `;
+                    } else if (item.souvenirs) {
+                        subStoresHtml = `
+                            <div onclick="toggleAccordion('${accordionId}')" class="mt-2 py-1.5 px-3 bg-pastelPink-200/80 hover:bg-pastelPink-200 rounded-xl text-pastelPink-700 text-xs font-black flex items-center justify-between cursor-pointer transition">
+                                <span><i class="fa-solid fa-gift mr-1"></i> 伴手禮十項推薦清單</span>
+                                <i id="accordion-icon-${accordionId}" class="fa-solid fa-chevron-down transition-transform duration-300"></i>
+                            </div>
+                            <div id="accordion-content-${accordionId}" class="hidden space-y-2 pt-2">
+                                ${item.souvenirs.map((sou, sIdx) => `
+                                    <div class="bg-rose-100/70 p-2 rounded-xl border border-rose-200 text-xs">
+                                        <p class="font-black text-rose-800">${sIdx + 1}. ${sou.name}</p>
+                                        <p class="text-slate-600 font-bold mt-0.5">${sou.note}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        `;
+                    } else if (item.subStores) {
                         subStoresHtml = `
                             <div onclick="toggleAccordion('${accordionId}')" class="mt-2 py-1.5 px-3 bg-pastelPeach-200/80 hover:bg-pastelPeach-200 rounded-xl text-pastelPeach-700 text-xs font-black flex items-center justify-between cursor-pointer transition">
                                 <span><i class="fa-solid fa-list-ul mr-1"></i> 查看精選名店清單 (${item.subStores.length} 間)</span>
@@ -1044,7 +1202,7 @@
                             ${item.important ? '<span class="text-rose-600 font-black text-[11px] bg-rose-100 border border-rose-300 px-1.5 py-0.2 rounded mr-1">重要</span>' : ''}
                             ${item.title}
                         </h4>
-                        ${item.note ? `<p class="text-xs text-slate-600 font-bold leading-relaxed whitespace-pre-line mt-1">${item.note}</p>` : ''}
+                        ${item.note ? `<p class="text-xs text-slate-600 font-bold leading-relaxed whitespace-pre-line mt-1">${formatNoteWithLinks(item.note)}</p>` : ''}
                     </div>
 
                     ${subStoresHtml}
@@ -1149,18 +1307,18 @@
                     const isChecked = localStorage.getItem(storageKey) === 'true';
                     if (isChecked) checkedCount++;
 
-                    let displayHtml = itemText;
-                    if (itemText.includes('http')) {
-                        const parts = itemText.split(' : ');
-                        if (parts.length === 2) {
-                            displayHtml = `${parts[0]} : <a href="${parts[1]}" target="_blank" class="text-pastelPink-600 font-black hover:underline">點此點擊連結</a>`;
-                        }
+                    let itemDisplay = itemText;
+                    if (itemText.includes("http")) {
+                        const urlRegex = /(https?:\/\/[^\s]+)/g;
+                        itemDisplay = itemText.replace(urlRegex, function(url) {
+                            return `<a href="${url}" target="_blank" class="text-pastelPink-600 font-black hover:underline break-all"><i class="fa-solid fa-arrow-up-right-from-square mr-0.5"></i>開啟連結</a>`;
+                        });
                     }
 
                     itemsHtml += `
-                        <label class="flex items-center gap-2.5 p-2 bg-pastelPink-50/80 rounded-xl border border-pastelPink-200/50 cursor-pointer">
-                            <input type="checkbox" onchange="toggleChecklist('${storageKey}', this.checked)" ${isChecked ? 'checked' : ''} class="w-4 h-4 text-pastelPink-500 rounded accent-pastelPink-500">
-                            <span class="text-sm font-bold text-slate-700 ${isChecked ? 'line-through text-slate-400' : ''}">${displayHtml}</span>
+                        <label class="flex items-center gap-2.5 p-2 bg-pastelPink-50 rounded-xl border border-pastelPink-200/50 cursor-pointer">
+                            <input type="checkbox" onchange="toggleCheckItem('${cIdx}', '${iIdx}', this.checked)" ${isChecked ? 'checked' : ''} class="w-4 h-4 text-pastelPink-500 rounded accent-pastelPink-500">
+                            <span class="text-xs font-bold ${isChecked ? 'line-through text-slate-400' : 'text-slate-700'}">${itemDisplay}</span>
                         </label>
                     `;
                 });
@@ -1169,197 +1327,153 @@
                     <h3 class="text-sm font-black text-slate-800 flex items-center gap-1.5">
                         <i class="fa-solid fa-check-double text-pastelPink-500"></i> ${cat.category}
                     </h3>
-                    <div class="space-y-2">${itemsHtml}</div>
+                    <div class="space-y-1.5">${itemsHtml}</div>
                 `;
                 wrapper.appendChild(card);
             });
 
-            const percentage = totalCount > 0 ? Math.round((checkedCount / totalCount) * 100) : 0;
             const countDisplay = document.getElementById('v3-checklist-count-display');
             const progressBar = document.getElementById('v3-checklist-progress-bar');
             if (countDisplay) countDisplay.innerText = `${checkedCount}/${totalCount}`;
-            if (progressBar) progressBar.style.width = `${percentage}%`;
+            if (progressBar) progressBar.style.width = totalCount > 0 ? `${(checkedCount / totalCount) * 100}%` : '0%';
         }
 
-        function toggleChecklist(key, isChecked) {
-            localStorage.setItem(key, isChecked);
+        function toggleCheckItem(cIdx, iIdx, isChecked) {
+            localStorage.setItem(`chk-${cIdx}-${iIdx}`, isChecked);
             renderChecklist();
         }
 
-        // 備忘錄邏輯
-        function renderMemos() {
-            const container = document.getElementById('memo-list');
-            if (!container) return;
-            container.innerHTML = '';
-
-            memoData.forEach((memo, idx) => {
-                const item = document.createElement('div');
-                item.className = "flex justify-between items-center p-2 bg-pastelPink-50 border border-pastelPink-200 rounded-xl text-sm font-bold text-slate-700";
-                
-                let memoText = memo;
-                if (memo.startsWith('http://') || memo.startsWith('https://')) {
-                    memoText = `<a href="${memo}" target="_blank" class="text-pastelPink-600 hover:underline break-all">${memo}</a>`;
-                }
-
-                item.innerHTML = `
-                    <span class="flex-1 mr-2 leading-relaxed">${memoText}</span>
-                    <button onclick="deleteMemo(${idx})" class="text-rose-400 hover:text-rose-600 p-1"><i class="fa-solid fa-xmark"></i></button>
-                `;
-                container.appendChild(item);
-            });
-        }
-
+        // 備忘錄與記帳邏輯補全
         function addMemo() {
             const input = document.getElementById('memo-input');
-            const val = input.value.trim();
-            if (val) {
-                memoData.push(val);
-                localStorage.setItem('v3_memos', JSON.stringify(memoData));
-                input.value = '';
-                renderMemos();
-            }
+            if (!input || !input.value.trim()) return;
+            memoData.push(input.value.trim());
+            localStorage.setItem('v3_memos', JSON.stringify(memoData));
+            input.value = '';
+            renderMemos();
         }
 
-        function deleteMemo(idx) {
-            memoData.splice(idx, 1);
+        function deleteMemo(index) {
+            memoData.splice(index, 1);
             localStorage.setItem('v3_memos', JSON.stringify(memoData));
             renderMemos();
         }
 
-        // 匯率計算機邏輯
-        let calcExpression = '';
-        function pressCalc(key) {
+        function renderMemos() {
+            const list = document.getElementById('memo-list');
+            if (!list) return;
+            list.innerHTML = '';
+            memoData.forEach((memo, index) => {
+                const item = document.createElement('div');
+                item.className = "flex justify-between items-center bg-pastelPink-50 p-2 rounded-xl border border-pastelPink-200 text-xs text-slate-700 font-bold";
+                item.innerHTML = `
+                    <span>${formatNoteWithLinks(memo)}</span>
+                    <button onclick="deleteMemo(${index})" class="text-rose-500 hover:text-rose-700 p-1"><i class="fa-solid fa-xmark"></i></button>
+                `;
+                list.appendChild(item);
+            });
+        }
+
+        // 匯率與記帳計算器
+        let calcExpr = "";
+        function pressCalc(val) {
             const display = document.getElementById('calc-display');
-            const twdResult = document.getElementById('calc-twd-result');
+            const twdRes = document.getElementById('calc-twd-result');
             const rate = parseFloat(document.getElementById('exchange-rate-input').value) || 0.215;
 
-            if (key === 'C') {
-                calcExpression = '';
-            } else if (key === '=') {
+            if (val === 'C') {
+                calcExpr = "";
+            } else if (val === '=') {
                 try {
-                    calcExpression = eval(calcExpression).toString();
-                } catch {
-                    calcExpression = 'Error';
+                    calcExpr = eval(calcExpr).toString();
+                } catch (e) {
+                    calcExpr = "Error";
                 }
             } else {
-                if (calcExpression === 'Error') calcExpression = '';
-                calcExpression += key;
+                calcExpr += val;
             }
 
-            display.value = calcExpression || '0';
-            const numVal = parseFloat(calcExpression) || 0;
-            twdResult.innerText = Math.round(numVal * rate).toLocaleString();
+            if (display) display.value = calcExpr || "0";
+            if (twdRes) {
+                const jpyVal = parseFloat(calcExpr) || 0;
+                twdRes.innerText = Math.round(jpyVal * rate);
+            }
         }
 
-        function saveRate() {
-            const rate = document.getElementById('exchange-rate-input').value;
-            localStorage.setItem('v3_rate', rate);
-            pressCalc('');
-        }
-
-        function loadRate() {
-            const rate = localStorage.getItem('v3_rate');
-            if (rate) document.getElementById('exchange-rate-input').value = rate;
-        }
-
-        // 記帳功能邏輯
         function addExpense() {
-            const title = document.getElementById('expense-title').value.trim();
-            const amount = parseFloat(document.getElementById('expense-amount').value);
+            const titleInput = document.getElementById('expense-title');
+            const amountInput = document.getElementById('expense-amount');
+            if (!titleInput || !amountInput || !titleInput.value.trim() || !amountInput.value) return;
+
             const rate = parseFloat(document.getElementById('exchange-rate-input').value) || 0.215;
-
-            if (!title || !amount) {
-                alert('請輸入品項名稱與金額！');
-                return;
-            }
-
-            const newExp = {
-                title: title,
-                jpy: amount,
-                twd: Math.round(amount * rate),
-                date: new Date().toLocaleDateString('zh-TW', { month: '2-digit', day: '2-digit' })
+            const newExpense = {
+                title: titleInput.value.trim(),
+                amount: parseFloat(amountInput.value),
+                twd: Math.round(parseFloat(amountInput.value) * rate)
             };
 
-            expenseData.unshift(newExp);
+            expenseData.push(newExpense);
             localStorage.setItem('v3_expenses', JSON.stringify(expenseData));
-
-            document.getElementById('expense-title').value = '';
-            document.getElementById('expense-amount').value = '';
-
+            titleInput.value = '';
+            amountInput.value = '';
             renderExpenses();
         }
 
-        function deleteExpense(idx) {
-            if (confirm('確定要刪除這筆記帳紀錄嗎？')) {
-                expenseData.splice(idx, 1);
-                localStorage.setItem('v3_expenses', JSON.stringify(expenseData));
-                renderExpenses();
-            }
+        function deleteExpense(index) {
+            expenseData.splice(index, 1);
+            localStorage.setItem('v3_expenses', JSON.stringify(expenseData));
+            renderExpenses();
         }
 
         function renderExpenses() {
             const container = document.getElementById('expense-list-container');
-            const totalTwdEl = document.getElementById('expense-total-twd');
+            const totalTwdSpan = document.getElementById('expense-total-twd');
             if (!container) return;
             container.innerHTML = '';
 
             let totalTwd = 0;
-
-            if (expenseData.length === 0) {
-                container.innerHTML = `<p class="text-center text-sm text-slate-400 py-4 font-bold">尚無記帳紀錄</p>`;
-                if (totalTwdEl) totalTwdEl.innerText = "0";
-                return;
-            }
-
-            expenseData.forEach((exp, idx) => {
+            expenseData.forEach((exp, index) => {
                 totalTwd += exp.twd;
                 const item = document.createElement('div');
-                item.className = "flex justify-between items-center p-2.5 bg-pastelPink-50 rounded-2xl border border-pastelPink-200/60 text-sm";
+                item.className = "flex justify-between items-center bg-pastelPink-50 p-2.5 rounded-xl border border-pastelPink-200/60 text-xs";
                 item.innerHTML = `
-                    <div class="flex items-center gap-2">
-                        <div class="w-8 h-8 bg-pastelPink-200 text-pastelPink-600 rounded-xl flex items-center justify-center text-xs shrink-0">
-                            <i class="fa-solid fa-receipt"></i>
-                        </div>
-                        <div>
-                            <p class="font-black text-slate-800 text-sm">${exp.title}</p>
-                            <p class="text-[10px] text-slate-500 font-bold">${exp.date} • ¥${exp.jpy.toLocaleString()}</p>
-                        </div>
+                    <div>
+                        <span class="font-black text-slate-800">${exp.title}</span>
+                        <span class="text-slate-400 block text-[10px]">¥${exp.amount}</span>
                     </div>
                     <div class="flex items-center gap-2">
-                        <span class="font-black text-rose-500 text-sm">NT$ ${exp.twd.toLocaleString()}</span>
-                        <button onclick="deleteExpense(${idx})" class="text-rose-400 hover:text-rose-600 p-1"><i class="fa-solid fa-trash-can text-xs"></i></button>
+                        <span class="font-black text-pastelPink-600">NT$ ${exp.twd}</span>
+                        <button onclick="deleteExpense(${index})" class="text-rose-400 hover:text-rose-600 p-1"><i class="fa-solid fa-trash-can"></i></button>
                     </div>
                 `;
                 container.appendChild(item);
             });
 
-            if (totalTwdEl) totalTwdEl.innerText = totalTwd.toLocaleString();
+            if (totalTwdSpan) totalTwdSpan.innerText = totalTwd;
         }
 
-        // 儲存證件勾選狀態
         function saveDocStateV3() {
-            ['idcard', 'passport', 'license', 'translation'].forEach(type => {
-                const chk = document.getElementById(`v3-doc-${type}`);
-                if (chk) localStorage.setItem(`v3-doc-${type}`, chk.checked);
+            ['v3-doc-idcard', 'v3-doc-passport', 'v3-doc-license', 'v3-doc-translation'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) localStorage.setItem(id, el.checked);
             });
         }
 
         function loadDocStateV3() {
-            ['idcard', 'passport', 'license', 'translation'].forEach(type => {
-                const chk = document.getElementById(`v3-doc-${type}`);
-                if (chk) chk.checked = localStorage.getItem(`v3-doc-${type}`) === 'true';
+            ['v3-doc-idcard', 'v3-doc-passport', 'v3-doc-license', 'v3-doc-translation'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.checked = localStorage.getItem(id) === 'true';
             });
         }
 
         // 頁面初始化
-        window.onload = function() {
-            loadDocStateV3();
-            loadRate();
+        window.addEventListener('DOMContentLoaded', () => {
+            renderItinerary(currentDay);
             renderChecklist();
             renderMemos();
-            renderItinerary(currentDay);
             renderExpenses();
-        };
+            loadDocStateV3();
+        });
     </script>
 </body>
 </html>
