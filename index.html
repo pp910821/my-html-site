@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>沖繩夢幻之旅 Okinawa Dream Travel App</title>
+    <title>🌸 Okinawa Travel </title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons CDN -->
@@ -63,16 +63,17 @@
 <body class="bg-sakura-50 text-slate-800 min-h-screen pb-28 font-rounded text-sm">
 
     <!-- Top Navigation Header (粉嫩抬頭區塊) -->
-    <header class="sticky top-0 z-40 bg-gradient-to-r from-sakura-500 via-sakura-400 to-sakura-500 text-white shadow-md rounded-b-2xl border-b border-sakura-300/40">
+    <header id="main-header" class="sticky top-0 z-40 bg-gradient-to-r from-sakura-500 via-sakura-400 to-sakura-500 text-white shadow-md rounded-b-2xl border-b border-sakura-300/40 transition-transform duration-300 transform">
         <div class="max-w-md mx-auto px-4 py-3.5 flex items-center justify-between">
             <div class="flex items-center space-x-2.5">
                 <i class="fa-solid fa-umbrella-beach text-2xl text-white/95 animate-bounce" style="animation-duration: 3s;"></i>
                 <div>
-                    <h1 id="page-title" class="text-base sm:text-lg font-black tracking-wide leading-tight">藍家沖繩小助手</h1>
+                    <h1 id="page-title" class="text-base sm:text-lg font-black tracking-wide leading-tight">藍＊okinawa小助手＊</h1>
+                    <p id="page-subtitle" class="text-[11px] sm:text-xs text-white/95 font-bold mt-0.5 flex items-center"><i class="fa-solid fa-plane-departure mr-1 text-[10px]"></i>航班資訊（華航 CI 122 / CI 123）</p>
                 </div>
             </div>
-            <span class="text-xs bg-white/20 backdrop-blur-md px-3 py-1 rounded-full font-bold border border-white/30 text-white shadow-xs">
-                6天5夜 🏖️
+            <span class="text-xs bg-white/20 backdrop-blur-md px-3 py-1 rounded-full font-bold border border-white/30 text-white shadow-xs whitespace-nowrap">
+                9/28~10/3(6Day)
             </span>
         </div>
     </header>
@@ -94,6 +95,26 @@
 
             <!-- Sub Content: Flight -->
             <div id="subtab-flight" class="space-y-3.5">
+                <!-- 中華航空 品牌特製標題導覽卡片 -->
+                <div class="bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 text-white rounded-2xl p-4 shadow-md space-y-2 relative overflow-hidden">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center text-white text-2xl border border-white/30 shadow-2xs shrink-0">
+                                <i class="fa-solid fa-plane-departure"></i>
+                            </div>
+                            <div>
+                                <div class="flex items-center space-x-2 flex-wrap">
+                                    <h3 class="font-black text-lg text-white tracking-wide">中華航空</h3>
+                                    <span class="text-[10px] font-black bg-white text-blue-600 px-2 py-0.5 rounded-full shadow-2xs">CI122 / CI123</span>
+                                </div>
+                                <p class="text-xs text-sky-100 font-bold mt-0.5"><i class="fa-solid fa-route mr-1"></i>桃園 T2 ⇄ 沖繩 OKA 直飛往返</p>
+                            </div>
+                        </div>
+                        <span class="bg-white/20 backdrop-blur-md text-white text-xs font-black px-3 py-1 rounded-xl border border-white/30 whitespace-nowrap">
+                            華航直飛 ✈️
+                        </span>
+                    </div>
+                </div>
                 <!-- 去程 Card -->
                 <div class="bg-white rounded-2xl p-3.5 sm:p-4 shadow-sm border border-sakura-200/80 space-y-2.5">
                     <div class="flex items-center justify-between border-b border-sakura-100 pb-2">
@@ -191,38 +212,90 @@
 
             <!-- Sub Content: Car Rental -->
             <div id="subtab-car" class="space-y-4 hidden">
+                <!-- 沖繩行腳 LOGO 品牌特製標題卡片 -->
+                <div class="bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 text-white rounded-2xl p-4 shadow-md space-y-2 relative overflow-hidden">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center text-white text-2xl border border-white/30 shadow-2xs shrink-0">
+                                <i class="fa-solid fa-car-side"></i>
+                            </div>
+                            <div>
+                                <div class="flex items-center space-x-2 flex-wrap">
+                                    <h3 class="font-black text-lg text-white tracking-wide">沖繩行腳</h3>
+                                    <span class="text-[10px] font-black bg-white text-orange-600 px-2 py-0.5 rounded-full shadow-2xs">OKINAWA RENT-A-CAR</span>
+                                </div>
+                                <p class="text-xs text-orange-100 font-bold mt-0.5"><i class="fa-solid fa-shuttle-van mr-1"></i>那霸機場免費專車接送服務</p>
+                            </div>
+                        </div>
+                        <span class="bg-white/20 backdrop-blur-md text-white text-xs font-black px-3 py-1 rounded-xl border border-white/30 whitespace-nowrap">
+                            SIENTA 7人座 × 2輛
+                        </span>
+                    </div>
+                </div>
+
                 <div class="bg-white rounded-2xl p-4 shadow-sm border border-sakura-200/80 space-y-3">
                     <div class="flex items-center justify-between border-b border-sakura-100 pb-2.5">
-                        <span class="font-black text-base text-slate-800">沖繩行腳 租車服務</span>
-                        <span class="bg-sakura-100 text-sakura-700 text-xs px-3 py-1 rounded-full font-black border border-sakura-200">新款 SIENTA 7人座 × 2輛</span>
+                        <span class="font-black text-sm sm:text-base text-slate-800 flex items-center">
+                            <i class="fa-solid fa-circle-info text-amber-500 mr-2"></i>營業所資訊與取還車時間
+                        </span>
+                        <span class="bg-orange-100 text-orange-800 text-xs px-2.5 py-0.5 rounded-md font-extrabold border border-orange-200">2輛車專案</span>
                     </div>
 
-                    <div class="text-xs space-y-2 text-slate-700 leading-relaxed">
-                        <p class="flex items-start"><i class="fa-solid fa-location-dot text-sakura-500 w-5 mt-0.5"></i><span><strong class="text-slate-900">營業所地址：</strong>沖繩縣那霸市金城 3-8-11-1F-2號</span></p>
-                        <p class="flex items-center"><i class="fa-solid fa-clock text-sakura-500 w-5"></i><span><strong class="text-slate-900">取車時間：</strong>2026/09/28 (一) 20:30</span></p>
-                        <p class="flex items-center"><i class="fa-solid fa-clock text-sakura-500 w-5"></i><span><strong class="text-slate-900">還車時間：</strong>2026/10/03 (六) 18:00</span></p>
-                        <p class="flex items-center"><i class="fa-solid fa-shuttle-van text-sakura-500 w-5"></i><span><strong class="text-slate-900">機場接送：</strong>那霸機場免費專車接駁至營業所</span></p>
+                    <div class="text-xs text-slate-700 space-y-2.5 leading-relaxed">
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/80 flex items-center justify-between">
+                            <div class="flex items-start space-x-2 pr-2">
+                                <i class="fa-solid fa-location-dot text-sakura-500 text-sm mt-0.5 shrink-0"></i>
+                                <div>
+                                    <strong class="text-slate-900 block">營業所地址：</strong>
+                                    <span class="text-slate-600">沖繩縣那霸市金城 3-8-11-1F-2號</span>
+                                </div>
+                            </div>
+                            <a href="https://www.google.com/maps/search/?api=1&query=沖繩縣那霸市金城3-8-11" target="_blank" class="bg-sakura-500 hover:bg-sakura-600 text-white font-extrabold text-xs px-3 py-2 rounded-xl flex items-center space-x-1.5 shadow-2xs transition shrink-0" title="導航至沖繩行腳">
+                                <i class="fa-solid fa-map-location-dot text-sm"></i>
+                                <span>地圖導航</span>
+                            </a>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-2 text-xs">
+                            <div class="bg-amber-50/80 p-2.5 rounded-xl border border-amber-200/60">
+                                <span class="text-amber-800 font-extrabold block mb-0.5"><i class="fa-solid fa-clock text-amber-500 mr-1"></i>取車時間</span>
+                                <span class="font-black text-slate-800">2026/09/28 (一) 20:30</span>
+                            </div>
+                            <div class="bg-amber-50/80 p-2.5 rounded-xl border border-amber-200/60">
+                                <span class="text-amber-800 font-extrabold block mb-0.5"><i class="fa-solid fa-clock text-amber-500 mr-1"></i>還車時間</span>
+                                <span class="font-black text-slate-800">2026/10/03 (六) 18:00</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-blue-50/80 p-2.5 rounded-xl border border-blue-200/60 text-blue-900 font-medium flex items-center space-x-2">
+                            <i class="fa-solid fa-shuttle-van text-blue-500 text-base shrink-0"></i>
+                            <span><strong class="font-extrabold">機場接送：</strong>那霸機場專車免費接駁至營業所辦理取車</span>
+                        </div>
                     </div>
 
                     <!-- 費用明細 -->
                     <div class="bg-sakura-50/80 p-3.5 rounded-2xl border border-sakura-100 text-xs space-y-2">
                         <div class="font-extrabold text-slate-800 border-b border-sakura-200 pb-1.5 flex justify-between items-center">
-                            <span>費用計算與統計 (JPY)</span>
-                            <span class="text-sakura-600 font-black bg-white px-2 py-0.5 rounded-md border border-sakura-200">2 輛車合計</span>
+                            <span>租車費用算盤與統計 (JPY)</span>
+                            <span class="text-sakura-600 font-black bg-white px-2 py-0.5 rounded-md border border-sakura-200">2 輛車專案</span>
                         </div>
                         <div class="flex justify-between text-slate-600"><span>單台車租用總價</span><span class="font-bold">¥ 70,700 / 輛</span></div>
                         <div class="flex justify-between text-slate-600"><span>租用數量</span><span class="font-bold text-slate-800">2 輛 (新款 SIENTA 7人座)</span></div>
                         <div class="flex justify-between text-slate-700 font-bold border-t border-sakura-200/60 pt-1.5">
-                            <span>兩台車租用總價</span><span class="font-black text-slate-900">¥ 141,400</span>
+                            <span>兩台車租金總合</span><span class="font-black text-slate-900">¥ 141,400</span>
                         </div>
-                        <div class="flex justify-between text-emerald-700 font-bold bg-emerald-50/80 p-1.5 rounded-lg border border-emerald-100">
-                            <span>已預付訂金</span><span>- ¥ 7,070</span>
+                        <div class="flex justify-between text-emerald-700 font-bold bg-emerald-50/80 p-2 rounded-xl border border-emerald-200/80">
+                            <div>
+                                <span class="block">已預付訂金 (10% × 2輛)</span>
+                                <span class="text-[10px] text-emerald-600 font-medium">¥ 7,070 × 2 輛車</span>
+                            </div>
+                            <span class="font-black text-emerald-700 text-sm">- ¥ 14,140</span>
                         </div>
                         <div class="flex justify-between items-baseline font-black text-sakura-600 text-sm pt-2 border-t-2 border-sakura-300">
                             <span>取車現場應付尾款</span>
                             <div class="text-right">
-                                <span class="text-lg text-sakura-600 block">¥ 134,330</span>
-                                <span class="text-[10px] text-slate-400 font-normal">約合台幣 NT$ 28,881</span>
+                                <span class="text-lg text-sakura-600 block">¥ 127,260</span>
+                                <span class="text-[10px] text-slate-400 font-normal">約合台幣 NT$ 27,361 (依匯率 0.215)</span>
                             </div>
                         </div>
                     </div>
@@ -304,15 +377,15 @@
 
         <!-- TAB 3: 行程表 (DAY 1 - DAY 6 折疊卡片與詳細行程) -->
         <section id="tab-itinerary" class="tab-content space-y-3.5 hidden">
-            <!-- 1. 最頂區塊：當天主題卡片 (DAY 1~6 動態更新) -->
-            <div id="active-day-header-container">
+            <!-- 1. 最頂區塊：當天主題卡片 (DAY 1~6 動態更新，設定固定置頂) -->
+            <div id="active-day-header-container" class="sticky top-0 z-20 pt-1 pb-1 bg-sakura-50/95 backdrop-blur-xs transition-all">
                 <!-- Dynamically populated via renderActiveDayHeader() -->
             </div>
 
-            <!-- 2. 膠囊子頁面區塊 (Pill Subtabs) -->
-            <div class="bg-sakura-100/60 p-2 rounded-2xl border border-sakura-200/80 shadow-2xs">
-                <div class="flex space-x-2 overflow-x-auto pb-0.5 pt-0.5 px-0.5 no-scrollbar" id="day-subtabs-bar">
-                    <!-- Dynamic Subtabs: D1 (09/28), D2 (09/29), D3 (09/30)... rendered via JS -->
+            <!-- 2. 膠囊子頁面區塊 (Pill Subtabs - 純膠囊無底板) -->
+            <div class="py-0.5">
+                <div class="flex space-x-2.5 overflow-x-auto py-1 px-0.5 no-scrollbar snap-x snap-mandatory scroll-smooth" id="day-subtabs-bar">
+                    <!-- Dynamic Subtabs: Day1, Day2, Day3, Day4, Day5, Day6 -->
                 </div>
             </div>
 
@@ -335,64 +408,67 @@
 
         <!-- TAB 4: 其他資訊 -->
         <section id="tab-other" class="tab-content space-y-3.5 hidden">
-            <!-- Top Header Card for Other Info -->
-            <div class="bg-gradient-to-r from-sakura-500 via-sakura-400 to-sakura-500 rounded-2xl p-4 text-white shadow-md space-y-1">
-                <div class="flex items-center justify-between">
-                    <span class="bg-white text-sakura-600 text-xs font-black px-2.5 py-0.5 rounded-full shadow-2xs">
-                        其他資訊總覽
-                    </span>
-                    <span class="text-xs text-white/80 font-bold"><i class="fa-solid fa-circle-info mr-1"></i>沖繩自駕指南</span>
+            <!-- Sticky Container for Header & 3 Distinct Colored Subtabs -->
+            <div class="sticky top-0 z-30 bg-sakura-50/95 backdrop-blur-md pt-1 pb-2 space-y-2.5">
+                <!-- Top Header Card for Other Info -->
+                <div id="other-header-card" class="bg-gradient-to-r from-rose-500 via-pink-500 to-rose-400 rounded-2xl p-4 text-white shadow-md space-y-1 transition-all">
+                    <div class="flex items-center justify-between">
+                        <span id="other-header-tag" class="bg-white text-slate-800 text-xs font-black px-2.5 py-0.5 rounded-full shadow-2xs">
+                            01 住宿指南
+                        </span>
+                        <span class="text-xs text-white/90 font-bold"><i class="fa-solid fa-circle-info mr-1"></i>沖繩自駕指南</span>
+                    </div>
+                    <h2 class="font-black text-base sm:text-lg tracking-wide leading-snug" id="other-header-title">🏨 住宿資訊（恩納 Villa & 宜野灣飯店）</h2>
+                    <p class="text-xs text-white/95 font-medium" id="other-header-sub">包含兩處渡假包棟與飯店入住說明、鑰匙密碼流程與專用停車位提醒</p>
                 </div>
-                <h2 class="font-black text-base sm:text-lg tracking-wide leading-snug" id="other-header-title">🏨 住宿資訊、親子景點與旅遊保險</h2>
-                <p class="text-xs text-white/95 font-medium" id="other-header-sub">包含 2 處渡假包棟/飯店須知、精選親子公園商場與保險說明</p>
-            </div>
 
-            <!-- Sub-tabs for Other Info -->
-            <div class="flex rounded-2xl bg-sakura-100 p-1.5 shadow-inner border border-sakura-200/60 text-xs">
-                <button onclick="switchOtherSubTab('stay')" id="other-btn-stay" class="flex-1 py-2.5 rounded-xl font-extrabold bg-white text-sakura-600 shadow-sm">住宿資訊</button>
-                <button onclick="switchOtherSubTab('kids')" id="other-btn-kids" class="flex-1 py-2.5 rounded-xl font-extrabold text-slate-500">親子景點</button>
-                <button onclick="switchOtherSubTab('ins')" id="other-btn-ins" class="flex-1 py-2.5 rounded-xl font-extrabold text-slate-500">旅遊保險</button>
+                <!-- 3 Sub-tabs for Other Info (Distinct Colors) -->
+                <div class="flex rounded-2xl bg-white p-1.5 shadow-xs border border-sakura-200/80 text-xs gap-1.5">
+                    <button onclick="switchOtherSubTab('stay')" id="other-btn-stay" class="flex-1 py-2.5 rounded-xl font-black bg-rose-500 text-white shadow-md border border-rose-500 transition-all text-center">住宿資訊</button>
+                    <button onclick="switchOtherSubTab('kids')" id="other-btn-kids" class="flex-1 py-2.5 rounded-xl font-extrabold text-emerald-700 bg-emerald-50/80 hover:bg-emerald-100 border border-emerald-200/80 transition-all text-center">親子景點</button>
+                    <button onclick="switchOtherSubTab('ins')" id="other-btn-ins" class="flex-1 py-2.5 rounded-xl font-extrabold text-indigo-700 bg-indigo-50/80 hover:bg-indigo-100 border border-indigo-200/80 transition-all text-center">旅遊保險</button>
+                </div>
             </div>
 
             <!-- SubTab: Stay -->
             <div id="other-subtab-stay" class="space-y-4">
                 <!-- Stay 1 -->
-                <div class="bg-white rounded-2xl p-4 shadow-sm border border-sakura-200/80 space-y-2.5">
-                    <div class="flex justify-between items-start border-b border-sakura-100 pb-2.5">
+                <div class="bg-white rounded-2xl p-4 shadow-sm border border-rose-200/80 space-y-2.5">
+                    <div class="flex justify-between items-center border-b border-rose-100 pb-2.5">
                         <div>
-                            <span class="text-[11px] bg-sakura-100 text-sakura-700 font-extrabold px-2.5 py-0.5 rounded-md border border-sakura-200">09/28 - 10/01 (連住3晚)</span>
-                            <h3 class="font-extrabold text-sm text-slate-800 mt-1.5">Grandioso Okinawa Pool Villa Onna 8A</h3>
+                            <span class="text-[11px] bg-rose-100 text-rose-800 font-extrabold px-2.5 py-0.5 rounded-md border border-rose-200">09/28 - 10/01 (連住3晚)</span>
+                            <h3 class="font-extrabold text-sm sm:text-base text-slate-900 mt-1">Grandioso Okinawa Pool Villa Onna 8A</h3>
                         </div>
-                        <a href="https://www.google.com/maps/place/%E3%82%B0%E3%83%A9%E3%83%B3%E3%83%87%E3%82%A3%E3%82%AA%E3%83%BC%E3%82%BD%E6%B2%96%E7%B8%84%E3%83%97%E3%83%BC%E3%83%AB%E3%83%B4%E3%82%A3%E3%83%A9%E6%81%A9%E7%B4%8D8%EF%BC%88GRANDIOSO+OKINAWA+POOL+VILLA+ONNA8%EF%BC%89/@26.4928277,127.8463886,93m/data=!3m1!1e3!4m7!3m6!1s0x34e50500006133ef:0x581cc25e92159705!8m2!3d26.4927522!4d127.8469278" target="_blank" class="bg-sakura-500 hover:bg-sakura-600 text-white text-xs px-3 py-1.5 rounded-xl font-bold flex items-center shadow-xs transition">
-                            <i class="fa-solid fa-location-dot mr-1"></i>Google Maps 導航
+                        <a href="https://www.google.com/maps/place/%E3%82%B0%E3%83%A9%E3%83%B3%E3%83%87%E3%82%A3%E3%82%AA%E3%83%BC%E3%82%BD%E6%B2%96%E7%B8%84%E3%83%97%E3%83%BC%E3%83%AB%E3%83%B4%E3%82%A3%E3%83%A9%E6%81%A9%E7%B4%8D8%EF%BC%88GRANDIOSO+OKINAWA+POOL+VILLA+ONNA8%EF%BC%89/@26.4928277,127.8463886,93m/data=!3m1!1e3!4m7!3m6!1s0x34e50500006133ef:0x581cc25e92159705!8m2!3d26.4927522!4d127.8469278" target="_blank" class="bg-rose-500 hover:bg-rose-600 text-white w-8 h-8 rounded-xl flex items-center justify-center shadow-2xs transition active:scale-95 shrink-0 ml-2" title="Google 地圖導航">
+                            <i class="fa-solid fa-map-location-dot text-sm"></i>
                         </a>
                     </div>
                     <div class="text-xs text-slate-700 space-y-1.5 leading-relaxed">
-                        <p><strong class="text-slate-900">入住時間：</strong>入住 16:00 起 | 退房 10:00 前</p>
-                        <p><strong class="text-slate-900">報到流程：</strong>自助入住（無實體櫃檯，前兩天發送門鎖密碼與說明）</p>
-                        <p><strong class="text-slate-900">房間規劃：</strong>雙人床x1, 雙人床x2 (共三間西式臥室), 獨立淋浴間x1, 廁所x1</p>
-                        <p><strong class="text-slate-900">附屬設施：</strong>私人游泳池、戶外烤肉架、免費停車位 2 個</p>
+                        <p><i class="fa-solid fa-clock text-rose-500 mr-1.5"></i><strong class="text-slate-900">入住時間：</strong>入住 16:00 起 | 退房 10:00 前</p>
+                        <p><i class="fa-solid fa-key text-rose-500 mr-1.5"></i><strong class="text-slate-900">報到流程：</strong>自助入住（無實體櫃檯，入住前兩天簡訊發送門鎖密碼）</p>
+                        <p><i class="fa-solid fa-bed text-rose-500 mr-1.5"></i><strong class="text-slate-900">房間規劃：</strong>雙人床x1, 雙人床x2 (共三間西式臥室), 獨立淋浴間x1, 廁所x1</p>
+                        <p><i class="fa-solid fa-water-ladder text-rose-500 mr-1.5"></i><strong class="text-slate-900">附屬設施：</strong>私人游泳池、戶外烤肉架、免費專用停車位 2 個</p>
                     </div>
                 </div>
 
                 <!-- Stay 2 -->
-                <div class="bg-white rounded-2xl p-4 shadow-sm border border-sakura-200/80 space-y-2.5">
-                    <div class="flex justify-between items-start border-b border-sakura-100 pb-2.5">
+                <div class="bg-white rounded-2xl p-4 shadow-sm border border-rose-200/80 space-y-2.5">
+                    <div class="flex justify-between items-center border-b border-rose-100 pb-2.5">
                         <div>
-                            <span class="text-[11px] bg-sakura-100 text-sakura-700 font-extrabold px-2.5 py-0.5 rounded-md border border-sakura-200">10/01 - 10/03 (連住2晚)</span>
-                            <h3 class="font-extrabold text-sm text-slate-800 mt-1.5">Rizozaisen Hotel 宜野灣</h3>
+                            <span class="text-[11px] bg-rose-100 text-rose-800 font-extrabold px-2.5 py-0.5 rounded-md border border-rose-200">10/01 - 10/03 (連住2晚)</span>
+                            <h3 class="font-extrabold text-sm sm:text-base text-slate-900 mt-1">Rizozaisen Hotel 宜野灣飯店</h3>
                         </div>
-                        <a href="https://www.google.com/maps/search/?api=1&query=26.269750595092773%2C127.73519134521484" target="_blank" class="bg-sakura-500 hover:bg-sakura-600 text-white text-xs px-3 py-1.5 rounded-xl font-bold flex items-center shadow-xs transition">
-                            <i class="fa-solid fa-location-dot mr-1"></i>Google Maps 導航
+                        <a href="https://www.google.com/maps/search/?api=1&query=26.269750595092773%2C127.73519134521484" target="_blank" class="bg-rose-500 hover:bg-rose-600 text-white w-8 h-8 rounded-xl flex items-center justify-center shadow-2xs transition active:scale-95 shrink-0 ml-2" title="Google 地圖導航">
+                            <i class="fa-solid fa-map-location-dot text-sm"></i>
                         </a>
                     </div>
                     <div class="text-xs text-slate-700 space-y-1.5 leading-relaxed">
-                        <p><strong class="text-slate-900">入住時間：</strong>入住 15:00 起 | 退房 10:00 前</p>
-                        <p><strong class="text-slate-900">飯店地址：</strong>宜野灣市 245-4 Ōjana RIZOZAIZENHOTEL 3F</p>
-                        <p><strong class="text-slate-900">房間規劃：</strong>三間雙人床×2 (可容納 8大3兒+1嬰)</p>
-                        <p><strong class="text-slate-900">聯絡方式：</strong>Tel: 098-989-3880 | Line官方帳號: @861trdzf</p>
+                        <p><i class="fa-solid fa-clock text-rose-500 mr-1.5"></i><strong class="text-slate-900">入住時間：</strong>入住 15:00 起 | 退房 10:00 前</p>
+                        <p><i class="fa-solid fa-location-dot text-rose-500 mr-1.5"></i><strong class="text-slate-900">飯店地址：</strong>宜野灣市 245-4 Ōjana RIZOZAIZENHOTEL 3F</p>
+                        <p><i class="fa-solid fa-bed text-rose-500 mr-1.5"></i><strong class="text-slate-900">房間格局：</strong>三間雙人床×2 (可容納 8大3兒+1嬰)</p>
+                        <p><i class="fa-solid fa-phone text-rose-500 mr-1.5"></i><strong class="text-slate-900">聯絡方式：</strong>Tel: 098-989-3880 | Line官方帳號: @861trdzf</p>
                         <div class="bg-red-50 text-red-700 border border-red-200 p-2.5 rounded-xl font-bold">
-                            ⚠️ 停車指示：已預留專屬 3 號與 11 號車位。11 號車位有標誌錐，駛離時請將三角錐放回原處！
+                            ⚠️ 專用停車位提醒：已預留專屬 3 號與 11 號車位。11 號車位上有標誌錐，駛離時請將交通錐放回原處！
                         </div>
                     </div>
                 </div>
@@ -401,58 +477,229 @@
             <!-- SubTab: Kids Attractions -->
             <div id="other-subtab-kids" class="space-y-4 hidden">
                 <div class="flex space-x-2 text-xs font-bold">
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full border border-blue-200"><i class="fa-solid fa-bag-shopping mr-1"></i>藍色：購物百貨</span>
-                    <span class="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full border border-emerald-200"><i class="fa-solid fa-tree mr-1"></i>綠色：戶外公園</span>
+                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full border border-blue-200"><i class="fa-solid fa-bag-shopping mr-1"></i>藍色：購物百貨/娛樂</span>
+                    <span class="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full border border-emerald-200"><i class="fa-solid fa-tree mr-1"></i>綠色：戶外主題公園</span>
                 </div>
 
-                <!-- Shopping Malls -->
-                <div class="space-y-3">
-                    <div class="bg-white rounded-2xl p-3.5 shadow-sm border-l-4 border-blue-500 border border-slate-100 space-y-1">
-                        <div class="flex justify-between items-center">
-                            <h4 class="font-extrabold text-xs text-slate-800">永旺夢樂城沖繩來客夢 (AEON Rycom)</h4>
-                            <span class="text-[10px] bg-blue-50 text-blue-700 font-bold px-2 py-0.5 rounded border border-blue-200">購物/美食</span>
-                        </div>
-                        <p class="text-xs text-slate-600 leading-relaxed">約 220 家店舖與大型水族箱景觀，日系服飾、母嬰用品與美食美食街齊全。</p>
+                <!-- Shopping Malls Category (Blue Theme Cards) -->
+                <div class="space-y-3.5">
+                    <div class="font-extrabold text-xs text-blue-900 flex items-center px-1">
+                        <i class="fa-solid fa-store text-blue-500 mr-1.5 text-sm"></i>精選購物商場與電玩中心
                     </div>
 
-                    <div class="bg-white rounded-2xl p-3.5 shadow-sm border-l-4 border-blue-500 border border-slate-100 space-y-1">
-                        <div class="flex justify-between items-center">
-                            <h4 class="font-extrabold text-xs text-slate-800">沖繩 Outlet Mall ASHIBINAA</h4>
-                            <span class="text-[10px] bg-blue-50 text-blue-700 font-bold px-2 py-0.5 rounded border border-blue-200">Outlet</span>
+                    <!-- Mall 1 -->
+                    <div class="bg-white rounded-2xl border border-blue-200/80 shadow-xs p-3.5 space-y-2.5">
+                        <div class="flex items-start justify-between">
+                            <div class="flex items-start space-x-2.5">
+                                <span class="text-xs font-black px-2 py-0.5 rounded-lg bg-blue-100 text-blue-800 border border-blue-200 shrink-0 mt-0.5">購物/美食</span>
+                                <div>
+                                    <h4 class="font-black text-sm sm:text-base text-slate-900 leading-snug">永旺夢樂城沖繩來客夢 (AEON Rycom)</h4>
+                                    <p class="text-xs text-slate-600 font-medium mt-0.5 flex items-center">
+                                        <i class="fa-solid fa-location-dot text-blue-400 mr-1 text-xs"></i>沖繩縣中頭郡北中城村ライカム 1
+                                    </p>
+                                </div>
+                            </div>
+                            <a href="https://www.google.com/maps/search/?api=1&query=AEON+MALL+Okinawa+Rycom" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white w-8 h-8 rounded-xl flex items-center justify-center shadow-2xs transition shrink-0 active:scale-95 ml-2" title="Google 地圖導航">
+                                <i class="fa-solid fa-map-location-dot text-sm"></i>
+                            </a>
                         </div>
-                        <p class="text-xs text-slate-600 leading-relaxed">過季品牌精品 Outlet，距離那霸機場僅約 15 分鐘車程。</p>
+                        <div class="bg-blue-50/70 p-2.5 rounded-xl border border-blue-100 space-y-1 text-xs">
+                            <div class="font-extrabold text-blue-900 flex items-center"><i class="fa-solid fa-star text-amber-400 mr-1.5"></i>三項精選推薦亮點：</div>
+                            <div class="text-slate-700 space-y-1 font-medium pl-1 leading-relaxed">
+                                <p>① 沖繩規模最大購物中心，擁有 220+ 家店舖與日系美妝專櫃</p>
+                                <p>② 挑高大廳設有 100 噸室內水族箱，集結極豐富親子樂園設施</p>
+                                <p>③ 美食街與主題餐廳選擇極齊全，適合全家舒適採購休閒一整天</p>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="bg-white rounded-2xl p-3.5 shadow-sm border-l-4 border-blue-500 border border-slate-100 space-y-1">
-                        <div class="flex justify-between items-center">
-                            <h4 class="font-extrabold text-xs text-slate-800">iias 沖繩豐崎</h4>
-                            <span class="text-[10px] bg-blue-50 text-blue-700 font-bold px-2 py-0.5 rounded border border-blue-200">購物/水族館</span>
+                    <!-- Mall 2 -->
+                    <div class="bg-white rounded-2xl border border-blue-200/80 shadow-xs p-3.5 space-y-2.5">
+                        <div class="flex items-start justify-between">
+                            <div class="flex items-start space-x-2.5">
+                                <span class="text-xs font-black px-2 py-0.5 rounded-lg bg-blue-100 text-blue-800 border border-blue-200 shrink-0 mt-0.5">過季精品</span>
+                                <div>
+                                    <h4 class="font-black text-sm sm:text-base text-slate-900 leading-snug">沖繩 Outlet Mall ASHIBINAA</h4>
+                                    <p class="text-xs text-slate-600 font-medium mt-0.5 flex items-center">
+                                        <i class="fa-solid fa-location-dot text-blue-400 mr-1 text-xs"></i>沖繩縣豐見城市豐崎 1-188
+                                    </p>
+                                </div>
+                            </div>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Okinawa+Outlet+Mall+ASHIBINAA" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white w-8 h-8 rounded-xl flex items-center justify-center shadow-2xs transition shrink-0 active:scale-95 ml-2" title="Google 地圖導航">
+                                <i class="fa-solid fa-map-location-dot text-sm"></i>
+                            </a>
                         </div>
-                        <p class="text-xs text-slate-600 leading-relaxed">結合購物商場與 DMM Kariyushi 水族館，緊鄰美麗 SUN 海灘賞夕陽。</p>
+                        <div class="bg-blue-50/70 p-2.5 rounded-xl border border-blue-100 space-y-1 text-xs">
+                            <div class="font-extrabold text-blue-900 flex items-center"><i class="fa-solid fa-star text-amber-400 mr-1.5"></i>三項精選推薦亮點：</div>
+                            <div class="text-slate-700 space-y-1 font-medium pl-1 leading-relaxed">
+                                <p>① 沖繩唯一過季精品 Outlet，距離那霸機場僅約 15 分鐘車程</p>
+                                <p>② 匯集 COACH、Nike、Adidas 等 100+ 國際品牌全年折扣優惠</p>
+                                <p>③ 露天歐風建築街道寬拆平坦，方便推嬰兒車漫步撿便宜採購</p>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="bg-amber-50 border border-amber-200 text-amber-900 p-3 rounded-xl text-xs font-medium">
-                        <i class="fa-solid fa-circle-exclamation text-amber-500 mr-1.5"></i><strong class="font-extrabold">夾娃娃機與遊戲場規定：</strong>沖繩縣法令規定未滿 18 歲兒童，20:00 後禁止進入電子遊戲機中心。
+                    <!-- Mall 3 -->
+                    <div class="bg-white rounded-2xl border border-blue-200/80 shadow-xs p-3.5 space-y-2.5">
+                        <div class="flex items-start justify-between">
+                            <div class="flex items-start space-x-2.5">
+                                <span class="text-xs font-black px-2 py-0.5 rounded-lg bg-blue-100 text-blue-800 border border-blue-200 shrink-0 mt-0.5">購物/水族館</span>
+                                <div>
+                                    <h4 class="font-black text-sm sm:text-base text-slate-900 leading-snug">iias 沖繩豐崎 (iias Toyosaki)</h4>
+                                    <p class="text-xs text-slate-600 font-medium mt-0.5 flex items-center">
+                                        <i class="fa-solid fa-location-dot text-blue-400 mr-1 text-xs"></i>沖繩縣豐見城市豐崎 3-35
+                                    </p>
+                                </div>
+                            </div>
+                            <a href="https://www.google.com/maps/search/?api=1&query=iias+Okinawa+Toyosaki" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white w-8 h-8 rounded-xl flex items-center justify-center shadow-2xs transition shrink-0 active:scale-95 ml-2" title="Google 地圖導航">
+                                <i class="fa-solid fa-map-location-dot text-sm"></i>
+                            </a>
+                        </div>
+                        <div class="bg-blue-50/70 p-2.5 rounded-xl border border-blue-100 space-y-1 text-xs">
+                            <div class="font-extrabold text-blue-900 flex items-center"><i class="fa-solid fa-star text-amber-400 mr-1.5"></i>三項精選推薦亮點：</div>
+                            <div class="text-slate-700 space-y-1 font-medium pl-1 leading-relaxed">
+                                <p>① 沖繩南部最新海景購物商場，緊鄰美麗 SUN 海灘賞夕陽美景</p>
+                                <p>② 館內結合「DMM Kariyushi 水族館」與大型動漫主題娛樂專區</p>
+                                <p>③ 親子友善設施與哺育室完善，購物、水族館與美食一次滿足</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mall 4 (GiGO Arcades) -->
+                    <div class="bg-white rounded-2xl border border-blue-200/80 shadow-xs p-3.5 space-y-2.5">
+                        <div class="flex items-start justify-between">
+                            <div class="flex items-start space-x-2.5">
+                                <span class="text-xs font-black px-2 py-0.5 rounded-lg bg-blue-100 text-blue-800 border border-blue-200 shrink-0 mt-0.5">夾娃娃機</span>
+                                <div>
+                                    <h4 class="font-black text-sm sm:text-base text-slate-900 leading-snug">GiGO 電玩中心 (國際通店 & 美國村店)</h4>
+                                    <p class="text-xs text-slate-600 font-medium mt-0.5 flex items-center">
+                                        <i class="fa-solid fa-location-dot text-blue-400 mr-1 text-xs"></i>那霸市國際通 / 北谷美國村 Seaside Square 1F
+                                    </p>
+                                </div>
+                            </div>
+                            <a href="https://www.google.com/maps/search/?api=1&query=GiGO+Naha+Kokusai+Dori" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white w-8 h-8 rounded-xl flex items-center justify-center shadow-2xs transition shrink-0 active:scale-95 ml-2" title="Google 地圖導航">
+                                <i class="fa-solid fa-map-location-dot text-sm"></i>
+                            </a>
+                        </div>
+                        <div class="bg-blue-50/70 p-2.5 rounded-xl border border-blue-100 space-y-1 text-xs">
+                            <div class="font-extrabold text-blue-900 flex items-center"><i class="fa-solid fa-star text-amber-400 mr-1.5"></i>三項精選推薦亮點：</div>
+                            <div class="text-slate-700 space-y-1 font-medium pl-1 leading-relaxed">
+                                <p>① 機台種類極豐富，擁有滿滿夾娃娃機、日本限定娃娃與最新拍貼機</p>
+                                <p>② 北谷美國村店附設保齡球館、代幣機與賽車遊戲，非常適合全家同樂</p>
+                                <p>③ ⚠️【特別規定】沖繩法令規定未滿 18 歲兒童，20:00 後嚴禁進入遊戲機中心</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Parks -->
-                <div class="space-y-3">
-                    <div class="bg-white rounded-2xl p-3.5 shadow-sm border-l-4 border-emerald-500 border border-slate-100 space-y-1">
-                        <h4 class="font-extrabold text-xs text-slate-800">1. 浦添大公園</h4>
-                        <p class="text-xs text-slate-600 leading-relaxed">擁有 90 公尺超長滾輪溜滑梯（適用 6-12 歲兒童），離那霸市區僅 20 分鐘。</p>
+                <!-- Outdoor Parks Category (Green Theme Cards) -->
+                <div class="space-y-3.5 pt-1">
+                    <div class="font-extrabold text-xs text-emerald-900 flex items-center px-1">
+                        <i class="fa-solid fa-tree text-emerald-500 mr-1.5 text-sm"></i>精選四大超長溜滑梯公園
                     </div>
-                    <div class="bg-white rounded-2xl p-3.5 shadow-sm border-l-4 border-emerald-500 border border-slate-100 space-y-1">
-                        <h4 class="font-extrabold text-xs text-slate-800">2. 奧武山公園</h4>
-                        <p class="text-xs text-slate-600 leading-relaxed">位於那霸市中心，單軌電車可直達，設有巨型「龍」與風獅爺主題大型遊具。</p>
+
+                    <!-- Park 1 -->
+                    <div class="bg-white rounded-2xl border border-emerald-200/80 shadow-xs p-3.5 space-y-2.5">
+                        <div class="flex items-start justify-between">
+                            <div class="flex items-start space-x-2.5">
+                                <span class="text-xs font-black px-2 py-0.5 rounded-lg bg-emerald-100 text-emerald-800 border border-emerald-200 shrink-0 mt-0.5">長滑梯公園</span>
+                                <div>
+                                    <h4 class="font-black text-sm sm:text-base text-slate-900 leading-snug">1. 浦添大公園 (Urasoe Great Park)</h4>
+                                    <p class="text-xs text-slate-600 font-medium mt-0.5 flex items-center">
+                                        <i class="fa-solid fa-location-dot text-emerald-500 mr-1 text-xs"></i>沖繩縣浦添市伊祖 115-1 (離那霸約 20 分鐘)
+                                    </p>
+                                </div>
+                            </div>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Urasoe+Great+Park" target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white w-8 h-8 rounded-xl flex items-center justify-center shadow-2xs transition shrink-0 active:scale-95 ml-2" title="Google 地圖導航">
+                                <i class="fa-solid fa-map-location-dot text-sm"></i>
+                            </a>
+                        </div>
+                        <div class="bg-emerald-50/70 p-2.5 rounded-xl border border-emerald-100 space-y-1 text-xs">
+                            <div class="font-extrabold text-emerald-900 flex items-center"><i class="fa-solid fa-star text-amber-400 mr-1.5"></i>三項精選推薦亮點：</div>
+                            <div class="text-slate-700 space-y-1 font-medium pl-1 leading-relaxed">
+                                <p>① 擁有全長 90 公尺超長滾輪溜滑梯（適用 6 至 12 歲兒童）</p>
+                                <p>② 全新 C 區與互動廣場遊具，幼兒與大孩子皆有專屬安全遊戲區</p>
+                                <p>③ 距離那霸市區僅 20 分鐘車程，附設免費停車場與洗手間販賣機</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="bg-white rounded-2xl p-3.5 shadow-sm border-l-4 border-emerald-500 border border-slate-100 space-y-1">
-                        <h4 class="font-extrabold text-xs text-slate-800">3. 中城公園</h4>
-                        <p class="text-xs text-slate-600 leading-relaxed">廣大草原、10 公尺高巨型攀爬網滑梯、超大彈跳床、繩索滑軌組合區。</p>
+
+                    <!-- Park 2 -->
+                    <div class="bg-white rounded-2xl border border-emerald-200/80 shadow-xs p-3.5 space-y-2.5">
+                        <div class="flex items-start justify-between">
+                            <div class="flex items-start space-x-2.5">
+                                <span class="text-xs font-black px-2 py-0.5 rounded-lg bg-emerald-100 text-emerald-800 border border-emerald-200 shrink-0 mt-0.5">龍造型遊具</span>
+                                <div>
+                                    <h4 class="font-black text-sm sm:text-base text-slate-900 leading-snug">2. 奧武山公園 (Ounoyama Park)</h4>
+                                    <p class="text-xs text-slate-600 font-medium mt-0.5 flex items-center">
+                                        <i class="fa-solid fa-location-dot text-emerald-500 mr-1 text-xs"></i>沖繩縣那霸市奧武山町 52 (單軌奧武山公園站)
+                                    </p>
+                                </div>
+                            </div>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Ounoyama+Park" target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white w-8 h-8 rounded-xl flex items-center justify-center shadow-2xs transition shrink-0 active:scale-95 ml-2" title="Google 地圖導航">
+                                <i class="fa-solid fa-map-location-dot text-sm"></i>
+                            </a>
+                        </div>
+                        <div class="bg-emerald-50/70 p-2.5 rounded-xl border border-emerald-100 space-y-1 text-xs">
+                            <div class="font-extrabold text-emerald-900 flex items-center"><i class="fa-solid fa-star text-amber-400 mr-1.5"></i>三項精選推薦亮點：</div>
+                            <div class="text-slate-700 space-y-1 font-medium pl-1 leading-relaxed">
+                                <p>① 位於那霸市中心，緊鄰單軌電車站（奧武山公園站）交通極便利</p>
+                                <p>② 打造超吸睛巨型「龍」形狀與琉球風獅爺主題複合多功能攀爬滑梯</p>
+                                <p>③ 園區綠樹成陰環境舒適，非常適合搭機前後安排小孩順遊放電</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="bg-white rounded-2xl p-3.5 shadow-sm border-l-4 border-emerald-500 border border-slate-100 space-y-1">
-                        <h4 class="font-extrabold text-xs text-slate-800">4. 沖繩縣綜合運動公園</h4>
-                        <p class="text-xs text-slate-600 leading-relaxed">大型海盜船複合遊具、7 條各式溜滑梯、跳彈床、城堡迷宮及泰山吊索。</p>
+
+                    <!-- Park 3 -->
+                    <div class="bg-white rounded-2xl border border-emerald-200/80 shadow-xs p-3.5 space-y-2.5">
+                        <div class="flex items-start justify-between">
+                            <div class="flex items-start space-x-2.5">
+                                <span class="text-xs font-black px-2 py-0.5 rounded-lg bg-emerald-100 text-emerald-800 border border-emerald-200 shrink-0 mt-0.5">巨型彈跳床</span>
+                                <div>
+                                    <h4 class="font-black text-sm sm:text-base text-slate-900 leading-snug">3. 中城公園 (Nakagusuku Park)</h4>
+                                    <p class="text-xs text-slate-600 font-medium mt-0.5 flex items-center">
+                                        <i class="fa-solid fa-location-dot text-emerald-500 mr-1 text-xs"></i>沖繩縣中頭郡中城村登又 1319 (近永旺 Rycom)
+                                    </p>
+                                </div>
+                            </div>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Nakagusuku+Park" target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white w-8 h-8 rounded-xl flex items-center justify-center shadow-2xs transition shrink-0 active:scale-95 ml-2" title="Google 地圖導航">
+                                <i class="fa-solid fa-map-location-dot text-sm"></i>
+                            </a>
+                        </div>
+                        <div class="bg-emerald-50/70 p-2.5 rounded-xl border border-emerald-100 space-y-1 text-xs">
+                            <div class="font-extrabold text-emerald-900 flex items-center"><i class="fa-solid fa-star text-amber-400 mr-1.5"></i>三項精選推薦亮點：</div>
+                            <div class="text-slate-700 space-y-1 font-medium pl-1 leading-relaxed">
+                                <p>① 沖繩中部超熱門公園，擁有 10 公尺高巨型網狀攀爬滑梯組</p>
+                                <p>② 設有超大白色巨大彈跳床 (Bouncing Pillow) 與繩索滑軌</p>
+                                <p>③ 設有遮陽幼兒專用安全防護遊戲區與超大草地可野餐</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Park 4 -->
+                    <div class="bg-white rounded-2xl border border-emerald-200/80 shadow-xs p-3.5 space-y-2.5">
+                        <div class="flex items-start justify-between">
+                            <div class="flex items-start space-x-2.5">
+                                <span class="text-xs font-black px-2 py-0.5 rounded-lg bg-emerald-100 text-emerald-800 border border-emerald-200 shrink-0 mt-0.5">海盜船遊戲區</span>
+                                <div>
+                                    <h4 class="font-black text-sm sm:text-base text-slate-900 leading-snug">4. 沖繩縣綜合運動公園</h4>
+                                    <p class="text-xs text-slate-600 font-medium mt-0.5 flex items-center">
+                                        <i class="fa-solid fa-location-dot text-emerald-500 mr-1 text-xs"></i>沖繩縣沖繩市比屋根 5-3-1
+                                    </p>
+                                </div>
+                            </div>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Okinawa+Comprehensive+Athletic+Park" target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white w-8 h-8 rounded-xl flex items-center justify-center shadow-2xs transition shrink-0 active:scale-95 ml-2" title="Google 地圖導航">
+                                <i class="fa-solid fa-map-location-dot text-sm"></i>
+                            </a>
+                        </div>
+                        <div class="bg-emerald-50/70 p-2.5 rounded-xl border border-emerald-100 space-y-1 text-xs">
+                            <div class="font-extrabold text-emerald-900 flex items-center"><i class="fa-solid fa-star text-amber-400 mr-1.5"></i>三項精選推薦亮點：</div>
+                            <div class="text-slate-700 space-y-1 font-medium pl-1 leading-relaxed">
+                                <p>① 打造大型海盜船主題複合遊具，光是溜滑梯就有 7 條不同坡度</p>
+                                <p>② 附設城堡迷宮、跳彈床、泰山吊索與沙灘親水水域遊戲區</p>
+                                <p>③ 占地極廣闊，可於樹蔭下野餐休憩，是親子戶外跑跳首選</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -605,18 +852,18 @@
         // Detailed Itinerary Data (Day 1 - Day 6) with full location & accordion details
                 const itineraryData = [
             {
-                day: 1, dateLabel: "D1 (09/28)",
+                day: 1, dateLabel: "Day1 (09/28)",
                 date: "09/28 (一)",
                 title: "DAY 1｜09/28 (一) 啟程抵達與租車取車",
                 theme: "桃園出發 ➔ 抵達沖繩 ➔ 租車 ➔ 入住恩納 Villa",
                 stay: "Grandioso Okinawa Pool Villa Onna 8A",
                 stayNav: "https://www.google.com/maps/place/%E3%82%B0%E3%83%A9%E3%83%B3%E3%83%87%E3%82%A3%E3%82%AA%E3%83%BC%E3%82%BD%E6%B2%96%E7%B8%84%E3%83%97%E3%83%BC%E3%83%AB%E3%83%B4%E3%82%A3%E3%83%A9%E6%81%A9%E7%B4%8D8%EF%BC%88GRANDIOSO+OKINAWA+POOL+VILLA+ONNA8%EF%BC%89/@26.4928277,127.8463886,93m/data=!3m1!1e3!4m7!3m6!1s0x34e50500006133ef:0x581cc25e92159705!8m2!3d26.4927522!4d127.8469278",
                 estimatedCost: {
-                    totalJpy: "¥136,330 (含租車尾款)",
-                    totalTwdNote: "約 NT$ 29,311",
-                    summary: "主要包含「沖繩行腳」租車現場 2台車尾款 ¥134,330 (總價 ¥141,400，已預付訂金 ¥7,070) 與第一晚宵夜點心",
+                    totalJpy: "¥129,260 (含租車尾款)",
+                    totalTwdNote: "約 NT$ 27,791",
+                    summary: "主要包含「沖繩行腳」租車現場 2台車尾款 ¥127,260 (總價 ¥141,400，已預付訂金 ¥14,140 [¥7,070x2]) 與第一晚宵夜點心",
                     breakdown: [
-                        { item: "「沖繩行腳」SIENTA 7人座x2 租車現場尾款", cost: "¥134,330 (現場付清)", note: "總價 ¥141,400 (¥70,700x2台)，已預付訂金 ¥7,070" },
+                        { item: "「沖繩行腳」SIENTA 7人座x2 租車現場尾款", cost: "¥127,260 (現場付清)", note: "總價 ¥141,400 (¥70,700x2台)，已預付訂金 ¥14,140 (¥7,070x2)" },
                         { item: "機場 / 便利商店宵夜點心", cost: "約 ¥2,000", note: "入境後至 Villa 路上超商採買備用" }
                     ]
                 },
@@ -666,7 +913,7 @@
                 ]
             },
             {
-                day: 2, dateLabel: "D2 (09/29)",
+                day: 2, dateLabel: "Day2 (09/29)",
                 date: "09/29 (二)",
                 title: "DAY 2｜09/29 (二) 恩納海景與燒肉之旅",
                 theme: "真榮田岬 ➔ おんなの駅市場 ➔ 琉球村 ➔ 萬座毛 ➔ 御菓子御殿 ➔ 琉球的牛",
@@ -771,7 +1018,7 @@
                 ]
             },
             {
-                day: 3, dateLabel: "D3 (09/30)",
+                day: 3, dateLabel: "Day3 (09/30)",
                 date: "09/30 (三)",
                 title: "DAY 3｜09/30 (三) 北部景點與古宇利島",
                 theme: "備瀨福木林道 ➔ 岸本食堂 ➔ 美麗海水族館 ➔ 古宇利島深度遊",
@@ -845,11 +1092,98 @@
                     }
                 ]
             },
-            {
-                day: 4, dateLabel: "D4 (10/01)",
+                        {
+                day: 4, dateLabel: "Day4 (10/01)",
                 date: "10/01 (四)",
-                title: "DAY 4｜10/01 (四) 宜野灣文化與深夜採購",
-                theme: "普天滿宮 ➔ 退房換飯店 ➔ Mexico 塔可餅 ➔ Blue Seal ➔ 西松屋 ➔ 結市集 ➔ 唐吉訶德 ➔ 居酒屋",
+                title: "DAY 4｜10/01 (四) 南城採購與瀨長島夕陽",
+                theme: "ONNA Villa退房 ➔ 知念岬公園 / 齋場御嶽 ➔ 瀨長島 Umikaji Terrace ➔ Costco 南城店",
+                stay: "Rizozaisen Hotel 宜野灣 (3號 & 11號車位)",
+                stayNav: "https://www.google.com/maps/search/?api=1&query=26.269750595092773%2C127.73519134521484",
+                estimatedCost: {
+                    totalJpy: "約 ¥5,500 ~ ¥8,000 /人",
+                    totalTwdNote: "約 NT$ 1,183 ~ NT$ 1,720",
+                    summary: "包含知念岬/齋場御嶽門票、POSILLIPO 海景義大利餐、瀨長島點心與 Costco 採購",
+                    breakdown: [
+                        { item: "齋場御嶽 / 知念岬 門票", cost: "¥300 /大人", note: "世界文化遺產與太平洋海景" },
+                        { item: "POSILLIPO 海景餐廳 義式午餐", cost: "約 ¥1,600 ~ ¥2,500", note: "Tabelog高分海景餐廳 (午餐套餐約¥1600起)" },
+                        { item: "瀨長島 幸福鬆餅 / 歐姆蛋塔可飯 / 點心", cost: "約 ¥1,500 ~ ¥2,500", note: "人氣美食與龍神之湯免費足湯" },
+                        { item: "Costco 好市多 南城店 購物大採購", cost: "依個人需求", note: "日本好市多限定商品補貨" }
+                    ]
+                },
+                events: [
+                    {
+                        time: "10:00",
+                        title: "ONNA 8A Villa 退房，準備前往南城/瀨長島",
+                        tag: "行李退房",
+                        tagColor: "bg-amber-100 text-amber-800",
+                        location: "恩納村 Villa",
+                        mapUrl: "https://www.google.com/maps/place/%E3%82%B0%E3%83%A9%E3%83%B3%E3%83%87%E3%82%A3%E3%82%AA%E3%83%BC%E3%82%BD%E6%B2%96%E7%B8%84%E3%83%97%E3%83%BC%E3%83%AB%E3%83%B4%E3%82%A3%E3%83%A9%E6%81%A9%E7%B4%8D8%EF%BC%88GRANDIOSO+OKINAWA+POOL+VILLA+ONNA8%EF%BC%89/@26.4928277,127.8463886,93m/data=!3m1!1e3!4m7!3m6!1s0x34e50500006133ef:0x581cc25e92159705!8m2!3d26.4927522!4d127.8469278",
+                        nextDrive: "約 50 分鐘",
+                        note: "請確認隨身物品、車鑰匙並清理垃圾完畢後退房。"
+                    },
+                    {
+                        time: "11:30",
+                        title: "知念岬公園 或 齋場御嶽",
+                        tag: "海景與遺產",
+                        tagColor: "bg-emerald-100 text-emerald-800",
+                        location: "沖繩縣南城市知念久手堅",
+                        mapUrl: "https://www.google.com/maps/search/?api=1&query=Chinen+Cape+Park",
+                        nextDrive: "約 35 分鐘",
+                        note: "270度無死角太平洋絕美海景與琉球神聖世界文化遺產參觀。"
+                    },
+                    {
+                        time: "13:30",
+                        title: "瀨長島 Umikaji Terrace 🍧 漫步與美食",
+                        tag: "純白希臘風",
+                        tagColor: "bg-sky-100 text-sky-800",
+                        location: "沖繩縣豐見城市瀨長 174-6",
+                        mapUrl: "https://www.google.com/maps/search/?api=1&query=Umikaji+Terrace",
+                        nextDrive: "約 25 分鐘",
+                        note: "浪漫純白建築聚落，欣賞飛機降落與夕陽海景最佳視角。",
+                        buyEatType: "eat",
+                        buyEatTitle: "🍱 必吃純白海景美食",
+                        buyEatList: [
+                            "① 幸福鬆餅 (32號店，現場必先提早候位)",
+                            "② Taco Rice Cafe Kijimuna 歐姆蛋塔可飯 (28號店)",
+                            "③ 氾濫漢堡 (4號店)",
+                            "④ POSILLIPO 絕景義式海景餐廳 (義大利麵/披薩)"
+                        ]
+                    },
+                    {
+                        time: "16:00",
+                        title: "Costco 好市多 (南城店) 🛒 大採購",
+                        tag: "美式賣場",
+                        tagColor: "bg-blue-100 text-blue-800",
+                        location: "沖繩縣南城市知念字字つきしろ",
+                        mapUrl: "https://www.google.com/maps/search/?api=1&query=Costco+Nanjo",
+                        nextDrive: "約 30 分鐘返回飯店",
+                        note: "沖繩首間美式 Costco，提供眾多日本獨家限定選品。",
+                        buyEatType: "buy",
+                        buyEatTitle: "🛒 必買 10 大賣場熱門選品",
+                        buyEatList: [
+                            "① 日本限定餅乾禮盒 / 沖繩威士忌與泡盛",
+                            "② 現做牛肉捲 / 熟食美式披薩",
+                            "③ 日本大果乾 / 膠原蛋白粉",
+                            "④ 新鮮壽司盛合 / 日本洗沐保養品"
+                        ]
+                    },
+                    {
+                        time: "19:00",
+                        title: "入住 Rizozaisen Hotel 宜野灣飯店",
+                        tag: "飯店入住",
+                        tagColor: "bg-emerald-100 text-emerald-800",
+                        location: "宜野灣市 245-4 Ōjana RIZOZAIZENHOTEL 3F",
+                        mapUrl: "https://www.google.com/maps/search/?api=1&query=26.269750595092773%2C127.73519134521484",
+                        nextDrive: "",
+                        note: "⚠️【特別提醒】已預留 3號 與 11號 兩個專用車位。11號車位放有標誌錐，駛離請擺回原處！"
+                    }
+                ]
+            },
+            {
+                day: 5, dateLabel: "Day5 (10/02)",
+                date: "10/02 (五)",
+                title: "DAY 5｜10/02 (五) 宜野灣文化與深夜採購",
+                theme: "普天滿宮 ➔ Mexico 塔可餅 ➔ Blue Seal ➔ 西松屋 ➔ 結市集 ➔ 唐吉訶德 ➔ 居酒屋",
                 stay: "Rizozaisen Hotel 宜野灣 (3號 & 11號車位)",
                 stayNav: "https://www.google.com/maps/search/?api=1&query=26.269750595092773%2C127.73519134521484",
                 estimatedCost: {
@@ -874,16 +1208,6 @@
                         mapUrl: "https://www.google.com/maps/search/?api=1&query=Futenma+Shrine",
                         nextDrive: "約 20 分鐘",
                         note: "琉球八社之一，可現場向社務所免費申請入內參觀神秘的洞內宮鍾乳石洞穴。"
-                    },
-                    {
-                        time: "10:00",
-                        title: "ONNA 8A Villa 退房，準備前往宜野灣",
-                        tag: "行李退房",
-                        tagColor: "bg-amber-100 text-amber-800",
-                        location: "恩納村 Villa",
-                        mapUrl: "https://www.google.com/maps/place/%E3%82%B0%E3%83%A9%E3%83%B3%E3%83%87%E3%82%A3%E3%82%AA%E3%83%BC%E3%82%BD%E6%B2%96%E7%B8%84%E3%83%97%E3%83%BC%E3%83%AB%E3%83%B4%E3%82%A3%E3%83%A9%E6%81%A9%E7%B4%8D8%EF%BC%88GRANDIOSO+OKINAWA+POOL+VILLA+ONNA8%EF%BC%89/@26.4928277,127.8463886,93m/data=!3m1!1e3!4m7!3m6!1s0x34e50500006133ef:0x581cc25e92159705!8m2!3d26.4927522!4d127.8469278",
-                        nextDrive: "約 35 分鐘",
-                        note: "請確認隨身物品、車鑰匙並清理垃圾完畢後退房。"
                     },
                     {
                         time: "12:00",
@@ -1001,8 +1325,8 @@
                     },
                     {
                         time: "22:00",
-                        title: "入住 Rizozaisen Hotel 宜野灣飯店",
-                        tag: "飯店入住",
+                        title: "返回 Rizozaisen Hotel 宜野灣飯店",
+                        tag: "飯店休息",
                         tagColor: "bg-emerald-100 text-emerald-800",
                         location: "宜野灣市 245-4 Ōjana RIZOZAIZENHOTEL 3F",
                         mapUrl: "https://www.google.com/maps/search/?api=1&query=26.269750595092773%2C127.73519134521484",
@@ -1012,74 +1336,7 @@
                 ]
             },
             {
-                day: 5, dateLabel: "D5 (10/02)",
-                date: "10/02 (五)",
-                title: "DAY 5｜10/02 (五) 南城採購與瀨長島夕陽",
-                theme: "Costco 南城店 ➔ 知念岬公園 / 齋場御嶽 ➔ 瀨長島 Umikaji Terrace",
-                stay: "Rizozaisen Hotel 宜野灣 (3號 & 11號車位)",
-                stayNav: "https://www.google.com/maps/search/?api=1&query=26.269750595092773%2C127.73519134521484",
-                estimatedCost: {
-                    totalJpy: "約 ¥5,500 ~ ¥8,000 /人",
-                    totalTwdNote: "約 NT$ 1,183 ~ NT$ 1,720",
-                    summary: "包含知念岬/齋場御嶽門票、POSILLIPO 海景義大利餐與瀨長島美食點心",
-                    breakdown: [
-                        { item: "齋場御嶽 / 知念岬 門票", cost: "¥300 /大人", note: "世界文化遺產與太平洋海景" },
-                        { item: "POSILLIPO 海景餐廳 義式午餐", cost: "約 ¥1,600 ~ ¥2,500", note: "Tabelog高分海景餐廳 (午餐套餐約¥1600起)" },
-                        { item: "瀨長島 幸福鬆餅 / 歐姆蛋塔可飯 / 點心", cost: "約 ¥1,500 ~ ¥2,500", note: "人氣美食與龍神之湯免費足湯" },
-                        { item: "Costco 好市多 南城店 購物大採購", cost: "依個人需求", note: "日本好市多限定商品補貨" }
-                    ]
-                },
-                events: [
-                    {
-                        time: "10:00",
-                        title: "Costco 好市多 (南城店) 🛒 大採購",
-                        tag: "美式賣場",
-                        tagColor: "bg-blue-100 text-blue-800",
-                        location: "沖繩縣南城市知念字字つきしろ",
-                        mapUrl: "https://www.google.com/maps/search/?api=1&query=Costco+Nanjo",
-                        nextDrive: "約 30 分鐘",
-                        note: "沖繩首間美式 Costco，提供眾多日本獨家限定選品。",
-                        buyEatType: "buy",
-                        buyEatTitle: "🛒 必買 10 大賣場熱門選品",
-                        buyEatList: [
-                            "① 日本限定餅乾禮盒 / 沖繩威士忌與泡盛",
-                            "② 現做牛肉捲 / 熟食美式披薩",
-                            "③ 日本大果乾 / 膠原蛋白粉",
-                            "④ 新鮮壽司盛合 / 日本洗沐保養品"
-                        ]
-                    },
-                    {
-                        time: "13:30",
-                        title: "知念岬公園 或 齋場御嶽",
-                        tag: "海景與遺產",
-                        tagColor: "bg-emerald-100 text-emerald-800",
-                        location: "沖繩縣南城市知念久手堅",
-                        mapUrl: "https://www.google.com/maps/search/?api=1&query=Chinen+Cape+Park",
-                        nextDrive: "約 35 分鐘",
-                        note: "270度無死角太平洋絕美海景與琉球神聖世界文化遺產參觀。"
-                    },
-                    {
-                        time: "15:30",
-                        title: "瀨長島 Umikaji Terrace 🍧 漫步與美食",
-                        tag: "純白希臘風",
-                        tagColor: "bg-sky-100 text-sky-800",
-                        location: "沖繩縣豐見城市瀨長 174-6",
-                        mapUrl: "https://www.google.com/maps/search/?api=1&query=Umikaji+Terrace",
-                        nextDrive: "約 30 分鐘返回飯店",
-                        note: "浪漫純白建築聚落，欣賞飛機降落與夕陽海景最佳視角。",
-                        buyEatType: "eat",
-                        buyEatTitle: "🍱 必吃純白海景美食",
-                        buyEatList: [
-                            "① 幸福鬆餅 (32號店，現場必先提早候位)",
-                            "② Taco Rice Cafe Kijimuna 歐姆蛋塔可飯 (28號店)",
-                            "③ 氾濫漢堡 (4號店)",
-                            "④ POSILLIPO 絕景義式海景餐廳 (義大利麵/披薩)"
-                        ]
-                    }
-                ]
-            },
-            {
-                day: 6, dateLabel: "D6 (10/03)",
+                day: 6, dateLabel: "Day6 (10/03)",
                 date: "10/03 (六)",
                 title: "DAY 6｜10/03 (六) 國際通補貨與賦歸返台",
                 theme: "那霸市區 ➔ 國際通 ➔ 還車 ➔ 那霸機場 T1 ➔ 桃園機場",
@@ -1140,9 +1397,47 @@
 
         // ==================== ITINERARY SUBTAB LOGIC (MATCHING IMAGE 708112.jpg) ====================
         let currentActiveDay = 1;
+        let currentTab = 'flight-car';
+        let currentSubTabFlightCar = 'flight';
+        let currentOtherSubTab = 'stay';
         let eventOpenState = {};
         let costOpenState = {};
         let customEvents = JSON.parse(localStorage.getItem('okinawa_custom_events') || '{}');
+
+        function updateHeaderSubtitle() {
+            const subtitleEl = document.getElementById('page-subtitle');
+            if (!subtitleEl) return;
+
+            if (currentTab === 'flight-car') {
+                if (currentSubTabFlightCar === 'flight') {
+                    subtitleEl.innerHTML = '<i class="fa-solid fa-plane-departure mr-1 text-[10px]"></i>航班資訊（華航 CI 122 / CI 123）';
+                } else {
+                    subtitleEl.innerHTML = '<i class="fa-solid fa-car mr-1 text-[10px]"></i>沖繩行腳 租車資訊與費用明細';
+                }
+            } else if (currentTab === 'checklist') {
+                subtitleEl.innerHTML = '<i class="fa-solid fa-square-check mr-1 text-[10px]"></i>行前準備 CheckList & 個人隨手備忘錄';
+            } else if (currentTab === 'itinerary') {
+                const dayTitles = {
+                    1: '📍 DAY 1 (09/28) 啟程抵達與租車取車',
+                    2: '📍 DAY 2 (09/29) 恩納海景與燒肉之旅',
+                    3: '📍 DAY 3 (09/30) 北部景點與古宇利島',
+                    4: '📍 DAY 4 (10/01) 宜野灣文化與深夜採購',
+                    5: '📍 DAY 5 (10/02) 南城採購與瀨長島夕陽',
+                    6: '📍 DAY 6 (10/03) 國際通補貨與賦歸返台'
+                };
+                subtitleEl.innerHTML = dayTitles[currentActiveDay] || `📍 DAY ${currentActiveDay} 行程表`;
+            } else if (currentTab === 'other') {
+                if (currentOtherSubTab === 'stay') {
+                    subtitleEl.innerHTML = '<i class="fa-solid fa-hotel mr-1 text-[10px]"></i>住宿資訊（恩納 Villa & 宜野灣飯店）';
+                } else if (currentOtherSubTab === 'kids') {
+                    subtitleEl.innerHTML = '<i class="fa-solid fa-icons mr-1 text-[10px]"></i>親子景點（購物商場 & 溜滑梯公園）';
+                } else if (currentOtherSubTab === 'ins') {
+                    subtitleEl.innerHTML = '<i class="fa-solid fa-shield-halved mr-1 text-[10px]"></i>旅遊保險（不便險 & 日本醫療險）';
+                }
+            } else if (currentTab === 'wallet') {
+                subtitleEl.innerHTML = '<i class="fa-solid fa-calculator mr-1 text-[10px]"></i>匯率即時算盤 & 旅途記帳本';
+            }
+        }
 
         function renderActiveDayHeader() {
             const container = document.getElementById('active-day-header-container');
@@ -1162,36 +1457,49 @@
             };
             const gradientClass = dayGradients[dayObj.day] || "from-sakura-500 via-sakura-400 to-sakura-500";
 
+            // Left-top capsule label format requested: Day1 9/28(一), Day2 9/29(二)...
+            const dayCapsuleLabel = {
+                1: "Day1 9/28(一)",
+                2: "Day2 9/29(二)",
+                3: "Day3 9/30(三)",
+                4: "Day4 10/01(四)",
+                5: "Day5 10/02(五)",
+                6: "Day6 10/03(六)"
+            }[dayObj.day] || `Day${dayObj.day}`;
+
+            // DAY 6 Warning Banner with optimized attractive contrast colors
             const carNotice = (dayObj.day === 6) ? `
-            <div class="bg-amber-400/25 backdrop-blur-md border border-white/50 text-white text-xs font-black p-2.5 rounded-xl flex items-center space-x-2 shadow-2xs mt-2">
-                <i class="fa-solid fa-gas-pump text-amber-300 text-base flex-shrink-0 animate-pulse"></i>
-                <span class="leading-tight">⚠️ 還車提醒：18:00 沖繩行腳還車，請務必提早於加油站加滿油並保留油單證明！</span>
+            <div class="bg-gradient-to-r from-amber-300 via-amber-400 to-yellow-400 text-amber-950 font-black text-xs p-3 rounded-xl flex items-center space-x-2.5 shadow-md border border-amber-200/90 mt-2 leading-relaxed">
+                <i class="fa-solid fa-gas-pump text-amber-800 text-base flex-shrink-0 animate-pulse"></i>
+                <span>⚠️ 還車提醒：18:00 沖繩行腳還車，請務必提早於加油站加滿油並保留油單證明！</span>
             </div>` : '';
 
             const carReturnBadge = (dayObj.day === 6) ? `
-            <span class="bg-amber-300 text-amber-900 font-black text-[11px] px-2.5 py-0.5 rounded-full shadow-2xs ml-2">
+            <span class="bg-amber-300 text-amber-950 font-black text-[10px] px-2 py-0.5 rounded-full shadow-2xs ml-1.5">
                 ⛽ 18:00還車加滿油
             </span>` : '';
 
             container.innerHTML = `
-            <!-- DAY TITLE CARD (最頂區塊 - 各天專屬漸層) -->
-            <div class="bg-gradient-to-r ${gradientClass} rounded-2xl p-4 text-white shadow-md space-y-2">
+            <!-- DAY TITLE CARD (最頂區塊 - 各天專屬漸層 & 固定置頂) -->
+            <div class="bg-gradient-to-r ${gradientClass} rounded-2xl p-3.5 text-white shadow-md space-y-2">
+                <!-- 第一行：白色膠囊抬頭 & 右側當晚住宿按鈕 -->
                 <div class="flex items-center justify-between">
                     <div class="flex items-center">
-                        <span class="bg-white text-slate-800 text-xs sm:text-sm font-black px-3 py-1 rounded-full shadow-2xs">
-                            DAY ${dayObj.day} ${dayObj.date}
+                        <span class="bg-white text-slate-800 text-xs sm:text-sm font-black px-3.5 py-1 rounded-full shadow-2xs">
+                            ${dayCapsuleLabel}
                         </span>
                         ${carReturnBadge}
                     </div>
-                    ${dayObj.stayNav ? `<a href="${dayObj.stayNav}" target="_blank" class="bg-white/20 hover:bg-white/30 text-white text-xs font-bold px-3 py-1.5 rounded-lg backdrop-blur-xs flex items-center space-x-1 border border-white/30 transition">
+                    ${dayObj.stayNav ? `<a href="${dayObj.stayNav}" target="_blank" class="bg-white/20 hover:bg-white/30 text-white text-xs font-bold px-2.5 py-1 rounded-lg backdrop-blur-xs flex items-center space-x-1 border border-white/30 transition">
                         <i class="fa-solid fa-hotel text-xs"></i>
                         <span>當晚住宿</span>
                     </a>` : ''}
                 </div>
-                <h2 class="font-black text-base sm:text-lg tracking-wide leading-snug">${dayObj.title}</h2>
-                <p class="text-xs sm:text-sm text-white/95 font-semibold flex items-center">
-                    <i class="fa-solid fa-route mr-1.5 text-white/80"></i>${dayObj.theme}
-                </p>
+                <!-- 第二行：總覽主題說明 -->
+                <div class="text-xs sm:text-sm font-bold tracking-wide leading-relaxed text-white/95 flex items-center pt-0.5">
+                    <i class="fa-solid fa-route mr-1.5 text-white/80 text-xs shrink-0"></i>
+                    <span class="font-extrabold">${dayObj.theme}</span>
+                </div>
                 ${carNotice}
             </div>`;
         }
@@ -1204,10 +1512,10 @@
             itineraryData.forEach(dayObj => {
                 const dayNum = dayObj.day;
                 const isActive = (dayNum === currentActiveDay);
-                const activeStyle = "bg-sakura-500 text-white font-black px-4 py-2 rounded-full text-xs sm:text-sm shadow-md border border-sakura-500 flex-shrink-0 transition-all cursor-pointer";
-                const inactiveStyle = "bg-white text-slate-700 font-extrabold px-4 py-2 rounded-full text-xs sm:text-sm border border-sakura-200/80 hover:bg-sakura-50 flex-shrink-0 transition-all cursor-pointer shadow-2xs";
+                const activeStyle = "bg-gradient-to-r from-rose-500 via-pink-500 to-rose-500 text-white font-black px-4 py-2 rounded-full text-xs sm:text-sm shadow-md shadow-rose-200/60 border border-rose-500 flex-shrink-0 transition-all duration-200 cursor-pointer scale-[1.03]";
+                const inactiveStyle = "bg-white/90 backdrop-blur-xs text-slate-700 font-extrabold px-4 py-2 rounded-full text-xs sm:text-sm border border-slate-200/80 hover:bg-rose-50/80 hover:text-rose-600 hover:border-rose-200 flex-shrink-0 transition-all duration-200 cursor-pointer shadow-2xs";
 
-                barHtml += `<button onclick="switchItineraryDay(${dayNum})" class="${isActive ? activeStyle : inactiveStyle}">
+                barHtml += `<button onclick="switchItineraryDay(${dayNum})" class="${isActive ? activeStyle : inactiveStyle}" style="scroll-snap-align: center;">
                     ${dayObj.dateLabel}
                 </button>`;
             });
@@ -1220,6 +1528,19 @@
             renderActiveDayHeader();
             renderDaySubtabs();
             renderActiveDayContent();
+            updateHeaderSubtitle();
+
+            //【選中頁籤自動置中平滑滾動 (Active Tab Auto-Centering Smooth Scroll)】
+            setTimeout(() => {
+                const bar = document.getElementById('day-subtabs-bar');
+                if (bar) {
+                    const activeBtn = bar.children[dayNum - 1];
+                    if (activeBtn) {
+                        activeBtn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                    }
+                }
+            }, 30);
+
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -1508,6 +1829,7 @@
         };
 
         function switchTab(tabId) {
+            currentTab = tabId;
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             document.getElementById(`tab-${tabId}`).classList.remove('hidden');
 
@@ -1518,16 +1840,20 @@
             document.getElementById(`nav-btn-${tabId}`).classList.add('text-sakura-600');
             document.getElementById(`nav-btn-${tabId}`).classList.remove('text-slate-400');
 
-            document.getElementById('page-title').innerText = titles[tabId];
+            // Keep fixed title
+            document.getElementById('page-title').innerText = '藍＊okinawa小助手＊';
+
             if (tabId === 'itinerary') {
                 renderActiveDayHeader();
                 renderDaySubtabs();
                 renderActiveDayContent();
             }
+            updateHeaderSubtitle();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function switchSubTab(type) {
+            currentSubTabFlightCar = type;
             if (type === 'flight') {
                 document.getElementById('subtab-flight').classList.remove('hidden');
                 document.getElementById('subtab-car').classList.add('hidden');
@@ -1539,25 +1865,62 @@
                 document.getElementById('subtab-btn-car').className = "flex-1 py-2.5 rounded-xl text-sm font-extrabold transition-all duration-200 bg-white text-sakura-600 shadow-sm";
                 document.getElementById('subtab-btn-flight').className = "flex-1 py-2.5 rounded-xl text-sm font-extrabold transition-all duration-200 text-slate-500 hover:text-sakura-500";
             }
+            updateHeaderSubtitle();
         }
 
         function switchOtherSubTab(type) {
+            currentOtherSubTab = type;
             ['stay', 'kids', 'ins'].forEach(t => {
                 document.getElementById(`other-subtab-${t}`).classList.add('hidden');
-                document.getElementById(`other-btn-${t}`).className = "flex-1 py-2.5 rounded-xl font-extrabold text-slate-500";
             });
-            document.getElementById(`other-subtab-${type}`).classList.remove('hidden');
-            document.getElementById(`other-btn-${type}`).className = "flex-1 py-2.5 rounded-xl font-extrabold bg-white text-sakura-600 shadow-sm";
 
-            const titles = {
-                'stay': { title: '🏨 住宿資訊（恩納 Villa & 宜野灣飯店）', sub: '入住說明、鑰匙密碼流程與專用停車位提醒' },
-                'kids': { title: '🎡 親子景點（購物商場 & 超長滑梯公園）', sub: '精選永旺 Rycom、ASHIBINAA 與各大溜滑梯公園' },
-                'ins': { title: '🛡️ 旅遊保險（信用卡不便險 & 日本醫療險）', sub: '班機延誤理賠上限與東京海上日動無墊付醫療險' }
+            const inactiveStay = "flex-1 py-2.5 rounded-xl font-extrabold text-rose-700 bg-rose-50/80 hover:bg-rose-100 border border-rose-200/80 transition-all text-center";
+            const inactiveKids = "flex-1 py-2.5 rounded-xl font-extrabold text-emerald-700 bg-emerald-50/80 hover:bg-emerald-100 border border-emerald-200/80 transition-all text-center";
+            const inactiveIns = "flex-1 py-2.5 rounded-xl font-extrabold text-indigo-700 bg-indigo-50/80 hover:bg-indigo-100 border border-indigo-200/80 transition-all text-center";
+
+            const activeStay = "flex-1 py-2.5 rounded-xl font-black bg-rose-500 text-white shadow-md border border-rose-500 transition-all text-center";
+            const activeKids = "flex-1 py-2.5 rounded-xl font-black bg-emerald-500 text-white shadow-md border border-emerald-500 transition-all text-center";
+            const activeIns = "flex-1 py-2.5 rounded-xl font-black bg-indigo-500 text-white shadow-md border border-indigo-500 transition-all text-center";
+
+            document.getElementById('other-btn-stay').className = (type === 'stay') ? activeStay : inactiveStay;
+            document.getElementById('other-btn-kids').className = (type === 'kids') ? activeKids : inactiveKids;
+            document.getElementById('other-btn-ins').className = (type === 'ins') ? activeIns : inactiveIns;
+
+            document.getElementById(`other-subtab-${type}`).classList.remove('hidden');
+
+            const cardThemes = {
+                'stay': {
+                    gradient: 'from-rose-500 via-pink-500 to-rose-400',
+                    tag: '01 住宿指南',
+                    title: '🏨 住宿資訊（恩納 Villa & 宜野灣飯店）',
+                    sub: '包含兩處渡假包棟與飯店入住說明、鑰匙密碼流程與專用停車位提醒'
+                },
+                'kids': {
+                    gradient: 'from-emerald-600 via-teal-500 to-emerald-500',
+                    tag: '02 親子專區',
+                    title: '🎡 親子景點（購物商場 & 超長滑梯公園）',
+                    sub: '藍色代表購物商場，綠色代表超人氣滑梯公園，均附導航與 3 項精選推薦'
+                },
+                'ins': {
+                    gradient: 'from-indigo-600 via-purple-500 to-indigo-500',
+                    tag: '03 旅遊保險',
+                    title: '🛡️ 旅遊保險（信用卡不便險 & 日本醫療險）',
+                    sub: '班機延誤理賠上限與東京海上日動無墊付醫療險完整說明'
+                }
             };
-            if (titles[type]) {
-                document.getElementById('other-header-title').innerText = titles[type].title;
-                document.getElementById('other-header-sub').innerText = titles[type].sub;
+
+            const info = cardThemes[type];
+            if (info) {
+                const headerCard = document.getElementById('other-header-card');
+                if (headerCard) {
+                    headerCard.className = `bg-gradient-to-r ${info.gradient} rounded-2xl p-4 text-white shadow-md space-y-1 transition-all`;
+                }
+                const tagEl = document.getElementById('other-header-tag');
+                if (tagEl) tagEl.innerText = info.tag;
+                document.getElementById('other-header-title').innerText = info.title;
+                document.getElementById('other-header-sub').innerText = info.sub;
             }
+            updateHeaderSubtitle();
         }
 
         // Checkbox State persistence
@@ -1780,7 +2143,25 @@
             document.getElementById('expense-total').innerText = `總計: ¥${totalJpy.toLocaleString()} (NT$ ${totalTwd.toLocaleString()})`;
         }
 
+        
+        // Dynamic Hiding/Showing Top Header on Scroll
+        let lastScrollY = window.scrollY;
+        const mainHeader = document.getElementById('main-header');
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > 60 && currentScrollY > lastScrollY) {
+                // Downscroll -> hide header
+                mainHeader.classList.add('-translate-y-full');
+            } else {
+                // Upscroll or Top -> show header
+                mainHeader.classList.remove('-translate-y-full');
+            }
+            lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY;
+        }, { passive: true });
+
         // Initialize on Load
+
         window.onload = function() {
             // Set default date for expense input
             document.getElementById('exp-date').value = new Date().toISOString().split('T')[0];
@@ -1793,6 +2174,7 @@
             renderActiveDayHeader();
             renderDaySubtabs();
             renderActiveDayContent();
+            updateHeaderSubtitle();
         };
     </script>
 
