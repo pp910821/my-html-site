@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>沖繩夢幻之旅 Okinawa Dream Travel App</title>
+    <title>＊旅遊小助手＊ Okinawa Dream Travel App</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons CDN -->
@@ -77,14 +77,20 @@
                 <i class="fa-solid fa-lock"></i>
             </div>
             <div>
-                <h3 class="text-lg font-black text-white tracking-wide">🌸 藍家沖繩小助手 🌸</h3>
-                <p class="text-xs text-slate-400 mt-1">此為專屬行程，請輸入密碼進入</p>
+                <h3 class="text-xl sm:text-2xl font-black bg-gradient-to-r from-pink-300 via-rose-200 to-sakura-300 bg-clip-text text-transparent tracking-wider drop-shadow-sm font-rounded">🌸 藍家沖繩小助手 🌸</h3>
+                <p class="text-xs text-slate-400 mt-1.5 font-bold">此為專屬行程，請輸入密碼進入</p>
             </div>
-            <div>
+            <div class="space-y-2.5">
                 <input type="password" id="app-password-input" maxlength="10" placeholder="請輸入密碼" onkeydown="if(event.key==='Enter') verifyPassword()" class="w-full bg-slate-800 border border-slate-700 focus:border-sakura-400 rounded-2xl px-4 py-3 text-center text-xl font-black tracking-widest text-white focus:outline-none transition shadow-inner">
-                <p id="password-error-msg" class="text-rose-400 text-xs font-bold mt-2 hidden flex items-center justify-center">
+                <p id="password-error-msg" class="text-rose-400 text-xs font-bold hidden flex items-center justify-center">
                     <i class="fa-solid fa-circle-exclamation mr-1"></i> 密碼錯誤，請重新輸入！
                 </p>
+                <div class="bg-slate-800/80 border border-slate-700/60 rounded-xl px-3 py-1.5 text-center">
+                    <p class="text-[11px] text-amber-300/90 font-extrabold flex items-center justify-center space-x-1">
+                        <i class="fa-solid fa-lightbulb text-amber-400 text-xs mr-1"></i>
+                        <span>忘記密碼提示：出發日期 </span>
+                    </p>
+                </div>
             </div>
             <button onclick="verifyPassword()" class="w-full bg-gradient-to-r from-sakura-500 to-pink-500 hover:from-sakura-600 hover:to-pink-600 text-white font-black py-3 rounded-2xl shadow-md active:scale-95 transition text-sm flex items-center justify-center space-x-2">
                 <span>確認進入</span>
