@@ -70,6 +70,29 @@
 </head>
 <body class="bg-sakura-50 text-slate-800 min-h-screen pb-28 font-rounded text-sm">
 
+    <!-- PASSWORD OVERLAY FOR SECURITY -->
+    <div id="password-overlay" class="fixed inset-0 bg-slate-950/95 backdrop-blur-md z-[100] flex items-center justify-center p-4 transition-opacity duration-300">
+        <div class="bg-slate-900 border border-sakura-300/30 rounded-3xl p-6 w-full max-w-xs text-center shadow-2xl space-y-4">
+            <div class="w-16 h-16 bg-sakura-500/15 rounded-2xl flex items-center justify-center mx-auto text-sakura-400 text-2xl border border-sakura-400/20 shadow-xs animate-pulse">
+                <i class="fa-solid fa-lock"></i>
+            </div>
+            <div>
+                <h3 class="text-lg font-black text-white tracking-wide">🌸 藍家沖繩小助手 🌸</h3>
+                <p class="text-xs text-slate-400 mt-1">此為專屬行程，請輸入密碼進入</p>
+            </div>
+            <div>
+                <input type="password" id="app-password-input" maxlength="10" placeholder="請輸入密碼" onkeydown="if(event.key==='Enter') verifyPassword()" class="w-full bg-slate-800 border border-slate-700 focus:border-sakura-400 rounded-2xl px-4 py-3 text-center text-xl font-black tracking-widest text-white focus:outline-none transition shadow-inner">
+                <p id="password-error-msg" class="text-rose-400 text-xs font-bold mt-2 hidden flex items-center justify-center">
+                    <i class="fa-solid fa-circle-exclamation mr-1"></i> 密碼錯誤，請重新輸入！
+                </p>
+            </div>
+            <button onclick="verifyPassword()" class="w-full bg-gradient-to-r from-sakura-500 to-pink-500 hover:from-sakura-600 hover:to-pink-600 text-white font-black py-3 rounded-2xl shadow-md active:scale-95 transition text-sm flex items-center justify-center space-x-2">
+                <span>確認進入</span>
+                <i class="fa-solid fa-arrow-right text-xs"></i>
+            </button>
+        </div>
+    </div>
+
     <!-- Top Navigation Header (粉嫩抬頭區塊 - 整合 DAY1~DAY6 膠囊區塊與動態隱藏) -->
     <header id="main-header" class="sticky top-0 z-40 bg-gradient-to-r from-sakura-500 via-sakura-400 to-sakura-500 text-white shadow-md rounded-b-2xl border-b border-sakura-300/40 transition-transform duration-300 transform">
         <div class="max-w-md mx-auto px-4 pt-3.5 pb-2 flex items-center justify-between">
@@ -2178,7 +2201,50 @@
 
         // Initialize on Load
 
+        
+        // Password Protection Verification (Password: 0928)
+        function checkPasswordAuth() {
+            const isAuth = sessionStorage.getItem('app_authenticated');
+            const overlay = document.getElementById('password-overlay');
+            if (isAuth === 'true') {
+                if (overlay) overlay.classList.add('hidden');
+            } else {
+                if (overlay) {
+                    overlay.classList.remove('hidden');
+                    overlay.style.opacity = '1';
+                    setTimeout(() => {
+                        const input = document.getElementById('app-password-input');
+                        if (input) input.focus();
+                    }, 300);
+                }
+            }
+        }
+
+        function verifyPassword() {
+            const input = document.getElementById('app-password-input');
+            const errorMsg = document.getElementById('password-error-msg');
+            const overlay = document.getElementById('password-overlay');
+            if (!input) return;
+
+            const val = input.value.trim();
+            if (val === '0928') {
+                sessionStorage.setItem('app_authenticated', 'true');
+                if (errorMsg) errorMsg.classList.add('hidden');
+                if (overlay) {
+                    overlay.style.opacity = '0';
+                    setTimeout(() => {
+                        overlay.classList.add('hidden');
+                    }, 300);
+                }
+            } else {
+                if (errorMsg) errorMsg.classList.remove('hidden');
+                input.value = '';
+                input.focus();
+            }
+        }
+
         window.onload = function() {
+            checkPasswordAuth();
             // Set default date for expense input
             document.getElementById('exp-date').value = new Date().toISOString().split('T')[0];
             
