@@ -1765,28 +1765,53 @@
                     const base64Data = dataUrl.split(',')[1];
                     const mimeType = file.type || 'image/jpeg';
                     const domainHost = 'generative' + 'language.' + 'googleapis' + '.com';
-                    const modelEndpoint = '/v1beta/models/ge' + 'mini-1.5-flash:generate' + 'Content';
-                    const apiEndpoint = 'https://' + domainHost + modelEndpoint + '?key=' + apiKey;
+
+                    // 🌟 候選模型與 API 版本列表 (遇到 404 自動輪詢降級嘗試)
+                    const candidateEndpoints = [
+                        '/v1beta/models/gemini-2.0-flash:generateContent',
+                        '/v1beta/models/gemini-1.5-flash:generateContent',
+                        '/v1beta/models/gemini-1.5-flash-latest:generateContent',
+                        '/v1/models/gemini-1.5-flash:generateContent',
+                        '/v1beta/models/gemini-1.5-pro:generateContent'
+                    ];
 
                     const pText = `你是一位精準的日文收據辨識與繁體中文翻譯助手。請仔細讀取這張日本收據圖片，提取出以下資料：\n1. store: 店家名稱 (例如 "LAWSON", "松本清", "沖繩美島超市")\n2. date: 消費日期 (格式 YYYY-MM-DD，若缺少年份預設2026)\n3. totalJpy: 最終合計總金額 (數字整數，對應「合計」、「小計」或「TOTAL」)\n4. items: 品項陣列，每個品項包含：\n   - jp: "日文原文品項 (繁體中文翻譯)"，例如 "からあげクン (招牌炸雞塊)"\n   - jpy: 該品項金額 (數字整數)\n\n【注意事項】：\n- 請忽略找零 (お釣)、實收現金 (預り)、點數 (ポイント) 等列。\n- 請務必將日文品項翻譯為繁體中文附在括號內。\n- 務必嚴格只輸出純 JSON 格式，格式範例：\n{"store":"店名","date":"2026-09-28","totalJpy":1280,"items":[{"jp":"からあげクン (招牌炸雞塊)","jpy":248}]}`;
 
-                    const response = await fetch(apiEndpoint, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            contents: [{
-                                parts: [
-                                    { text: pText },
-                                    { inline_data: { mime_type: mimeType, data: base64Data } }
-                                ]
-                            }]
-                        })
-                    });
+                    let response = null;
+                    let lastErrorMsg = '';
 
-                    if (!response.ok) {
-                        const errJson = await response.json().catch(() => ({}));
-                        const errMsg = errJson.error?.message || response.statusText || response.status;
-                        throw new Error(`API 錯誤 (${response.status}): ${errMsg}`);
+                    // 🌟 逐一嘗試候選模型 Endpoint，防止單一 Model ID 回傳 404
+                    for (const endpoint of candidateEndpoints) {
+                        const apiEndpoint = 'https://' + domainHost + endpoint + '?key=' + apiKey;
+                        try {
+                            const res = await fetch(apiEndpoint, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({
+                                    contents: [{
+                                        parts: [
+                                            { text: pText },
+                                            { inline_data: { mime_type: mimeType, data: base64Data } }
+                                        ]
+                                    }]
+                                })
+                            });
+
+                            if (res.ok) {
+                                response = res;
+                                break; // 成功取得回應，跳出重試迴圈
+                            } else {
+                                const errJson = await res.json().catch(() => ({}));
+                                lastErrorMsg = errJson.error?.message || `HTTP ${res.status} ${res.statusText}`;
+                                console.warn(`Endpoint ${endpoint} failed (${res.status}): ${lastErrorMsg}`);
+                            }
+                        } catch (fetchErr) {
+                            lastErrorMsg = fetchErr.message;
+                        }
+                    }
+
+                    if (!response) {
+                        throw new Error(`所有 Gemini 模型端點皆連線失敗 (${lastErrorMsg})。\n可能原因：\n1. 金鑰未於 Google AI Studio 啟用 API。\n2. GCP 專案未啟用 Generative Language API。`);
                     }
 
                     const resData = await response.json();
@@ -1812,9 +1837,9 @@
 
                 } catch (err) {
                     console.error('Gemini API Error:', err);
-                    alert(`⚠️ Gemini Vision 辨識失敗或遇到錯誤：\n${err.message}\n\n已為您切換至備用體驗模式（您可點擊「編輯微調」手動輸入實際金額與品項）。`);
+                    alert(`⚠️ Gemini Vision 辨識失敗：\n${err.message}\n\n已切換至備用模式（您可點擊「編輯微調」手動輸入內容，或重新檢查 API Key）。`);
                     simulateFallbackOCR();
-                    document.getElementById('ocr-status-text').innerText = `⚠️ 辨識失敗 (${err.message}) - 已載入可編輯備用卡片`;
+                    document.getElementById('ocr-status-text').innerText = `⚠️ 辨識失敗 - 已載入可編輯備用卡片`;
                 }
             } else {
                 document.getElementById('ocr-status-text').innerText = '🔍 進行預設示範辨識...（請於上方點擊「設定 Key」啟用真實 AI 辨識）';
@@ -1826,7 +1851,7 @@
         reader.readAsDataURL(file);
     }
 
-    function simulateFallbackOCR() {
+        function simulateFallbackOCR() {
         renderOCRResultData("LAWSON 那霸空港店 (示範)", "2026-09-28", 1280, [
             { jp: "からあげクン (LAWSON 招牌炸雞塊)", jpy: 248 },
             { jp: "お～いお茶 500ml (御茶園無糖綠茶)", jpy: 160 },
