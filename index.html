@@ -1768,7 +1768,7 @@
                     const modelEndpoint = '/v1beta/models/ge' + 'mini-1.5-flash:generate' + 'Content';
                     const apiEndpoint = 'https://' + domainHost + modelEndpoint + '?key=' + apiKey;
 
-                    const pText = "請解析這張日文收據圖片，提取出：1.店家名稱(store)、2.日期(date, 格式YYYY-MM-DD)、3.總金額(totalJpy, 數字)、4.品項列表(items，包含日文原文+中文翻譯的jp名稱，以及單價jpy數字)。請嚴格只回應 JSON 格式，結構如: {\"store\":\"LAWSON 那霸空港店\",\"date\":\"2026-09-28\",\"totalJpy\":1280,\"items\":[{\"jp\":\"からあげクン (招牌炸雞塊)\",\"jpy\":248}]}";
+                    const pText = `你是一位精準的日文收據辨識與繁體中文翻譯助手。請仔細讀取這張日本收據圖片，提取出以下資料：\n1. store: 店家名稱 (例如 "LAWSON", "松本清", "沖繩美島超市")\n2. date: 消費日期 (格式 YYYY-MM-DD，若缺少年份預設2026)\n3. totalJpy: 最終合計總金額 (數字整數，對應「合計」、「小計」或「TOTAL」)\n4. items: 品項陣列，每個品項包含：\n   - jp: "日文原文品項 (繁體中文翻譯)"，例如 "からあげクン (招牌炸雞塊)"\n   - jpy: 該品項金額 (數字整數)\n\n【注意事項】：\n- 請忽略找零 (お釣)、實收現金 (預り)、點數 (ポイント) 等列。\n- 請務必將日文品項翻譯為繁體中文附在括號內。\n- 務必嚴格只輸出純 JSON 格式，格式範例：\n{"store":"店名","date":"2026-09-28","totalJpy":1280,"items":[{"jp":"からあげクン (招牌炸雞塊)","jpy":248}]}`;
 
                     const response = await fetch(apiEndpoint, {
                         method: 'POST',
@@ -1783,11 +1783,21 @@
                         })
                     });
 
-                    const resData = await response.json();
-                    let text = resData.candidates?.[0]?.content?.parts?.[0]?.text || '';
-                    text = text.replace(/```json/g, '').replace(/```/g, '').trim();
+                    if (!response.ok) {
+                        const errJson = await response.json().catch(() => ({}));
+                        const errMsg = errJson.error?.message || response.statusText || response.status;
+                        throw new Error(`API 錯誤 (${response.status}): ${errMsg}`);
+                    }
 
-                    const parsed = JSON.parse(text);
+                    const resData = await response.json();
+                    let rawText = resData.candidates?.[0]?.content?.parts?.[0]?.text || '';
+                    
+                    const jsonMatch = rawText.match(/\{[\s\S]*\}/);
+                    if (!jsonMatch) {
+                        throw new Error('AI 回傳的辨識文字無法解析為 JSON 格式：' + rawText.substring(0, 100));
+                    }
+
+                    const parsed = JSON.parse(jsonMatch[0]);
                     const store = parsed.store || '日本店家收據';
                     const date = parsed.date || new Date().toISOString().split('T')[0];
                     const items = Array.isArray(parsed.items) ? parsed.items : [];
@@ -1798,15 +1808,16 @@
                     }
 
                     renderOCRResultData(store, date, totalJpy || 0, items);
-                    document.getElementById('ocr-status-text').innerText = '✅ Gemini AI 辨識完成！可點擊微調或帶入記帳本';
+                    document.getElementById('ocr-status-text').innerText = '✨ Gemini AI 真實辨識完成！點擊「編輯微調」可手動修正品項/金額';
 
                 } catch (err) {
                     console.error('Gemini API Error:', err);
-                    alert('⚠️ Gemini API 辨識失敗（已自動載入備用模式，您可點擊「編輯微調」手動修改內容）');
+                    alert(`⚠️ Gemini Vision 辨識失敗或遇到錯誤：\n${err.message}\n\n已為您切換至備用體驗模式（您可點擊「編輯微調」手動輸入實際金額與品項）。`);
                     simulateFallbackOCR();
+                    document.getElementById('ocr-status-text').innerText = `⚠️ 辨識失敗 (${err.message}) - 已載入可編輯備用卡片`;
                 }
             } else {
-                document.getElementById('ocr-status-text').innerText = '🔍 進行預設辨識與翻譯...（可於上方設定 Gemini Key 啟用真實 AI 辨識）';
+                document.getElementById('ocr-status-text').innerText = '🔍 進行預設示範辨識...（請於上方點擊「設定 Key」啟用真實 AI 辨識）';
                 setTimeout(() => {
                     simulateFallbackOCR();
                 }, 800);
@@ -1816,14 +1827,14 @@
     }
 
     function simulateFallbackOCR() {
-        renderOCRResultData("LAWSON 那霸空港店", "2026-09-28", 1280, [
+        renderOCRResultData("LAWSON 那霸空港店 (示範)", "2026-09-28", 1280, [
             { jp: "からあげクン (LAWSON 招牌炸雞塊)", jpy: 248 },
             { jp: "お～いお茶 500ml (御茶園無糖綠茶)", jpy: 160 },
             { jp: "あぐー豚おにぎり (沖繩阿古豬飯糰)", jpy: 280 },
             { jp: "沖縄そば銘菓 (沖繩拉麵風味煎餅)", jpy: 320 },
             { jp: "消費税 8% (包含消費稅)", jpy: 95 }
         ]);
-        document.getElementById('ocr-status-text').innerText = '✅ 辨識完成！可點擊「編輯微調」修改或直接帶入記帳本';
+        document.getElementById('ocr-status-text').innerText = '💡 目前為預設示範卡片，點擊「編輯微調」可修改內容，或設定 Key 進行 AI 辨識';
     }
 
     // 全域變數：暫存當前 OCR 辨識出來的發票明細與編輯狀態
