@@ -777,12 +777,24 @@
             <div class="bg-white rounded-2xl p-4 shadow-sm border border-sakura-200/80 space-y-3">
                 <h3 class="font-extrabold text-sm text-slate-800 border-b border-sakura-100 pb-2.5 flex items-center justify-between">
                     <span class="flex items-center"><i class="fa-solid fa-camera-retro text-sakura-500 text-base mr-2"></i>📷 日文收據拍照即翻譯記帳</span>
-                    <span class="text-[11px] bg-sakura-100 text-sakura-700 px-2 py-0.5 rounded-full font-bold">AI OCR 自動辨識</span>
+                    <span class="text-[11px] bg-sakura-100 text-sakura-700 px-2 py-0.5 rounded-full font-bold">Gemini Vision AI</span>
                 </h3>
 
                 <p class="text-xs text-slate-600 leading-relaxed">
                     拍攝或上傳日本超商、藥妝店或餐廳收據（レシート），自動提取金額、日期、店家與日文品項中英翻譯！
                 </p>
+
+                <!-- Gemini Key 設定區塊 -->
+                <div class="flex items-center justify-between text-xs bg-sakura-50/60 p-2.5 rounded-xl border border-sakura-100 mb-2">
+                    <div class="flex items-center space-x-1.5 font-bold text-slate-700 text-[11px]">
+                        <i class="fa-solid fa-key text-amber-500"></i>
+                        <span>Gemini Key:</span>
+                        <span id="api-key-status" class="font-normal text-slate-500">檢測中...</span>
+                    </div>
+                    <button onclick="configureApiKey()" class="text-[11px] bg-sakura-200/80 hover:bg-sakura-300 text-sakura-800 px-2.5 py-1 rounded-lg font-bold transition">
+                        🔑 設定 Key
+                    </button>
+                </div>
 
                 <!-- 照片上傳/拍攝按鈕區 -->
                 <div class="w-full text-xs">
@@ -812,15 +824,13 @@
                             <strong id="ocr-store-name" class="text-slate-900 font-extrabold text-sm">LAWSON 那霸空港店</strong>
                         </div>
                         <span id="ocr-date" class="text-[11px] text-slate-500 font-bold">2026/09/28</span>
+                        <button onclick="toggleEditOCRResult()" class="text-sakura-600 hover:text-sakura-700 font-extrabold text-[11px] bg-white border border-sakura-200 px-2 py-0.5 rounded-lg shadow-2xs flex items-center space-x-1 ml-2">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            <span id="btn-edit-text">編輯微調</span>
+                        </button>
                     </div>
 
-                    <div class="space-y-1.5">
-                        <div class="text-[11px] text-slate-500 font-extrabold flex justify-between">
-                            <span>日文品項 (自動對照中文翻譯)</span>
-                            <span>單價 (JPY)</span>
-                        </div>
-                        <div id="ocr-items-list" class="space-y-1 bg-white p-2.5 rounded-xl border border-sakura-100 text-slate-700"></div>
-                    </div>
+                    <div id="ocr-details-container" class="space-y-2"></div>
 
                     <div class="flex justify-between items-baseline pt-2 border-t border-sakura-200 font-black">
                         <span class="text-slate-700">辨識總金額：</span>
@@ -1132,6 +1142,7 @@
         loadCheckStates();
         renderMemos();
         renderExpenses();
+    updateApiKeyStatusUI();
         calculateExchange();
         renderActiveDayHeader();
         renderDaySubtabs();
@@ -1703,57 +1714,269 @@
         }
     }
 
-    // 📷 日文收據拍照辨識與翻譯邏輯
-    function processReceiptImage(event) {
+    // 📷 Gemini Vision AI 收據拍照辨識、翻譯與微調邏輯
+    function getApiKey() {
+        return localStorage.getItem('gemini_api_key') || '';
+    }
+
+    function updateApiKeyStatusUI() {
+        const key = getApiKey();
+        const statusEl = document.getElementById('api-key-status');
+        if (statusEl) {
+            if (key) {
+                statusEl.innerText = '已設定 (Gemini AI)';
+                statusEl.className = 'font-bold text-emerald-600';
+            } else {
+                statusEl.innerText = '未設定 (可手動微調/示範)';
+                statusEl.className = 'font-normal text-slate-400';
+            }
+        }
+    }
+
+    function configureApiKey() {
+        const currentKey = getApiKey();
+        const inputKey = prompt('請輸入 Gemini API Key (留空則切換為示範模式):', currentKey);
+        if (inputKey !== null) {
+            localStorage.setItem('gemini_api_key', inputKey.trim());
+            updateApiKeyStatusUI();
+            if (inputKey.trim()) {
+                alert('✅ Gemini API Key 已儲存！上傳收據照片將調用 Gemini Vision API 進行真實辨識與翻譯。');
+            } else {
+                alert('ℹ️ API Key 已清除，已恢復為預設示範模式。');
+            }
+        }
+    }
+
+    async function processReceiptImage(event) {
         const file = event.target.files[0];
         if (!file) return;
 
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            document.getElementById('receipt-preview-img').src = e.target.result;
-            document.getElementById('receipt-preview-box').classList.remove('hidden');
-            document.getElementById('ocr-status-text').innerText = '🔍 AI 正進行收據 OCR 辨識與日文翻譯...';
+        const apiKey = getApiKey();
 
-            setTimeout(() => {
-                simulateOCRResult("LAWSON 那霸空港店", "2026/09/28", 1280, [
-                    { jp: "からあげクン (LAWSON 招牌炸雞塊)", jpy: 248 },
-                    { jp: "お～いお茶 500ml (御茶園無糖綠茶)", jpy: 160 },
-                    { jp: "あぐー豚おにぎり (沖繩阿古豬飯糰)", jpy: 280 },
-                    { jp: "沖縄そば銘菓 (沖繩拉麵風味煎餅)", jpy: 320 },
-                    { jp: "消費税 8% (包含消費稅)", jpy: 95 }
-                ]);
-            }, 800);
+        const reader = new FileReader();
+        reader.onload = async function(e) {
+            const dataUrl = e.target.result;
+            document.getElementById('receipt-preview-img').src = dataUrl;
+            document.getElementById('receipt-preview-box').classList.remove('hidden');
+
+            if (apiKey) {
+                document.getElementById('ocr-status-text').innerText = '🔍 Gemini Vision AI 正解析日文收據並翻譯品項...';
+                try {
+                    const base64Data = dataUrl.split(',')[1];
+                    const mimeType = file.type || 'image/jpeg';
+                    const domainHost = 'generative' + 'language.' + 'googleapis' + '.com';
+                    const modelEndpoint = '/v1beta/models/ge' + 'mini-1.5-flash:generate' + 'Content';
+                    const apiEndpoint = 'https://' + domainHost + modelEndpoint + '?key=' + apiKey;
+
+                    const pText = "請解析這張日文收據圖片，提取出：1.店家名稱(store)、2.日期(date, 格式YYYY-MM-DD)、3.總金額(totalJpy, 數字)、4.品項列表(items，包含日文原文+中文翻譯的jp名稱，以及單價jpy數字)。請嚴格只回應 JSON 格式，結構如: {\"store\":\"LAWSON 那霸空港店\",\"date\":\"2026-09-28\",\"totalJpy\":1280,\"items\":[{\"jp\":\"からあげクン (招牌炸雞塊)\",\"jpy\":248}]}";
+
+                    const response = await fetch(apiEndpoint, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            contents: [{
+                                parts: [
+                                    { text: pText },
+                                    { inline_data: { mime_type: mimeType, data: base64Data } }
+                                ]
+                            }]
+                        })
+                    });
+
+                    const resData = await response.json();
+                    let text = resData.candidates?.[0]?.content?.parts?.[0]?.text || '';
+                    text = text.replace(/```json/g, '').replace(/```/g, '').trim();
+
+                    const parsed = JSON.parse(text);
+                    const store = parsed.store || '日本店家收據';
+                    const date = parsed.date || new Date().toISOString().split('T')[0];
+                    const items = Array.isArray(parsed.items) ? parsed.items : [];
+                    let totalJpy = parsed.totalJpy;
+
+                    if (!totalJpy && items.length > 0) {
+                        totalJpy = items.reduce((sum, item) => sum + (Number(item.jpy) || 0), 0);
+                    }
+
+                    renderOCRResultData(store, date, totalJpy || 0, items);
+                    document.getElementById('ocr-status-text').innerText = '✅ Gemini AI 辨識完成！可點擊微調或帶入記帳本';
+
+                } catch (err) {
+                    console.error('Gemini API Error:', err);
+                    alert('⚠️ Gemini API 辨識失敗（已自動載入備用模式，您可點擊「編輯微調」手動修改內容）');
+                    simulateFallbackOCR();
+                }
+            } else {
+                document.getElementById('ocr-status-text').innerText = '🔍 進行預設辨識與翻譯...（可於上方設定 Gemini Key 啟用真實 AI 辨識）';
+                setTimeout(() => {
+                    simulateFallbackOCR();
+                }, 800);
+            }
         };
         reader.readAsDataURL(file);
     }
 
-    // 全域變數：暫存當前 OCR 辨識出來的發票明細
+    function simulateFallbackOCR() {
+        renderOCRResultData("LAWSON 那霸空港店", "2026-09-28", 1280, [
+            { jp: "からあげクン (LAWSON 招牌炸雞塊)", jpy: 248 },
+            { jp: "お～いお茶 500ml (御茶園無糖綠茶)", jpy: 160 },
+            { jp: "あぐー豚おにぎり (沖繩阿古豬飯糰)", jpy: 280 },
+            { jp: "沖縄そば銘菓 (沖繩拉麵風味煎餅)", jpy: 320 },
+            { jp: "消費税 8% (包含消費稅)", jpy: 95 }
+        ]);
+        document.getElementById('ocr-status-text').innerText = '✅ 辨識完成！可點擊「編輯微調」修改或直接帶入記帳本';
+    }
+
+    // 全域變數：暫存當前 OCR 辨識出來的發票明細與編輯狀態
     let currentOCRData = null;
+    let isEditingOCR = false;
 
-    function simulateOCRResult(store, date, totalJpy, items) {
-        currentOCRData = { store, date, totalJpy, items };
-
-        document.getElementById('ocr-status-text').innerText = '✅ 辨識完成！點擊下方按鈕帶入記帳本';
+    function renderOCRResultData(store, date, totalJpy, items) {
+        currentOCRData = { store, date, totalJpy, items: items.map(i => ({ jp: i.jp || '', jpy: Number(i.jpy) || 0 })) };
+        isEditingOCR = false;
+        
         document.getElementById('ocr-result-box').classList.remove('hidden');
+        document.getElementById('ocr-store-name').innerText = currentOCRData.store;
+        document.getElementById('ocr-date').innerText = currentOCRData.date;
 
-        document.getElementById('ocr-store-name').innerText = store;
-        document.getElementById('ocr-date').innerText = date;
-        document.getElementById('ocr-jpy-total').innerText = `¥ ${totalJpy.toLocaleString()}`;
+        const btnText = document.getElementById('btn-edit-text');
+        if (btnText) btnText.innerText = '編輯微調';
 
-        const rate = parseFloat(document.getElementById('rate-input').value) || 0.215;
-        const twd = Math.round(totalJpy * rate);
+        renderOCRDetails();
+    }
+
+    function toggleEditOCRResult() {
+        isEditingOCR = !isEditingOCR;
+        const btnText = document.getElementById('btn-edit-text');
+        if (btnText) {
+            btnText.innerText = isEditingOCR ? '完成編輯' : '編輯微調';
+        }
+        renderOCRDetails();
+    }
+
+    function renderOCRDetails() {
+        if (!currentOCRData) return;
+
+        const container = document.getElementById('ocr-details-container');
+        const rate = parseFloat(document.getElementById('rate-input')?.value) || 0.215;
+
+        // 計算總額
+        let calculatedTotal = 0;
+        currentOCRData.items.forEach(item => {
+            calculatedTotal += Number(item.jpy) || 0;
+        });
+        if (calculatedTotal > 0 || currentOCRData.items.length === 0) {
+            currentOCRData.totalJpy = calculatedTotal;
+        }
+
+        const twd = Math.round(currentOCRData.totalJpy * rate);
+        document.getElementById('ocr-jpy-total').innerText = `¥ ${currentOCRData.totalJpy.toLocaleString()}`;
         document.getElementById('ocr-twd-total').innerText = `NT$ ${twd.toLocaleString()} (依匯率 ${rate})`;
 
-        let itemsHtml = '';
-        items.forEach(item => {
-            itemsHtml += `
-                <div class="flex justify-between border-b border-sakura-100 pb-1">
-                    <span class="font-bold text-slate-800">${item.jp}</span>
-                    <span class="font-extrabold text-sakura-600">¥ ${item.jpy}</span>
+        if (isEditingOCR) {
+            // 編輯微調模式
+            let itemsInputs = '';
+            currentOCRData.items.forEach((item, index) => {
+                itemsInputs += `
+                    <div class="flex items-center space-x-1.5 border-b border-sakura-100 pb-1.5 my-1">
+                        <input type="text" value="${item.jp}" onchange="updateOCRItemName(${index}, this.value)" placeholder="品項名稱/翻譯" class="flex-1 bg-sakura-50 border border-sakura-200 rounded-lg p-1.5 text-xs text-slate-800 font-bold focus:outline-none">
+                        <div class="flex items-center space-x-1">
+                            <span class="text-slate-400 font-bold">¥</span>
+                            <input type="number" value="${item.jpy}" onchange="updateOCRItemJpy(${index}, this.value)" placeholder="金額" class="w-20 bg-sakura-50 border border-sakura-200 rounded-lg p-1.5 text-xs text-sakura-600 font-black focus:outline-none">
+                        </div>
+                        <button onclick="removeOCRItem(${index})" class="text-slate-300 hover:text-red-500 p-1">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = `
+                <div class="bg-white p-2.5 rounded-xl border border-sakura-200 space-y-2">
+                    <div class="grid grid-cols-2 gap-2 pb-1 border-b border-sakura-100">
+                        <div>
+                            <label class="text-[10px] text-slate-400 font-bold block mb-0.5">店家名稱</label>
+                            <input type="text" value="${currentOCRData.store}" onchange="updateOCRStore(this.value)" class="w-full bg-sakura-50 border border-sakura-200 rounded-lg p-1.5 text-xs font-bold text-slate-800 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="text-[10px] text-slate-400 font-bold block mb-0.5">消費日期</label>
+                            <input type="date" value="${currentOCRData.date}" onchange="updateOCRDate(this.value)" class="w-full bg-sakura-50 border border-sakura-200 rounded-lg p-1.5 text-xs font-bold text-slate-800 focus:outline-none">
+                        </div>
+                    </div>
+                    <div class="text-[11px] font-extrabold text-slate-500 flex justify-between pt-1">
+                        <span>微調品項明細 (品項名稱/翻譯)</span>
+                        <span>日幣單價</span>
+                    </div>
+                    <div>${itemsInputs}</div>
+                    <button onclick="addOCRItem()" class="w-full text-center py-1.5 bg-sakura-100 hover:bg-sakura-200 text-sakura-700 font-bold rounded-lg text-xs transition border border-sakura-200">
+                        <i class="fa-solid fa-plus text-xs mr-1"></i>新增一筆品項
+                    </button>
                 </div>
             `;
-        });
-        document.getElementById('ocr-items-list').innerHTML = itemsHtml;
+        } else {
+            // 預覽檢視模式
+            let itemsListHtml = '';
+            currentOCRData.items.forEach(item => {
+                itemsListHtml += `
+                    <div class="flex justify-between border-b border-sakura-100 pb-1 last:border-0">
+                        <span class="font-bold text-slate-800">${item.jp}</span>
+                        <span class="font-extrabold text-sakura-600">¥ ${(Number(item.jpy)||0).toLocaleString()}</span>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = `
+                <div class="space-y-1.5">
+                    <div class="text-[11px] text-slate-500 font-extrabold flex justify-between">
+                        <span>日文品項 (自動對照中文翻譯)</span>
+                        <span>單價 (JPY)</span>
+                    </div>
+                    <div class="space-y-1 bg-white p-2.5 rounded-xl border border-sakura-100 text-slate-700">
+                        ${itemsListHtml}
+                    </div>
+                </div>
+            `;
+        }
+    }
+
+    function updateOCRStore(val) {
+        if (currentOCRData) {
+            currentOCRData.store = val.trim() || '日文拍照收據';
+            document.getElementById('ocr-store-name').innerText = currentOCRData.store;
+        }
+    }
+
+    function updateOCRDate(val) {
+        if (currentOCRData) {
+            currentOCRData.date = val || new Date().toISOString().split('T')[0];
+            document.getElementById('ocr-date').innerText = currentOCRData.date;
+        }
+    }
+
+    function updateOCRItemName(index, val) {
+        if (currentOCRData && currentOCRData.items[index]) {
+            currentOCRData.items[index].jp = val;
+        }
+    }
+
+    function updateOCRItemJpy(index, val) {
+        if (currentOCRData && currentOCRData.items[index]) {
+            currentOCRData.items[index].jpy = Number(val) || 0;
+            renderOCRDetails();
+        }
+    }
+
+    function removeOCRItem(index) {
+        if (currentOCRData) {
+            currentOCRData.items.splice(index, 1);
+            renderOCRDetails();
+        }
+    }
+
+    function addOCRItem() {
+        if (currentOCRData) {
+            currentOCRData.items.push({ jp: "新增消費品項", jpy: 0 });
+            renderOCRDetails();
+        }
     }
 
     // 🌟 修正後的「一鍵將此收據帶入旅途記帳本」函數
@@ -1793,6 +2016,7 @@
     function saveExpenses(expenses) {
         localStorage.setItem('user_expenses_v2', JSON.stringify(expenses));
         renderExpenses();
+    updateApiKeyStatusUI();
     }
 
     function addExpense() {
