@@ -2,12 +2,12 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>藍＊okinawa小助手＊</title>
     <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
     <!-- FontAwesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/js/all.min.js"></script>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,6 +38,7 @@
         }
     </script>
     <style>
+        :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
         body {
             font-family: 'M PLUS Rounded 1c', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
             background-color: #fff5f7;
@@ -777,24 +778,12 @@
             <div class="bg-white rounded-2xl p-4 shadow-sm border border-sakura-200/80 space-y-3">
                 <h3 class="font-extrabold text-sm text-slate-800 border-b border-sakura-100 pb-2.5 flex items-center justify-between">
                     <span class="flex items-center"><i class="fa-solid fa-camera-retro text-sakura-500 text-base mr-2"></i>📷 日文收據拍照即翻譯記帳</span>
-                    <span class="text-[11px] bg-sakura-100 text-sakura-700 px-2 py-0.5 rounded-full font-bold">Claude Vision AI</span>
+                    <span class="text-[11px] bg-sakura-100 text-sakura-700 px-2 py-0.5 rounded-full font-bold">Claude AI 辨識</span>
                 </h3>
 
                 <p class="text-xs text-slate-600 leading-relaxed">
                     拍攝或上傳日本超商、藥妝店或餐廳收據（レシート），自動提取金額、日期、店家與日文品項中英翻譯！
                 </p>
-
-                <!-- Gemini Key 設定區塊 -->
-                <div class="flex items-center justify-between text-xs bg-sakura-50/60 p-2.5 rounded-xl border border-sakura-100 mb-2">
-                    <div class="flex items-center space-x-1.5 font-bold text-slate-700 text-[11px]">
-                        <i class="fa-solid fa-key text-amber-500"></i>
-                        <span>Claude API Key:</span>
-                        <span id="api-key-status" class="font-normal text-slate-500">檢測中...</span>
-                    </div>
-                    <button onclick="configureApiKey()" class="text-[11px] bg-sakura-200/80 hover:bg-sakura-300 text-sakura-800 px-2.5 py-1 rounded-lg font-bold transition">
-                        🔑 設定 Key
-                    </button>
-                </div>
 
                 <!-- 照片上傳/拍攝按鈕區 -->
                 <div class="w-full text-xs">
@@ -824,13 +813,15 @@
                             <strong id="ocr-store-name" class="text-slate-900 font-extrabold text-sm">LAWSON 那霸空港店</strong>
                         </div>
                         <span id="ocr-date" class="text-[11px] text-slate-500 font-bold">2026/09/28</span>
-                        <button onclick="toggleEditOCRResult()" class="text-sakura-600 hover:text-sakura-700 font-extrabold text-[11px] bg-white border border-sakura-200 px-2 py-0.5 rounded-lg shadow-2xs flex items-center space-x-1 ml-2">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                            <span id="btn-edit-text">編輯微調</span>
-                        </button>
                     </div>
 
-                    <div id="ocr-details-container" class="space-y-2"></div>
+                    <div class="space-y-1.5">
+                        <div class="text-[11px] text-slate-500 font-extrabold flex justify-between">
+                            <span>日文品項 (自動對照中文翻譯)</span>
+                            <span>單價 (JPY)</span>
+                        </div>
+                        <div id="ocr-items-list" class="space-y-1 bg-white p-2.5 rounded-xl border border-sakura-100 text-slate-700"></div>
+                    </div>
 
                     <div class="flex justify-between items-baseline pt-2 border-t border-sakura-200 font-black">
                         <span class="text-slate-700">辨識總金額：</span>
@@ -1142,7 +1133,6 @@
         loadCheckStates();
         renderMemos();
         renderExpenses();
-    updateApiKeyStatusUI();
         calculateExchange();
         renderActiveDayHeader();
         renderDaySubtabs();
@@ -1695,6 +1685,20 @@
         container.innerHTML = html;
     }
 
+    // 安全算式計算 (不使用 eval)
+    function safeCalc(s) {
+        let i = 0;
+        const num = () => { const st = i; while (i < s.length && /[0-9.]/.test(s[i])) i++; return parseFloat(s.slice(st, i)); };
+        const fac = () => {
+            if (s[i] === '(') { i++; const v = expr(); if (s[i] !== ')') throw 0; i++; return v; }
+            if (s[i] === '-') { i++; return -fac(); }
+            const n = num(); if (isNaN(n)) throw 0; return n;
+        };
+        const term = () => { let v = fac(); while (s[i] === '*' || s[i] === '/') { const o = s[i++]; const r = fac(); v = o === '*' ? v * r : v / r; } return v; };
+        const expr = () => { let v = term(); while (s[i] === '+' || s[i] === '-') { const o = s[i++]; const r = term(); v = o === '+' ? v + r : v - r; } return v; };
+        const r = expr(); if (i < s.length) throw 0; return r;
+    }
+
     // 匯率算盤
     function calculateExchange() {
         const rate = parseFloat(document.getElementById('rate-input').value) || 0.215;
@@ -1703,7 +1707,7 @@
 
         try {
             const sanitized = expr.replace(/[^0-9+\-*/().]/g, '');
-            const jpyVal = sanitized ? eval(sanitized) : 0;
+            const jpyVal = sanitized ? safeCalc(sanitized) : 0;
             const twdVal = Math.round(jpyVal * rate);
 
             document.getElementById('calc-jpy').innerText = `¥ ${Math.round(jpyVal).toLocaleString()}`;
@@ -1714,89 +1718,37 @@
         }
     }
 
-    // 📷 Claude Vision AI 收據拍照辨識、翻譯與微調邏輯
-// =====================================================================
-// 📷 日本收據拍照 → 中文翻譯 → 入帳(Claude Vision 版)
-//
-// 用法:在你的 HTML 裡,把「從 function getApiKey() 開始,
-// 到 simulateFallbackOCR() 結束」這整段刪掉,貼上本檔全部內容。
-// (下一段 // 全域變數:暫存當前 OCR... 以後的程式碼完全不用動)
-//
-// 運作方式:
-//  1. 在 Claude 內開啟(artifact)→ 用內建辨識,免 Key
-//  2. 在你自己的網站(如 Vercel)→ 使用你的 Anthropic API Key
-//  3. 兩者都沒有 → 跳出空白可編輯卡片,手動輸入也能入帳
-// =====================================================================
-
-const RECEIPT_MODEL = 'claude-sonnet-5-5';
-let claudeSample = null;
-
-(async () => {
-    try {
-        if (window.claude) {
-            const s = await claude.use('sample');
-            if (s) {
-                const l = await s.limits();
-                if (l && l.images) claudeSample = s;
+    // 📷 日文收據拍照辨識與翻譯邏輯 (Claude Vision)
+    let claudeSample = null;
+    (async () => {
+        try {
+            if (window.claude) {
+                const s = await claude.use('sample');
+                if (s) { const l = await s.limits(); if (l && l.images) claudeSample = s; }
             }
-        }
-    } catch (e) { claudeSample = null; }
-    updateApiKeyStatusUI();
-})();
+        } catch (e) { claudeSample = null; }
+    })();
 
-function getApiKey() {
-    return localStorage.getItem('claude_api_key') || '';
-}
-
-function updateApiKeyStatusUI() {
-    const el = document.getElementById('api-key-status');
-    if (!el) return;
-    if (claudeSample) {
-        el.innerText = 'Claude 內建辨識 (免 Key)';
-        el.className = 'font-bold text-emerald-600';
-    } else if (getApiKey()) {
-        el.innerText = '已設定 (Claude API)';
-        el.className = 'font-bold text-emerald-600';
-    } else {
-        el.innerText = '未設定 (可手動輸入)';
-        el.className = 'font-normal text-slate-400';
+    function shrinkImage(file) {
+        return new Promise((res, rej) => {
+            const img = new Image();
+            const u = URL.createObjectURL(file);
+            img.onload = () => {
+                const s = Math.min(1, 1400 / Math.max(img.width, img.height));
+                const c = document.createElement('canvas');
+                c.width = Math.round(img.width * s);
+                c.height = Math.round(img.height * s);
+                c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+                const dataUrl = c.toDataURL('image/jpeg', 0.82);
+                URL.revokeObjectURL(u);
+                c.toBlob(b => b ? res({ blob: b, dataUrl }) : rej(new Error('圖片處理失敗')), 'image/jpeg', 0.82);
+            };
+            img.onerror = () => rej(new Error('無法讀取這張圖片'));
+            img.src = u;
+        });
     }
-}
 
-function configureApiKey() {
-    if (claudeSample) {
-        alert('目前在 Claude 內開啟,已可直接辨識,不需設定 Key。');
-        return;
-    }
-    const k = prompt('請輸入 Anthropic API Key (sk-ant-...,留空則清除):', getApiKey());
-    if (k !== null) {
-        localStorage.setItem('claude_api_key', k.trim());
-        updateApiKeyStatusUI();
-        alert(k.trim() ? '✅ Key 已儲存,拍照後將以 Claude 辨識與翻譯。' : 'ℹ️ Key 已清除。');
-    }
-}
-
-// 縮圖到最長邊 1400px,加快上傳與辨識
-function shrinkImage(file) {
-    return new Promise((res, rej) => {
-        const img = new Image();
-        const u = URL.createObjectURL(file);
-        img.onload = () => {
-            const s = Math.min(1, 1400 / Math.max(img.width, img.height));
-            const c = document.createElement('canvas');
-            c.width = Math.round(img.width * s);
-            c.height = Math.round(img.height * s);
-            c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
-            const dataUrl = c.toDataURL('image/jpeg', 0.82);
-            URL.revokeObjectURL(u);
-            c.toBlob(b => b ? res({ blob: b, dataUrl }) : rej(new Error('圖片處理失敗')), 'image/jpeg', 0.82);
-        };
-        img.onerror = () => rej(new Error('無法讀取這張圖片'));
-        img.src = u;
-    });
-}
-
-const RECEIPT_PROMPT = `這是一張日本收據(レシート)的照片。請辨識內容並「只輸出 JSON」,不要任何其他文字或程式碼框。
+    const RECEIPT_PROMPT = `這是一張日本收據(レシート)的照片。請辨識內容並「只輸出 JSON」,不要任何其他文字或程式碼框。
 格式:
 {"store":"店名(中文譯名,必要時附原文)","date":"YYYY-MM-DD,看不到則空字串","totalJpy":稅込合計(整數日圓),"items":[{"jp":"日文原文品名 (繁體中文翻譯)","jpy":該品項金額(整數日圓)}]}
 規則:
@@ -1805,263 +1757,70 @@ const RECEIPT_PROMPT = `這是一張日本收據(レシート)的照片。請辨
 - 若有獨立的消費稅列,也列為一項,讓品項金額加總等於合計。
 - 看不清楚的欄位寫空字串或 0,不要猜測。`;
 
-async function askReceipt(img) {
-    if (claudeSample) {
-        return await claudeSample.json(RECEIPT_PROMPT, { images: [img.blob], cache: false });
-    }
-    const key = getApiKey();
-    if (!key) return null;
-    const r = await fetch('https://api.anthropic.com/v1/messages', {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json',
-            'x-api-key': key,
-            'anthropic-version': '2023-06-01',
-            'anthropic-dangerous-direct-browser-access': 'true'
-        },
-        body: JSON.stringify({
-            model: RECEIPT_MODEL,
-            max_tokens: 2000,
-            messages: [{
-                role: 'user',
-                content: [
-                    { type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: img.dataUrl.split(',')[1] } },
-                    { type: 'text', text: RECEIPT_PROMPT }
-                ]
-            }]
-        })
-    });
-    if (!r.ok) {
-        const e = await r.json().catch(() => ({}));
-        throw new Error((e.error && e.error.message) || ('HTTP ' + r.status));
-    }
-    const d = await r.json();
-    const text = (d.content || []).map(c => c.text || '').join('');
-    const m = text.match(/\{[\s\S]*\}/);
-    if (!m) throw new Error('回傳內容無法解析為 JSON');
-    return JSON.parse(m[0]);
-}
+    async function processReceiptImage(event) {
+        const file = event.target.files[0];
+        event.target.value = '';
+        if (!file) return;
 
-async function processReceiptImage(event) {
-    const file = event.target.files[0];
-    event.target.value = '';
-    if (!file) return;
+        const status = document.getElementById('ocr-status-text');
+        document.getElementById('ocr-result-box').classList.add('hidden');
+        document.getElementById('receipt-preview-box').classList.remove('hidden');
 
-    const status = document.getElementById('ocr-status-text');
-    document.getElementById('receipt-preview-box').classList.remove('hidden');
-    status.innerText = '🔍 Claude 正在辨識日文收據並翻譯品項...';
-
-    try {
-        const img = await shrinkImage(file);
-        document.getElementById('receipt-preview-img').src = img.dataUrl;
-
-        const p = await askReceipt(img);
-        if (!p) {
-            simulateFallbackOCR();
-            status.innerText = '尚未設定 Key — 已載入可編輯空白卡片,或點「設定 Key」啟用 AI 辨識';
+        if (!claudeSample) {
+            status.innerText = '⚠️ 需在 Claude 內開啟此頁才能使用拍照辨識';
             return;
         }
+        status.innerText = '🔍 Claude 正在辨識收據並翻譯品項...';
 
-        const items = Array.isArray(p.items)
-            ? p.items.map(i => ({ jp: String(i.jp || ''), jpy: Number(i.jpy) || 0 }))
-            : [];
-        const total = Number(p.totalJpy) || items.reduce((s, i) => s + i.jpy, 0);
-        const date = /^\d{4}-\d{2}-\d{2}$/.test(p.date || '') ? p.date : new Date().toISOString().split('T')[0];
+        try {
+            const img = await shrinkImage(file);
+            document.getElementById('receipt-preview-img').src = img.dataUrl;
 
-        renderOCRResultData(p.store || '日本店家收據', date, total, items);
-        status.innerText = '✨ 辨識完成!請核對品項與金額,可點「編輯微調」修正';
-    } catch (err) {
-        console.error('Receipt AI error:', err);
-        const msg = err && err.code === 'not_granted'
-            ? '需要允許使用 Claude 才能辨識收據。'
-            : '辨識失敗:' + (err && err.message ? err.message : '請重拍一張清楚的整張收據');
-        alert('⚠️ ' + msg + '\n\n已載入可編輯卡片,可手動輸入。');
-        simulateFallbackOCR();
-        status.innerText = '⚠️ 辨識失敗 — 已載入可編輯空白卡片';
-    }
-}
+            const p = await claudeSample.json(RECEIPT_PROMPT, { images: [img.blob], cache: false });
+            const items = Array.isArray(p.items)
+                ? p.items.map(i => ({ jp: String(i.jp || ''), jpy: Number(i.jpy) || 0 }))
+                : [];
+            if (items.length === 0) throw new Error('沒有辨識到品項');
+            const total = Number(p.totalJpy) || items.reduce((s, i) => s + i.jpy, 0);
+            const date = /^\d{4}-\d{2}-\d{2}$/.test(p.date || '') ? p.date : new Date().toISOString().split('T')[0];
 
-// 備用:空白可編輯卡片(取代原本的假資料示範)
-function simulateFallbackOCR() {
-    renderOCRResultData('手動輸入收據', new Date().toISOString().split('T')[0], 0, [
-        { jp: '品項名稱 (中文)', jpy: 0 }
-    ]);
-    toggleEditOCRResult();
-}
-                    document.getElementById('ocr-status-text').innerText = `⚠️ 辨識失敗 - 已載入可編輯備用卡片`;
-                }
-            } else {
-                document.getElementById('ocr-status-text').innerText = '🔍 進行預設示範辨識...（請於上方點擊「設定 Key」啟用真實 AI 辨識）';
-                setTimeout(() => {
-                    simulateFallbackOCR();
-                }, 800);
-            }
-        };
-        reader.readAsDataURL(file);
+            simulateOCRResult(p.store || '日本店家收據', date, total, items);
+        } catch (err) {
+            console.error('Receipt AI error:', err);
+            status.innerText = err && err.code === 'not_granted'
+                ? '⚠️ 需要允許使用 Claude 才能辨識收據'
+                : '⚠️ 辨識失敗,請在光線充足下拍清楚整張收據後重試';
+        }
     }
 
-        function simulateFallbackOCR() {
-        renderOCRResultData("LAWSON 那霸空港店 (示範)", "2026-09-28", 1280, [
-            { jp: "からあげクン (LAWSON 招牌炸雞塊)", jpy: 248 },
-            { jp: "お～いお茶 500ml (御茶園無糖綠茶)", jpy: 160 },
-            { jp: "あぐー豚おにぎり (沖繩阿古豬飯糰)", jpy: 280 },
-            { jp: "沖縄そば銘菓 (沖繩拉麵風味煎餅)", jpy: 320 },
-            { jp: "消費税 8% (包含消費稅)", jpy: 95 }
-        ]);
-        document.getElementById('ocr-status-text').innerText = '💡 目前為預設示範卡片，點擊「編輯微調」可修改內容，或設定 Key 進行 AI 辨識';
-    }
-
-    // 全域變數：暫存當前 OCR 辨識出來的發票明細與編輯狀態
+    // 全域變數：暫存當前 OCR 辨識出來的發票明細
     let currentOCRData = null;
-    let isEditingOCR = false;
 
-    function renderOCRResultData(store, date, totalJpy, items) {
-        currentOCRData = { store, date, totalJpy, items: items.map(i => ({ jp: i.jp || '', jpy: Number(i.jpy) || 0 })) };
-        isEditingOCR = false;
-        
+    function simulateOCRResult(store, date, totalJpy, items) {
+        currentOCRData = { store, date, totalJpy, items };
+
+        document.getElementById('ocr-status-text').innerText = '✅ 辨識完成！請核對後帶入記帳本';
         document.getElementById('ocr-result-box').classList.remove('hidden');
-        document.getElementById('ocr-store-name').innerText = currentOCRData.store;
-        document.getElementById('ocr-date').innerText = currentOCRData.date;
 
-        const btnText = document.getElementById('btn-edit-text');
-        if (btnText) btnText.innerText = '編輯微調';
+        document.getElementById('ocr-store-name').innerText = store;
+        document.getElementById('ocr-date').innerText = date;
+        document.getElementById('ocr-jpy-total').innerText = `¥ ${totalJpy.toLocaleString()}`;
 
-        renderOCRDetails();
-    }
-
-    function toggleEditOCRResult() {
-        isEditingOCR = !isEditingOCR;
-        const btnText = document.getElementById('btn-edit-text');
-        if (btnText) {
-            btnText.innerText = isEditingOCR ? '完成編輯' : '編輯微調';
-        }
-        renderOCRDetails();
-    }
-
-    function renderOCRDetails() {
-        if (!currentOCRData) return;
-
-        const container = document.getElementById('ocr-details-container');
-        const rate = parseFloat(document.getElementById('rate-input')?.value) || 0.215;
-
-        // 計算總額
-        let calculatedTotal = 0;
-        currentOCRData.items.forEach(item => {
-            calculatedTotal += Number(item.jpy) || 0;
-        });
-        if (calculatedTotal > 0 || currentOCRData.items.length === 0) {
-            currentOCRData.totalJpy = calculatedTotal;
-        }
-
-        const twd = Math.round(currentOCRData.totalJpy * rate);
-        document.getElementById('ocr-jpy-total').innerText = `¥ ${currentOCRData.totalJpy.toLocaleString()}`;
+        const rate = parseFloat(document.getElementById('rate-input').value) || 0.215;
+        const twd = Math.round(totalJpy * rate);
         document.getElementById('ocr-twd-total').innerText = `NT$ ${twd.toLocaleString()} (依匯率 ${rate})`;
 
-        if (isEditingOCR) {
-            // 編輯微調模式
-            let itemsInputs = '';
-            currentOCRData.items.forEach((item, index) => {
-                itemsInputs += `
-                    <div class="flex items-center space-x-1.5 border-b border-sakura-100 pb-1.5 my-1">
-                        <input type="text" value="${item.jp}" onchange="updateOCRItemName(${index}, this.value)" placeholder="品項名稱/翻譯" class="flex-1 bg-sakura-50 border border-sakura-200 rounded-lg p-1.5 text-xs text-slate-800 font-bold focus:outline-none">
-                        <div class="flex items-center space-x-1">
-                            <span class="text-slate-400 font-bold">¥</span>
-                            <input type="number" value="${item.jpy}" onchange="updateOCRItemJpy(${index}, this.value)" placeholder="金額" class="w-20 bg-sakura-50 border border-sakura-200 rounded-lg p-1.5 text-xs text-sakura-600 font-black focus:outline-none">
-                        </div>
-                        <button onclick="removeOCRItem(${index})" class="text-slate-300 hover:text-red-500 p-1">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </button>
-                    </div>
-                `;
-            });
-
-            container.innerHTML = `
-                <div class="bg-white p-2.5 rounded-xl border border-sakura-200 space-y-2">
-                    <div class="grid grid-cols-2 gap-2 pb-1 border-b border-sakura-100">
-                        <div>
-                            <label class="text-[10px] text-slate-400 font-bold block mb-0.5">店家名稱</label>
-                            <input type="text" value="${currentOCRData.store}" onchange="updateOCRStore(this.value)" class="w-full bg-sakura-50 border border-sakura-200 rounded-lg p-1.5 text-xs font-bold text-slate-800 focus:outline-none">
-                        </div>
-                        <div>
-                            <label class="text-[10px] text-slate-400 font-bold block mb-0.5">消費日期</label>
-                            <input type="date" value="${currentOCRData.date}" onchange="updateOCRDate(this.value)" class="w-full bg-sakura-50 border border-sakura-200 rounded-lg p-1.5 text-xs font-bold text-slate-800 focus:outline-none">
-                        </div>
-                    </div>
-                    <div class="text-[11px] font-extrabold text-slate-500 flex justify-between pt-1">
-                        <span>微調品項明細 (品項名稱/翻譯)</span>
-                        <span>日幣單價</span>
-                    </div>
-                    <div>${itemsInputs}</div>
-                    <button onclick="addOCRItem()" class="w-full text-center py-1.5 bg-sakura-100 hover:bg-sakura-200 text-sakura-700 font-bold rounded-lg text-xs transition border border-sakura-200">
-                        <i class="fa-solid fa-plus text-xs mr-1"></i>新增一筆品項
-                    </button>
+        let itemsHtml = '';
+        items.forEach(item => {
+            const name = String(item.jp).replace(/[<>&]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]));
+            itemsHtml += `
+                <div class="flex justify-between border-b border-sakura-100 pb-1">
+                    <span class="font-bold text-slate-800">${name}</span>
+                    <span class="font-extrabold text-sakura-600">¥ ${Number(item.jpy).toLocaleString()}</span>
                 </div>
             `;
-        } else {
-            // 預覽檢視模式
-            let itemsListHtml = '';
-            currentOCRData.items.forEach(item => {
-                itemsListHtml += `
-                    <div class="flex justify-between border-b border-sakura-100 pb-1 last:border-0">
-                        <span class="font-bold text-slate-800">${item.jp}</span>
-                        <span class="font-extrabold text-sakura-600">¥ ${(Number(item.jpy)||0).toLocaleString()}</span>
-                    </div>
-                `;
-            });
-
-            container.innerHTML = `
-                <div class="space-y-1.5">
-                    <div class="text-[11px] text-slate-500 font-extrabold flex justify-between">
-                        <span>日文品項 (自動對照中文翻譯)</span>
-                        <span>單價 (JPY)</span>
-                    </div>
-                    <div class="space-y-1 bg-white p-2.5 rounded-xl border border-sakura-100 text-slate-700">
-                        ${itemsListHtml}
-                    </div>
-                </div>
-            `;
-        }
-    }
-
-    function updateOCRStore(val) {
-        if (currentOCRData) {
-            currentOCRData.store = val.trim() || '日文拍照收據';
-            document.getElementById('ocr-store-name').innerText = currentOCRData.store;
-        }
-    }
-
-    function updateOCRDate(val) {
-        if (currentOCRData) {
-            currentOCRData.date = val || new Date().toISOString().split('T')[0];
-            document.getElementById('ocr-date').innerText = currentOCRData.date;
-        }
-    }
-
-    function updateOCRItemName(index, val) {
-        if (currentOCRData && currentOCRData.items[index]) {
-            currentOCRData.items[index].jp = val;
-        }
-    }
-
-    function updateOCRItemJpy(index, val) {
-        if (currentOCRData && currentOCRData.items[index]) {
-            currentOCRData.items[index].jpy = Number(val) || 0;
-            renderOCRDetails();
-        }
-    }
-
-    function removeOCRItem(index) {
-        if (currentOCRData) {
-            currentOCRData.items.splice(index, 1);
-            renderOCRDetails();
-        }
-    }
-
-    function addOCRItem() {
-        if (currentOCRData) {
-            currentOCRData.items.push({ jp: "新增消費品項", jpy: 0 });
-            renderOCRDetails();
-        }
+        });
+        document.getElementById('ocr-items-list').innerHTML = itemsHtml;
     }
 
     // 🌟 修正後的「一鍵將此收據帶入旅途記帳本」函數
@@ -2101,7 +1860,6 @@ function simulateFallbackOCR() {
     function saveExpenses(expenses) {
         localStorage.setItem('user_expenses_v2', JSON.stringify(expenses));
         renderExpenses();
-    updateApiKeyStatusUI();
     }
 
     function addExpense() {
